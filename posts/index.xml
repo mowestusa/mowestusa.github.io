@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on Discover FOSS</title>
+    <link>/posts/</link>
+    <description>Recent content in Posts on Discover FOSS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 09 Aug 2020 11:01:08 -0400</lastBuildDate>
+    
+        <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>My First Post</title>
+      <link>/posts/my-first-post/</link>
+      <pubDate>Sun, 09 Aug 2020 11:01:08 -0400</pubDate>
+      
+      <guid>/posts/my-first-post/</guid>
+      <description>Welcome to Discover FOSS. Join the journey of discovering free and open source software that you can use to run on your technology.</description>
+      
+    </item>
+    
+  </channel>
+</rss>
