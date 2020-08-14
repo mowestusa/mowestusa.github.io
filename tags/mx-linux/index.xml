@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>MX-Linux on Discover FOSS</title>
+    <link>/tags/mx-linux/</link>
+    <description>Recent content in MX-Linux on Discover FOSS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 09 Aug 2020 22:38:24 -0400</lastBuildDate>
+    
+        <atom:link href="/tags/mx-linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>MX Fluxbox Puts a Shine on Old Code</title>
+      <link>/posts/mx-fluxbox-puts-a-shine-on-old-code/</link>
+      <pubDate>Sun, 09 Aug 2020 22:38:24 -0400</pubDate>
+      
+      <guid>/posts/mx-fluxbox-puts-a-shine-on-old-code/</guid>
+      <description>MX-Fluxbox Puts a Shine on Old Code by Steve (mowest)
+Shame on me for taking this long to try MX Linux. My teenage son has been a code contributor to MX since before their October 2019 release of MX-19. He loved MX from his first install, but I dismissed it for my use. I have used distros based on Debian Stable and longed for updated packages. Honestly from a distance, MX appeared to be an eclectic mix of applications from different frameworks on top of a stable (dare I say boring) base of Debian and XFCE.</description>
+      
+    </item>
+    
+  </channel>
+</rss>
