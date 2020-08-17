@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Discover FOSS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 09 Aug 2020 22:38:24 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 16 Aug 2020 22:59:04 -0400</lastBuildDate>
     
         <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>fluxbox</title>
       <link>/tags/fluxbox/</link>
-      <pubDate>Sun, 09 Aug 2020 22:38:24 -0400</pubDate>
+      <pubDate>Sun, 16 Aug 2020 22:59:04 -0400</pubDate>
       
       <guid>/tags/fluxbox/</guid>
       <description></description>
@@ -24,9 +24,29 @@
     <item>
       <title>MX-Linux</title>
       <link>/tags/mx-linux/</link>
-      <pubDate>Sun, 09 Aug 2020 22:38:24 -0400</pubDate>
+      <pubDate>Sun, 16 Aug 2020 22:59:04 -0400</pubDate>
       
       <guid>/tags/mx-linux/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Fedora</title>
+      <link>/tags/fedora/</link>
+      <pubDate>Sun, 09 Aug 2020 11:01:08 -0400</pubDate>
+      
+      <guid>/tags/fedora/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Ubuntu-Mate</title>
+      <link>/tags/ubuntu-mate/</link>
+      <pubDate>Sun, 09 Aug 2020 11:01:08 -0400</pubDate>
+      
+      <guid>/tags/ubuntu-mate/</guid>
       <description></description>
       
     </item>

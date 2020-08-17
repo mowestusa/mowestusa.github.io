@@ -6,28 +6,38 @@
     <description>Recent content in Posts on Discover FOSS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 09 Aug 2020 22:38:24 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 16 Aug 2020 22:59:04 -0400</lastBuildDate>
     
         <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>MX-Fluxbox Window Grouping</title>
+      <link>/posts/mxfb-window-grouping/</link>
+      <pubDate>Sun, 16 Aug 2020 22:59:04 -0400</pubDate>
+      
+      <guid>/posts/mxfb-window-grouping/</guid>
+      <description>When you hang around technology enthusiasts who love to be productive on their computers, you might hear the term &amp;ldquo;workflow.&amp;rdquo; Workflows tend to be as different as the individuals who establish their personal workflow. In FOSS communities individuals will sing their praises of their desktop environment often because they like its default workflow or it fits their preferred workflow. Perhaps, I&amp;rsquo;m an odd duck, but I have found &amp;ldquo;workflows&amp;rdquo; that work for me in all the major desktop environments.</description>
+      
+    </item>
+    
+    <item>
       <title>MX Fluxbox Puts a Shine on Old Code</title>
-      <link>/posts/mx-fluxbox-puts-a-shine-on-old-code/</link>
+      <link>/posts/mxfb-shine/</link>
       <pubDate>Sun, 09 Aug 2020 22:38:24 -0400</pubDate>
       
-      <guid>/posts/mx-fluxbox-puts-a-shine-on-old-code/</guid>
+      <guid>/posts/mxfb-shine/</guid>
       <description>Shame on me for taking this long to try MX Linux. My teenage son has been a code contributor to MX since before their October 2019 release of MX-19. He loved MX from his first install, but I dismissed it for my use. I have used distros based on Debian Stable and longed for updated packages. Honestly from a distance, MX appeared to be an eclectic mix of applications from different frameworks on top of a stable (dare I say boring) base of Debian and XFCE.</description>
       
     </item>
     
     <item>
-      <title>My First Post</title>
-      <link>/posts/my-first-post/</link>
+      <title>Introduction and Terms</title>
+      <link>/posts/introduction/</link>
       <pubDate>Sun, 09 Aug 2020 11:01:08 -0400</pubDate>
       
-      <guid>/posts/my-first-post/</guid>
-      <description>Welcome to Discover FOSS. Join the journey of discovering free and open source software that you can use to run on your technology.</description>
+      <guid>/posts/introduction/</guid>
+      <description>Welcome to Discover FOSS or &amp;ldquo;Discover Free and Open Source Software.&amp;rdquo; I have enjoyed FOSS and running a variety of Linux distributions since the early 2000&amp;rsquo;s. I started Discover FOSS to document my own journey of discovery and to share that journey with the wider community of enthusiastic users. I hope to provide content that tells my story of discovery while at the same time introduces you to perhaps new corners of the free and open source world that you have not discovered on your own.</description>
       
     </item>
     
