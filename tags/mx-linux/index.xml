@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <lastBuildDate>Sun, 16 Aug 2020 22:59:04 -0400</lastBuildDate>
+    <lastBuildDate>Tue, 18 Aug 2020 18:24:44 -0400</lastBuildDate>
     
         <atom:link href="/tags/mx-linux/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>MX-Fluxbox Pseudo Tiling</title>
+      <link>/posts/mxfb-pseudo-tiling/</link>
+      <pubDate>Tue, 18 Aug 2020 18:24:44 -0400</pubDate>
+      
+      <guid>/posts/mxfb-pseudo-tiling/</guid>
+      <description>Eventually the experienced FOSS user will discover tiling window managers. Similar to fluxbox, tiling window managers are light weight on resources, but they might need additional customization to enable features that come turned on automatically in desktop environments like Gnome, Plasma, Mate, and XFCE. Tiling window managers include FOSS like Awesome, Xmonad, i3, and herbstluftwm just to name a few. Tiling window managers use keyboard shortcuts to quickly arrange your program windows into tiled layouts to make the most of your screen real estate.</description>
+      
+    </item>
     
     <item>
       <title>MX-Fluxbox Window Grouping</title>
