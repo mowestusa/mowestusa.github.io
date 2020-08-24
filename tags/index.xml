@@ -7,15 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <lastBuildDate>Tue, 18 Aug 2020 18:24:44 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 23 Aug 2020 16:50:48 -0400</lastBuildDate>
     
         <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>dotfiles</title>
+      <link>/tags/dotfiles/</link>
+      <pubDate>Sun, 23 Aug 2020 16:50:48 -0400</pubDate>
+      
+      <guid>/tags/dotfiles/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
       <title>fluxbox</title>
       <link>/tags/fluxbox/</link>
-      <pubDate>Tue, 18 Aug 2020 18:24:44 -0400</pubDate>
+      <pubDate>Sun, 23 Aug 2020 16:50:48 -0400</pubDate>
       
       <guid>/tags/fluxbox/</guid>
       <description></description>
@@ -25,9 +35,19 @@
     <item>
       <title>MX-Linux</title>
       <link>/tags/mx-linux/</link>
-      <pubDate>Tue, 18 Aug 2020 18:24:44 -0400</pubDate>
+      <pubDate>Sun, 23 Aug 2020 16:50:48 -0400</pubDate>
       
       <guid>/tags/mx-linux/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>yadm</title>
+      <link>/tags/yadm/</link>
+      <pubDate>Sun, 23 Aug 2020 16:50:48 -0400</pubDate>
+      
+      <guid>/tags/yadm/</guid>
       <description></description>
       
     </item>

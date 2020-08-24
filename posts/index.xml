@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <lastBuildDate>Tue, 18 Aug 2020 18:24:44 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 23 Aug 2020 16:50:48 -0400</lastBuildDate>
     
         <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Wrangle Dotfiles with Yadm</title>
+      <link>/posts/yadm-01/</link>
+      <pubDate>Sun, 23 Aug 2020 16:50:48 -0400</pubDate>
+      
+      <guid>/posts/yadm-01/</guid>
+      <description>Running a Linux distribution as your computer&amp;rsquo;s operating system opens up a world of tweaks, configurations, and personalizations. FOSS offers choices in desktop environments, window managers, and favorite programs. All these choices enable you to set up a computer environment that serves your unique needs. What happens when you want to recreate that same experience on a 2nd or 3rd computer that is also running a Linux distribution? You can manually copy each of your configuration files from one computer to another using a folder connected to syncthing or a USB flash drive transferred with sneakernet.</description>
+      
+    </item>
     
     <item>
       <title>MX-Fluxbox Pseudo Tiling</title>
