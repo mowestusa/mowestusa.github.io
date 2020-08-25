@@ -27,7 +27,28 @@ Control Mod4 Right :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 BottomRight}
 # toggle active window: Maximized/ last size
 Mod4 End :ToggleCmd {Maximize} {Restore}
 </code></pre>
-<p>Thanks to the power of MacroCmd in the fluxbox keys file, you can resize the active window and move it anywhere with a keyboard shortcut. The first set resizes the window either to 50% wide and 100% high or 100% wide and 50% high. The command then moves the window either to the left, right, top, or bottom of the screen. The second set resizes the windows to a quarter of the size of the screen and moves them into one of the four corners. I like the final keyboard shortcut which quickly maximizes the window to fill the whole screen. For those who have used Ubuntu Mate&rsquo;s pseudo tiling, you will notice that two of the keyboard shortcuts are different. In Ubuntu Mate the keyboard shortcuts that enable you to put a quarter sized window into the lower corners use the key combinations: &ldquo;Shift Mod4 Left&rdquo; and &ldquo;Shift Mod4 Right.&rdquo; Although, fluxbox allows the use of &ldquo;Shift&rdquo; as a modifier key in keyboard shortcuts, there seems to be a bug in fluxbox that prevents &ldquo;Shift&rdquo; from working when it is paired with arrow keys. So an easy fix was to use the &ldquo;Control&rdquo; key as a modifier key instead.</p>
+<p>Thanks to the power of MacroCmd in the fluxbox keys file, you can resize the active window and move it anywhere with a keyboard shortcut. The first set resizes the window either to 50% wide and 100% high or 100% wide and 50% high. The command then moves the window either to the left, right, top, or bottom of the screen. The second set resizes the windows to a quarter of the size of the screen and moves them into one of the four corners. I like the final keyboard shortcut which quickly maximizes the window to fill the whole screen.</p>
+<p><em>For those who have used Ubuntu Mate&rsquo;s pseudo tiling, you will notice that two of the keyboard shortcuts are different. In Ubuntu Mate the keyboard shortcuts that enable you to put a quarter sized window into the lower corners use the key combinations: &ldquo;Shift Alt Mod4 Left&rdquo; and &ldquo;Shift Alt Mod4 Right.&rdquo; Although, fluxbox allows the use of &ldquo;Shift&rdquo; as a modifier key in keyboard shortcuts, there seems to be a bug in fluxbox that prevents &ldquo;Shift&rdquo; from working when it is paired with arrow keys. So an easy fix was to use the &ldquo;Control&rdquo; key as a modifier key instead.</em></p>
+<h3 id="08252020-correction-to-the-paragraph-above">08/25/2020 CORRECTION to the paragraph above</h3>
+<blockquote>
+<p>What I thought was a bug in fluxbox, was caused by a default setting found in MX-Linux in the <code>/etc/default/keyboard</code> file. In that file you will find the following line.</p>
+</blockquote>
+<pre><code>XKBOPTIONS=&quot;grp:alt_shift_toggle,terminate:ctrl_alt_bksp,grp_led:scroll&quot;
+</code></pre>
+<blockquote>
+<p>Removing &ldquo;grp:alt_shift_toggle&rdquo; as shown below, will cause &ldquo;Shift&rdquo; to work as expected in your fluxbox keyboard shortcuts.</p>
+</blockquote>
+<pre><code>XKBOPTIONS=&quot;terminate:ctrl_alt_bksp,grp_led:scroll&quot;
+</code></pre>
+<blockquote>
+<p>Now I have my fluxbox 1/4 pseudo tiling shortcuts matched to Ubuntu Mate.</p>
+</blockquote>
+<pre><code># Make active window 1/4 of the screen on the upper left
+Alt Mod4 Left :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 Up}
+Alt Mod4 Right :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 TopRight}
+Alt Shift Mod4 Left :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 BottomLeft}
+Alt Shift Mod4 Right :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 BottomRight}
+</code></pre>
 <p>Personally, these keyboard shortcuts give me all of the tiling options that I need in my workflow. Of course, you can tweak these shortcuts to set up some of the default layouts used in a true tiling window manager. I wanted to share this fluxbox trick to show you all that fluxbox can do. If you would like other ideas for keyboard shortcuts that you can use to set up pseudo tiling, I would like to encourage you to head over to this <a href="https://forum.mxlinux.org/viewtopic.php?f=143&amp;t=55779"target="_blank">forum post</a> in the MX-Linux forum where I got the inspiration for my take on pseudo tiling.</p>
 <p><em>Original images used in the article header are by <a href="https://pixabay.com/users/analogicus-8164369/?utm_source=link-attribution&amp;amp;utm_medium=referral&amp;amp;utm_campaign=image&amp;amp;utm_content=4243189"target="_blank">analogicus</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;amp;utm_medium=referral&amp;amp;utm_campaign=image&amp;amp;utm_content=4243189"target="_blank">Pixabay</a> and <a href="https://www.flickr.com/photos/133825397@N08/39830472585"target="_blank">herbstluftwm-tiling-window-manager</a> by <a href="https://www.flickr.com/photos/133825397@N08"target="_blank">laboratoriolinux</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/2.0/?ref=ccsearch&amp;atype=html"target="_blank">CC BY-NC-SA 2.0</a> and a screenshot by me of my lovely MX-Fluxbox desktop.</em></p>
 </article><section class="article labels"><a class="category" href=/categories/tutorials/>Tutorials</a><a class="tag" href=/tags/mx-linux/>MX-Linux</a><a class="tag" href=/tags/fluxbox/>fluxbox</a></section><section class="article author"><img class="avatar" src="/myAvatar.png" alt><p class="name">Steve (mowest)</p><div class="bio">A free and open source enthusiast using these tools for work and fun.</div><div class="details"><a class="item" href="https://github.com/mowestusa" target="_blank"><span class="iconfont icon-github"></span>&nbsp;mowestusa</a></div>
