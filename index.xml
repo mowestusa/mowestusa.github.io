@@ -9,15 +9,6 @@
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
     <lastBuildDate>Sun, 23 Aug 2020 16:50:48 -0400</lastBuildDate><atom:link href="https://discoverfoss.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Posts</title>
-      <link>https://discoverfoss.com/posts/</link>
-      <pubDate>Sun, 23 Aug 2020 16:50:48 -0400</pubDate>
-      
-      <guid>https://discoverfoss.com/posts/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Wrangle Dotfiles with Yadm</title>
       <link>https://discoverfoss.com/posts/yadm-01/</link>
       <pubDate>Sun, 23 Aug 2020 16:50:48 -0400</pubDate>
