@@ -9,74 +9,11 @@
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
     <lastBuildDate>Sun, 23 Aug 2020 16:50:48 -0400</lastBuildDate><atom:link href="https://discoverfoss.com/tags/dotfiles/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Categories</title>
-      <link>https://discoverfoss.com/categories/</link>
-      <pubDate>Sun, 23 Aug 2020 16:50:48 -0400</pubDate>
-      
-      <guid>https://discoverfoss.com/categories/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Discover FOSS</title>
-      <link>https://discoverfoss.com/</link>
-      <pubDate>Sun, 23 Aug 2020 16:50:48 -0400</pubDate>
-      
-      <guid>https://discoverfoss.com/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>dotfiles</title>
-      <link>https://discoverfoss.com/tags/dotfiles/</link>
-      <pubDate>Sun, 23 Aug 2020 16:50:48 -0400</pubDate>
-      
-      <guid>https://discoverfoss.com/tags/dotfiles/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>fluxbox</title>
-      <link>https://discoverfoss.com/tags/fluxbox/</link>
-      <pubDate>Sun, 23 Aug 2020 16:50:48 -0400</pubDate>
-      
-      <guid>https://discoverfoss.com/tags/fluxbox/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>MX-Linux</title>
-      <link>https://discoverfoss.com/tags/mx-linux/</link>
-      <pubDate>Sun, 23 Aug 2020 16:50:48 -0400</pubDate>
-      
-      <guid>https://discoverfoss.com/tags/mx-linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Posts</title>
       <link>https://discoverfoss.com/posts/</link>
       <pubDate>Sun, 23 Aug 2020 16:50:48 -0400</pubDate>
       
       <guid>https://discoverfoss.com/posts/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tags</title>
-      <link>https://discoverfoss.com/tags/</link>
-      <pubDate>Sun, 23 Aug 2020 16:50:48 -0400</pubDate>
-      
-      <guid>https://discoverfoss.com/tags/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tutorials</title>
-      <link>https://discoverfoss.com/categories/tutorials/</link>
-      <pubDate>Sun, 23 Aug 2020 16:50:48 -0400</pubDate>
-      
-      <guid>https://discoverfoss.com/categories/tutorials/</guid>
       <description></description>
     </item>
     
@@ -158,15 +95,6 @@ Branch &#39;master&#39; set up to track remote branch &#39;master&#39; from &#39
     </item>
     
     <item>
-      <title>yadm</title>
-      <link>https://discoverfoss.com/tags/yadm/</link>
-      <pubDate>Sun, 23 Aug 2020 16:50:48 -0400</pubDate>
-      
-      <guid>https://discoverfoss.com/tags/yadm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>MX-Fluxbox Pseudo Tiling</title>
       <link>https://discoverfoss.com/posts/mxfb-pseudo-tiling/</link>
       <pubDate>Tue, 18 Aug 2020 18:24:44 -0400</pubDate>
@@ -242,15 +170,6 @@ Alt Shift Mod4 Right :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 BottomRight}
     </item>
     
     <item>
-      <title>Articles</title>
-      <link>https://discoverfoss.com/categories/articles/</link>
-      <pubDate>Sun, 09 Aug 2020 22:38:24 -0400</pubDate>
-      
-      <guid>https://discoverfoss.com/categories/articles/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>MX Fluxbox Puts a Shine on Old Code</title>
       <link>https://discoverfoss.com/posts/mxfb-shine/</link>
       <pubDate>Sun, 09 Aug 2020 22:38:24 -0400</pubDate>
@@ -270,15 +189,6 @@ Alt Shift Mod4 Right :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 BottomRight}
     </item>
     
     <item>
-      <title>Fedora</title>
-      <link>https://discoverfoss.com/tags/fedora/</link>
-      <pubDate>Sun, 09 Aug 2020 11:01:08 -0400</pubDate>
-      
-      <guid>https://discoverfoss.com/tags/fedora/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Introduction and Terms</title>
       <link>https://discoverfoss.com/posts/introduction/</link>
       <pubDate>Sun, 09 Aug 2020 11:01:08 -0400</pubDate>
@@ -293,15 +203,6 @@ Alt Shift Mod4 Right :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 BottomRight}
 &lt;/ul&gt;
 &lt;p&gt;When you see a reference to MX, I&amp;rsquo;m referring to the MX-Linux distribution. When I make references to the Mate desktop environment, I&amp;rsquo;m usually referring to my experience with it when using Ubuntu Mate. When I make references to Gnome that comes from my experience using it on Fedora.&lt;/p&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>Ubuntu-Mate</title>
-      <link>https://discoverfoss.com/tags/ubuntu-mate/</link>
-      <pubDate>Sun, 09 Aug 2020 11:01:08 -0400</pubDate>
-      
-      <guid>https://discoverfoss.com/tags/ubuntu-mate/</guid>
-      <description></description>
     </item>
     
   </channel>
