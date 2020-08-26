@@ -9,6 +9,7 @@
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
     <lastBuildDate>Sun, 23 Aug 2020 16:50:48 -0400</lastBuildDate><atom:link href="https://discoverfoss.com/tags/fluxbox/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <author>Steve (mowest)</author>
       <title>Wrangle Dotfiles with Yadm</title>
       <link>https://discoverfoss.com/posts/yadm-01/</link>
       <pubDate>Sun, 23 Aug 2020 16:50:48 -0400</pubDate>
@@ -86,6 +87,7 @@ Branch &#39;master&#39; set up to track remote branch &#39;master&#39; from &#39
     </item>
     
     <item>
+      <author>Steve (mowest)</author>
       <title>MX-Fluxbox Pseudo Tiling</title>
       <link>https://discoverfoss.com/posts/mxfb-pseudo-tiling/</link>
       <pubDate>Tue, 18 Aug 2020 18:24:44 -0400</pubDate>
@@ -141,6 +143,7 @@ Alt Shift Mod4 Right :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 BottomRight}
     </item>
     
     <item>
+      <author>Steve (mowest)</author>
       <title>MX-Fluxbox Window Grouping</title>
       <link>https://discoverfoss.com/posts/mxfb-window-grouping/</link>
       <pubDate>Sun, 16 Aug 2020 22:59:04 -0400</pubDate>
@@ -161,6 +164,7 @@ Alt Shift Mod4 Right :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 BottomRight}
     </item>
     
     <item>
+      <author>Steve (mowest)</author>
       <title>MX Fluxbox Puts a Shine on Old Code</title>
       <link>https://discoverfoss.com/posts/mxfb-shine/</link>
       <pubDate>Sun, 09 Aug 2020 22:38:24 -0400</pubDate>
@@ -180,6 +184,7 @@ Alt Shift Mod4 Right :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 BottomRight}
     </item>
     
     <item>
+      <author>Steve (mowest)</author>
       <title>Introduction and Terms</title>
       <link>https://discoverfoss.com/posts/introduction/</link>
       <pubDate>Sun, 09 Aug 2020 11:01:08 -0400</pubDate>
