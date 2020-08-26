@@ -1,65 +1,307 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Discover FOSS</title>
-    <link>/posts/</link>
+    <link>https://discoverfoss.com/posts/</link>
     <description>Recent content in Posts on Discover FOSS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <lastBuildDate>Sun, 23 Aug 2020 16:50:48 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 23 Aug 2020 16:50:48 -0400</lastBuildDate><atom:link href="https://discoverfoss.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Categories</title>
+      <link>https://discoverfoss.com/categories/</link>
+      <pubDate>Sun, 23 Aug 2020 16:50:48 -0400</pubDate>
+      
+      <guid>https://discoverfoss.com/categories/</guid>
+      <description></description>
+    </item>
     
-        <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Discover FOSS</title>
+      <link>https://discoverfoss.com/</link>
+      <pubDate>Sun, 23 Aug 2020 16:50:48 -0400</pubDate>
+      
+      <guid>https://discoverfoss.com/</guid>
+      <description></description>
+    </item>
     
+    <item>
+      <title>dotfiles</title>
+      <link>https://discoverfoss.com/tags/dotfiles/</link>
+      <pubDate>Sun, 23 Aug 2020 16:50:48 -0400</pubDate>
+      
+      <guid>https://discoverfoss.com/tags/dotfiles/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fluxbox</title>
+      <link>https://discoverfoss.com/tags/fluxbox/</link>
+      <pubDate>Sun, 23 Aug 2020 16:50:48 -0400</pubDate>
+      
+      <guid>https://discoverfoss.com/tags/fluxbox/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MX-Linux</title>
+      <link>https://discoverfoss.com/tags/mx-linux/</link>
+      <pubDate>Sun, 23 Aug 2020 16:50:48 -0400</pubDate>
+      
+      <guid>https://discoverfoss.com/tags/mx-linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Posts</title>
+      <link>https://discoverfoss.com/posts/</link>
+      <pubDate>Sun, 23 Aug 2020 16:50:48 -0400</pubDate>
+      
+      <guid>https://discoverfoss.com/posts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tags</title>
+      <link>https://discoverfoss.com/tags/</link>
+      <pubDate>Sun, 23 Aug 2020 16:50:48 -0400</pubDate>
+      
+      <guid>https://discoverfoss.com/tags/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tutorials</title>
+      <link>https://discoverfoss.com/categories/tutorials/</link>
+      <pubDate>Sun, 23 Aug 2020 16:50:48 -0400</pubDate>
+      
+      <guid>https://discoverfoss.com/categories/tutorials/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Wrangle Dotfiles with Yadm</title>
-      <link>/posts/yadm-01/</link>
+      <link>https://discoverfoss.com/posts/yadm-01/</link>
       <pubDate>Sun, 23 Aug 2020 16:50:48 -0400</pubDate>
       
-      <guid>/posts/yadm-01/</guid>
-      <description>Running a Linux distribution as your computer&amp;rsquo;s operating system opens up a world of tweaks, configurations, and personalizations. FOSS offers choices in desktop environments, window managers, and favorite programs. All these choices enable you to set up a computer environment that serves your unique needs. What happens when you want to recreate that same experience on a 2nd or 3rd computer that is also running a Linux distribution? You can manually copy each of your configuration files from one computer to another using a folder connected to syncthing or a USB flash drive transferred with sneakernet.</description>
+      <guid>https://discoverfoss.com/posts/yadm-01/</guid>
+      <description>&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/yadm-wrangle.png&#34;
+        alt=&#34;Wrangling dotfiles header graphic&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;Running a Linux distribution as your computer&amp;rsquo;s operating system opens up a world of tweaks, configurations, and personalizations. FOSS offers choices in desktop environments, window managers, and favorite programs. All these choices enable you to set up a computer environment that serves your unique needs. What happens when you want to recreate that same experience on a 2nd or 3rd computer that is also running a Linux distribution? You can manually copy each of your configuration files from one computer to another using a folder connected to &lt;a href=&#34;https://syncthing.net/&#34;target=&#34;_blank&#34;&gt;syncthing&lt;/a&gt; or a USB flash drive transferred with &lt;a href=&#34;https://en.wikipedia.org/wiki/Sneakernet&#34;target=&#34;_blank&#34;&gt;sneakernet&lt;/a&gt;. You can also manually edit for a second or third time the configuration files which contain your tweaks. These methods will frustrate you when you accidentally write over one of your configuration files with an earlier version that lacks your latest tweaks or when you go to use your favorite keyboard shortcut and realize that you haven&amp;rsquo;t added that one to the system in front of you. I lived in this self imposed frustration until a few weeks ago.&lt;/p&gt;
+&lt;p&gt;As you can tell from my posts, I have enjoyed fluxbox on MX-Linux. In the past two months, I have edited the files in &lt;code&gt;$HOME/.fluxbox&lt;/code&gt;. When I decided to switch my spare work computer to MX-Fluxbox, I knew that I needed a solution to keep my configuration files synced between my work and home computers. My previous solution used four simple bash scripts that executed simple rsync commands to either move files from a USB flash drive or copy files to the same thumb drive. More than once I ran the wrong rsync script or failed to run the correct script when I booted the computer and started making changes. This ended up deleting my preferred configuration files. Version control systems by design keep your files synced between different computers, and have tools to merge conflicts when they occur. I had failed to look for solutions that would help me wrangle my configuration files or as they are commonly called &amp;ldquo;dotfiles.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;Also by design Linux distributions and the software that run on top of them use simple text files to store their configuration tweaks. Often these files are prefaced with a &lt;code&gt;.&lt;/code&gt; or live in a directory that is a dot-directory like the example I gave above
+&lt;code&gt;$HOME/.fluxbox&lt;/code&gt;. Here are common dotfiles and dot directories found in your $HOME directory.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.bashrc
+.profile
+.vimrc
+$HOME/.config/
+$HOME/.ssh/
+$HOME/.gitconfig/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;FOSS programmers have given us amazing choices to use when wrangling our dotfiles. You can try &lt;a href=&#34;https://github.com/thoughtbot/rcm&#34;target=&#34;_blank&#34;&gt;rcm&lt;/a&gt; from the amazing coders at &lt;a href=&#34;https://thoughtbot.com/&#34;target=&#34;_blank&#34;&gt;Thoughtbot&lt;/a&gt;. &lt;a href=&#34;https://github.com/technicalpickles/homesick&#34;target=&#34;_blank&#34;&gt;Homesick&lt;/a&gt; seems to have its fans. Besides being a french word that I probably shouldn&amp;rsquo;t attempt to say out load &lt;a href=&#34;https://www.chezmoi.io/&#34;target=&#34;_blank&#34;&gt;Chezmoi&lt;/a&gt; can take your dotfile management to a whole new level. This tutorial by Ryan Walter will get you started with this powerful tool &lt;a href=&#34;https://fedoramagazine.org/take-back-your-dotfiles-with-chezmoi/&#34;target=&#34;_blank&#34;&gt;&amp;ldquo;Take back your dotfiles with Chezmoi&amp;rdquo;&lt;/a&gt;. You can find others that I failed to mention, but I like &lt;a href=&#34;https://yadm.io/&#34;target=&#34;_blank&#34;&gt;yadm&lt;/a&gt; as my dotfile wrangler.&lt;/p&gt;
+&lt;p&gt;Each of the above mentioned tools use &lt;em&gt;git&lt;/em&gt; for version control, but wrangle dotfiles differently. I decided to avoid tools that depend on symlinks. This took rcm and homesick out of the running. I recognized the power in Chezmoi, but tapping into that power would require adapting to a new workflow for editing my dotfiles. I like to edit my dotfiles by using whatever text editor I feel like using in the moment. Chezmoi requires you to edit your config files using the chezmoi command or at least use an alias or a shortcut. Yadm doesn&amp;rsquo;t get involved while editing dotfiles. Instead if just keeps track of when you edit a dotfile and if it has been synced to the remote repository. Basically, &lt;em&gt;yadm&lt;/em&gt; is a wrapper for &lt;em&gt;git&lt;/em&gt; that enables you to use your $HOME directory as your git repo, which it manages for you. Yadm won&amp;rsquo;t automatically add all of the files in your $HOME directory, that would be disastrous. You can add specific dotfiles and dot directories that live in your $HOME directory. To get started, go to the &lt;a href=&#34;https://yadm.io/&#34;target=&#34;_blank&#34;&gt;yadm site&lt;/a&gt;. Read their documentation, and while you are there admire their beautifully executed modern web page. You can run through the &lt;a href=&#34;https://yadm.io/docs/overview#&#34;target=&#34;_blank&#34;&gt;basics&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Besides the excellent docs above, I would like to highlight a few things that tripped me up after installing yadm. I would also like to note that some of these issues may not occur if you are using the latest version of yadm. Yadm 2.5 was released recently on their GitHub page, but the version I used from the Debian stable repo is yadm 1.12. There have been significant changes to yadm 2.0 and above. Some features mentioned in their documentation may need a more recent version.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Install git and configure git before using yadm to avoid issues. You set up git with the following commands.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;	$ git config --global user.name &amp;quot;John Doe&amp;quot;
+	$ git config --global user.email johndoe@example.com
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Because yadm is a wrapper for git, error messages will contain &lt;em&gt;git&lt;/em&gt; commands and flags.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This confused me when I first started using yadm. I would see those error messages, and I would copy the suggested solution exactly into the terminal and run the command, but often it returned the error &lt;code&gt;fatal: not a git repository (or any of the parent directories): .git&lt;/code&gt;. I would get that error message because I was trying to run a git command inside my &lt;code&gt;$HOME&lt;/code&gt; directory which is not a git repository. However, it is an easy fix to replace &lt;em&gt;git&lt;/em&gt; with &lt;em&gt;yadm&lt;/em&gt; and the command would run as expected.&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Yadm documentation mentions the step of connecting your local yadm managed dotfiles with a remote git repository on &lt;a href=&#34;https://github.com/&#34;target=&#34;_blank&#34;&gt;Github&lt;/a&gt; or &lt;a href=&#34;https://about.gitlab.com/&#34;target=&#34;_blank&#34;&gt;Gitlab&lt;/a&gt; or your own self hosted git server solution. After I connected my local git repo created with yadm to my GitHub repo, new issues arose.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I will be the first to admit that my &lt;em&gt;git foo&lt;/em&gt; is not strong. You might find a different solution that avoids this issue completely. My normal workflow with git repositories is to create a new repository on Github, clone the repository to my local machine, and then add files and push those files up to the Github hosted repository. Because you are using yadm to manage dotfiles in your home directory, I had to use a different workflow. Using yadm I initialized the git repository on my local machine. I created a &amp;ldquo;dotfiles&amp;rdquo; repository on Github that I intended to use with yadm. After I added my Github dotfiles repository as the &lt;em&gt;origin master&lt;/em&gt;  I wanted to start pushing my files up to Github, but the following command failed.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ yadm push -u origin master
+To github.com:mowestusa/dotfiles.git
+! [rejected]        master -&amp;gt; master (non-fast-forward)
+error: failed to push some refs to &#39;git@github.com:mowestusa/dotfiles.git&#39;
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: &#39;git pull ...&#39;) before pushing again.
+hint: See the &#39;Note about fast-forwards&#39; in &#39;git push --help&#39; for details.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Okay, no problem, I will just run &lt;code&gt;yadm pull&lt;/code&gt; and everything will be okay, but it wasn&amp;rsquo;t.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ yadm pull origin master
+From github.com:mowestusa/dotfiles
+ * branch            master     -&amp;gt; FETCH_HEAD
+fatal: refusing to merge unrelated histories
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now I&amp;rsquo;m stuck. I can&amp;rsquo;t &lt;em&gt;push&lt;/em&gt; or &lt;em&gt;pull&lt;/em&gt; to or from the Github hosted repository. If you have sharper &lt;em&gt;git foo&lt;/em&gt;, you will recognize the problem immediately. In my normal workflow this never happens, because I start by creating an empty repository on Github, I clone that empty repository to my local computer, and then I begin filling that empty directory with files that I want to manage with git. In my normal workflow I never run into an unrelated histories issue because I&amp;rsquo;m not trying to connect two git repositories that have different initialization times. Because I created the local git repository using yadm and the remote git repository using GitHub&amp;rsquo;s interface, I created two different repos with two different histories. Thankfully, the fix was simple.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ yadm pull origin master --allow-unrelated-histories
+From github.com:mowestusa/dotfiles
+ * branch            master     -&amp;gt; FETCH_HEAD
+Merge made by the &#39;recursive&#39; strategy.
+README.md | 2 ++
+1 file changed, 2 insertions(+)
+create mode 100644 README.md
+
+$ yadm push -u origin master
+Enumerating objects: 741, done.
+Counting objects: 100% (741/741), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (694/694), done.
+Writing objects: 100% (740/740), 9.49 MiB | 216.00 KiB/s, done.
+Total 740 (delta 36), reused 0 (delta 0)
+remote: Resolving deltas: 100% (36/36), done.
+To github.com:mowestusa/dotfiles.git
+master -&amp;gt; master
+Branch &#39;master&#39; set up to track remote branch &#39;master&#39; from &#39;origin&#39;.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The first command allowed those unrelated histories and merged the README.md file into the local repository. My &lt;code&gt;yadm push&lt;/code&gt; command was successful too. If you want to learn more about unrelated histories of git repositories you can start here with &lt;a href=&#34;https://docs.github.com/en/github/using-git/dealing-with-non-fast-forward-errors&#34;target=&#34;_blank&#34;&gt;Github Documentation&lt;/a&gt; or this &lt;a href=&#34;https://stackoverflow.com/questions/37937984/git-refusing-to-merge-unrelated-histories-on-rebase&#34;target=&#34;_blank&#34;&gt;Stackoverflow Question&lt;/a&gt;. Now that I understand what is happening, I recognize the value of this git feature that protects against accidentally overwriting an important file. In this case the &lt;em&gt;README.md&lt;/em&gt; really wasn&amp;rsquo;t very important.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Yadm&lt;/em&gt; has plenty of features that I am not using. The other dotfile managers that I mention above provide similar functionality. Take a look at them, you might find that one of them works better with the way you work or the way your brain works. I believe &lt;em&gt;yadm&lt;/em&gt; works best for situations where you plan to run the same Linux Distribution, the same window manager or desktop environment, and the same FOSS programs on a regular basis between two different systems. Since I have been spending more time in MX-Linux and &lt;em&gt;yadm&lt;/em&gt; is in the Debian stable repos that also helped to sway my decision towards &lt;em&gt;yadm&lt;/em&gt;. What will you discover that works best for wrangling your dotfiles? Trust me. Skip the USB flash drive, cobbled-together rsync scripts, and sneakernet. There are better options.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Original header image by &lt;a href=&#34;https://pixabay.com/users/VViktor-5823236/?utm_source=link-attribution&amp;amp;amp;utm_medium=referral&amp;amp;amp;utm_campaign=image&amp;amp;amp;utm_content=2826195&#34;target=&#34;_blank&#34;&gt;VViktor&lt;/a&gt; from &lt;a href=&#34;https://pixabay.com/?utm_source=link-attribution&amp;amp;amp;utm_medium=referral&amp;amp;amp;utm_campaign=image&amp;amp;amp;utm_content=2826195&#34;target=&#34;_blank&#34;&gt;Pixabay&lt;/a&gt;. Image effects were created using the FOSS &lt;a href=&#34;https://krita.org/en/&#34;target=&#34;_blank&#34;&gt;Krita&lt;/a&gt;, &lt;a href=&#34;http://www.figlet.org/&#34;target=&#34;_blank&#34;&gt;figlet&lt;/a&gt;, and &lt;a href=&#34;https://github.com/busyloop/lolcat&#34;target=&#34;_blank&#34;&gt;lolcat&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>yadm</title>
+      <link>https://discoverfoss.com/tags/yadm/</link>
+      <pubDate>Sun, 23 Aug 2020 16:50:48 -0400</pubDate>
       
+      <guid>https://discoverfoss.com/tags/yadm/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>MX-Fluxbox Pseudo Tiling</title>
-      <link>/posts/mxfb-pseudo-tiling/</link>
+      <link>https://discoverfoss.com/posts/mxfb-pseudo-tiling/</link>
       <pubDate>Tue, 18 Aug 2020 18:24:44 -0400</pubDate>
       
-      <guid>/posts/mxfb-pseudo-tiling/</guid>
-      <description>Eventually the experienced FOSS user will discover tiling window managers. Similar to fluxbox, tiling window managers are light weight on resources, but they might need additional customization to enable features that come turned on automatically in desktop environments like Gnome, Plasma, Mate, and XFCE. Tiling window managers include FOSS like Awesome, Xmonad, i3, and herbstluftwm just to name a few. Tiling window managers use keyboard shortcuts to quickly arrange your program windows into tiled layouts to make the most of your screen real estate.</description>
-      
+      <guid>https://discoverfoss.com/posts/mxfb-pseudo-tiling/</guid>
+      <description>&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/mxfb-pseudo-header.png&#34;
+        alt=&#34;MX-Fluxbox Pseudo Tiling Header Graphic&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;Eventually the experienced FOSS user will discover tiling window managers. Similar to fluxbox, tiling window managers are light weight on resources, but they might need additional customization to enable features that come turned on automatically in desktop environments like &lt;a href=&#34;https://www.gnome.org/&#34;target=&#34;_blank&#34;&gt;Gnome&lt;/a&gt;, &lt;a href=&#34;https://kde.org/plasma-desktop&#34;target=&#34;_blank&#34;&gt;Plasma&lt;/a&gt;, &lt;a href=&#34;https://mate-desktop.org/&#34;target=&#34;_blank&#34;&gt;Mate&lt;/a&gt;, and &lt;a href=&#34;https://www.xfce.org/&#34;target=&#34;_blank&#34;&gt;XFCE&lt;/a&gt;. Tiling window managers include FOSS like &lt;a href=&#34;https://awesomewm.org/&#34;target=&#34;_blank&#34;&gt;Awesome&lt;/a&gt;, &lt;a href=&#34;https://xmonad.org/&#34;target=&#34;_blank&#34;&gt;Xmonad&lt;/a&gt;, &lt;a href=&#34;https://i3wm.org/&#34;target=&#34;_blank&#34;&gt;i3&lt;/a&gt;, and &lt;a href=&#34;https://herbstluftwm.org/&#34;target=&#34;_blank&#34;&gt;herbstluftwm&lt;/a&gt; just to name a few. Tiling window managers use keyboard shortcuts to quickly arrange your program windows into tiled layouts to make the most of your screen real estate. Fluxbox is considered a floating window manager. This means that your program windows will not rearrange as you open new programs to fill up the space on your screen, but instead new program windows layer on top of one another concealing portions of the program window below it.&lt;/p&gt;
+&lt;p&gt;I have used tiling window managers in the past. I can see their appeal especially if you often work with multiple programs open where you would like to see what they are displaying at all times. I can also see their appeal in enabling workflows that help users work quickly and efficiently while keeping their hands on the keyboard and decreasing the need to use a mouse or touch pad. Personally, my brain seems to work better with floating window managers which have a similar behavior when compared to Gnome, Plasma, Mate, and XFCE. &lt;a href=&#34;https://ubuntu-mate.org/&#34;target=&#34;_blank&#34;&gt;Ubuntu Mate&lt;/a&gt; introduced me to the concept of pseudo tiling in a floating window manager. You will notice this behavior in other operating systems or in some desktop environments. Often with the mouse you can &amp;ldquo;snap&amp;rdquo; your window to the left or right side of the screen so that it takes up 50% of the screen. Ubuntu Mate took this concept a step further. They had window snapping, but through keyboard shortcuts they enabled you to quickly tile your windows to cover either half of the screen or a quarter of the screen. In a matter of seconds you could move four program windows into the four corners of the screen. Sometimes this behavior is mapped to keyboard shortcuts that use the keys in a 10 keypad on the right side of a full keyboard. Ubuntu Mate had this behavior mapped to sensible keyboard shortcuts that work with smaller laptop keyboards that lack a 10 keypad.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s see how you can add pseudo tiling to fluxbox using most of the keyboard shortcuts from Ubuntu Mate. Open the keys file in your .fluxbox folder in your home directory. Then add the lines below. After saving the keys file you will need to restart fluxbox in order to use the new keyboard shortcuts.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;### PSEUDO TILING WINDOWS ###
+
+# Make active window 1/2 of the screen
+Mod4 Left :MacroCmd {ResizeTo 50% 100%} {MoveTo 00 00 Left}
+Mod4 Right :MacroCmd {ResizeTo 50% 100%} {MoveTo 00 00 Right}
+Mod4 Up :MacroCmd {ResizeTo 100% 50%} {MoveTo 00 00 Up}
+Mod4 Down :MacroCmd {ResizeTo 100% 50%} {MoveTo 00 00 Bottom}
+
+# Make active window 1/4 of the screen on the upper left
+Alt Mod4 Left :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 Up}
+Alt Mod4 Right :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 TopRight}
+Control Mod4 Left :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 BottomLeft}
+Control Mod4 Right :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 BottomRight}
+
+# toggle active window: Maximized/ last size
+Mod4 End :ToggleCmd {Maximize} {Restore}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Thanks to the power of MacroCmd in the fluxbox keys file, you can resize the active window and move it anywhere with a keyboard shortcut. The first set resizes the window either to 50% wide and 100% high or 100% wide and 50% high. The command then moves the window either to the left, right, top, or bottom of the screen. The second set resizes the windows to a quarter of the size of the screen and moves them into one of the four corners. I like the final keyboard shortcut which quickly maximizes the window to fill the whole screen.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;For those who have used Ubuntu Mate&amp;rsquo;s pseudo tiling, you will notice that two of the keyboard shortcuts are different. In Ubuntu Mate the keyboard shortcuts that enable you to put a quarter sized window into the lower corners use the key combinations: &amp;ldquo;Shift Alt Mod4 Left&amp;rdquo; and &amp;ldquo;Shift Alt Mod4 Right.&amp;rdquo; Although, fluxbox allows the use of &amp;ldquo;Shift&amp;rdquo; as a modifier key in keyboard shortcuts, there seems to be a bug in fluxbox that prevents &amp;ldquo;Shift&amp;rdquo; from working when it is paired with arrow keys. So an easy fix was to use the &amp;ldquo;Control&amp;rdquo; key as a modifier key instead.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;08252020-correction-to-the-paragraph-above&#34;&gt;08/25/2020 CORRECTION to the paragraph above&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What I thought was a bug in fluxbox, was caused by a default setting found in MX-Linux in the &lt;code&gt;/etc/default/keyboard&lt;/code&gt; file. In that file you will find the following line.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;XKBOPTIONS=&amp;quot;grp:alt_shift_toggle,terminate:ctrl_alt_bksp,grp_led:scroll&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Removing &amp;ldquo;grp:alt_shift_toggle&amp;rdquo; as shown below, will cause &amp;ldquo;Shift&amp;rdquo; to work as expected in your fluxbox keyboard shortcuts.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;XKBOPTIONS=&amp;quot;terminate:ctrl_alt_bksp,grp_led:scroll&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Now I have my fluxbox 1/4 pseudo tiling shortcuts matched to Ubuntu Mate.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;# Make active window 1/4 of the screen on the upper left
+Alt Mod4 Left :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 Up}
+Alt Mod4 Right :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 TopRight}
+Alt Shift Mod4 Left :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 BottomLeft}
+Alt Shift Mod4 Right :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 BottomRight}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Personally, these keyboard shortcuts give me all of the tiling options that I need in my workflow. Of course, you can tweak these shortcuts to set up some of the default layouts used in a true tiling window manager. I wanted to share this fluxbox trick to show you all that fluxbox can do. If you would like other ideas for keyboard shortcuts that you can use to set up pseudo tiling, I would like to encourage you to head over to this &lt;a href=&#34;https://forum.mxlinux.org/viewtopic.php?f=143&amp;amp;t=55779&#34;target=&#34;_blank&#34;&gt;forum post&lt;/a&gt; in the MX-Linux forum where I got the inspiration for my take on pseudo tiling.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Original images used in the article header are by &lt;a href=&#34;https://pixabay.com/users/analogicus-8164369/?utm_source=link-attribution&amp;amp;amp;utm_medium=referral&amp;amp;amp;utm_campaign=image&amp;amp;amp;utm_content=4243189&#34;target=&#34;_blank&#34;&gt;analogicus&lt;/a&gt; from &lt;a href=&#34;https://pixabay.com/?utm_source=link-attribution&amp;amp;amp;utm_medium=referral&amp;amp;amp;utm_campaign=image&amp;amp;amp;utm_content=4243189&#34;target=&#34;_blank&#34;&gt;Pixabay&lt;/a&gt; and &lt;a href=&#34;https://www.flickr.com/photos/133825397@N08/39830472585&#34;target=&#34;_blank&#34;&gt;herbstluftwm-tiling-window-manager&lt;/a&gt; by &lt;a href=&#34;https://www.flickr.com/photos/133825397@N08&#34;target=&#34;_blank&#34;&gt;laboratoriolinux&lt;/a&gt; is licensed under &lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/2.0/?ref=ccsearch&amp;amp;atype=html&#34;target=&#34;_blank&#34;&gt;CC BY-NC-SA 2.0&lt;/a&gt; and a screenshot by me of my lovely MX-Fluxbox desktop.&lt;/em&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
       <title>MX-Fluxbox Window Grouping</title>
-      <link>/posts/mxfb-window-grouping/</link>
+      <link>https://discoverfoss.com/posts/mxfb-window-grouping/</link>
       <pubDate>Sun, 16 Aug 2020 22:59:04 -0400</pubDate>
       
-      <guid>/posts/mxfb-window-grouping/</guid>
-      <description>When you hang around technology enthusiasts who love to be productive on their computers, you might hear the term &amp;ldquo;workflow.&amp;rdquo; Workflows tend to be as different as the individuals who establish their personal workflow. In FOSS communities individuals will sing their praises of their desktop environment often because they like its default workflow or it fits their preferred workflow. Perhaps, I&amp;rsquo;m an odd duck, but I have found &amp;ldquo;workflows&amp;rdquo; that work for me in all the major desktop environments.</description>
+      <guid>https://discoverfoss.com/posts/mxfb-window-grouping/</guid>
+      <description>&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/mxfb-window-grouping.png&#34;
+        alt=&#34;MXFB Window Grouping Header&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;When you hang around technology enthusiasts who love to be productive on their computers, you might hear the term &amp;ldquo;workflow.&amp;rdquo; Workflows tend to be as different as the individuals who establish their personal workflow. In FOSS communities individuals will sing their praises of their desktop environment often because they like its default workflow or it fits their preferred workflow. Perhaps, I&amp;rsquo;m an odd duck, but I have found &amp;ldquo;workflows&amp;rdquo; that work for me in all the major desktop environments. So I feel comfortable in Gnome, Mate, XFCE, Plasma, and even LXQT. These desktop environments have sufficent features and options to make working in them a joy. With multiple workspaces or snapping windows to the edges of your desktop, in a few seconds you can have you desktop set up for a productive workflow.&lt;/p&gt;
+&lt;p&gt;Since I started dabbling in Linux and FOSS in the early 2000&amp;rsquo;s, fluxbox quickly found a special place in my Linux installs. As a light weight window manager it made my old systems crackle with renewed speed. Yet, fluxbox has some fun tricks for a lowly window manager that some full desktop environments haven&amp;rsquo;t implimented yet. Today, I will introduce you to window grouping in fluxbox.&lt;/p&gt;
+&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/mxfb-windowgroup-screenshot.png&#34;
+        alt=&#34;Window Group Screenshot&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;Fluxbox enables you to group windows of any program together into a single window. In the screenshot above, I have a window group of all the tools I&amp;rsquo;m using to create this blog post. It has Featherpad (text editor), Thunar (file manager), nomacs (image viewer), and a terminal for running the appropriate hugo and git commands to publish this blog. You might notice from the screenshot above that the fluxbox toolbar shows that Firefox is open. However, Firefox is on a different workspace from the four programs that I have grouped together. On the fluxbox toolbar it shows the grouped windows as just one open program.&lt;/p&gt;
+&lt;p&gt;Window grouping feels familiar because we open multiple tabs in a web browser populated with our web email client, search site, and social media platform. Fluxbox enables you to have the same workflow you are used to using when you use a multiple of web based applications, but now you can have multiple tabs of your favorite FOSS programs and tools. Window grouping helps me make the most of my small screen on my old laptop. The system I&amp;rsquo;m using to create this post has a screen resolution of 1280x800. With window grouping I can full screen all of the apps that I mentioned above and simply switch between them either by clicking on their &amp;ldquo;tab&amp;rdquo; in the window title bar or by using the keyboard shortcut of the Super(Called the Windows or Command Key on most systems and referred to as Mod4 in the fluxbox keys file or documentation)+TAB to go to the next tabbed window in the group. I can use Super+Shift+TAB to go to the previous tabbed window in the group.&lt;/p&gt;
+&lt;p&gt;Could I do something similar with four workspaces and maximizing each of the programs on their own workspace? Could I just have all four programs on the same workspace maximized and switch between them using Alt+TAB or Alt+Shift+TAB or by clicking on their icon in the fluxbox toolbar? Yes, I could. I&amp;rsquo;m not prepared to say that using fluxbox window grouping beats all of those options or other workflows offered in different window managers or desktop environments. FOSS offers a world of choices, and different choices will click with different users. I have presented a neat trick that you might enjoy if you choose to run fluxbox on your computer.&lt;/p&gt;
+&lt;p&gt;If you enjoy fluxbox tips and tricks, then check back because I have more planned for future posts. Enjoy your discoveries in FOSS this week.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The header image of this article started with a base image by &lt;a href=&#34;https://pixabay.com/users/Sponchia-443272/?utm_source=link-attribution&amp;amp;amp;utm_medium=referral&amp;amp;amp;utm_campaign=image&amp;amp;amp;utm_content=627031&#34;target=&#34;_blank&#34;&gt;Christine Sponchia&lt;/a&gt; from &lt;a href=&#34;https://pixabay.com/?utm_source=link-attribution&amp;amp;amp;utm_medium=referral&amp;amp;amp;utm_campaign=image&amp;amp;amp;utm_content=627031&#34;target=&#34;_blank&#34;&gt;Pixabay&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Articles</title>
+      <link>https://discoverfoss.com/categories/articles/</link>
+      <pubDate>Sun, 09 Aug 2020 22:38:24 -0400</pubDate>
       
+      <guid>https://discoverfoss.com/categories/articles/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>MX Fluxbox Puts a Shine on Old Code</title>
-      <link>/posts/mxfb-shine/</link>
+      <link>https://discoverfoss.com/posts/mxfb-shine/</link>
       <pubDate>Sun, 09 Aug 2020 22:38:24 -0400</pubDate>
       
-      <guid>/posts/mxfb-shine/</guid>
-      <description>Shame on me for taking this long to try MX Linux. My teenage son has been a code contributor to MX since before their October 2019 release of MX-19. He loved MX from his first install, but I dismissed it for my use. I have used distros based on Debian Stable and longed for updated packages. Honestly from a distance, MX appeared to be an eclectic mix of applications from different frameworks on top of a stable (dare I say boring) base of Debian and XFCE.</description>
+      <guid>https://discoverfoss.com/posts/mxfb-shine/</guid>
+      <description>&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/mxfb-shine-header.png&#34;
+        alt=&#34;MXFB Article Header&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;Shame on me for taking this long to try MX Linux. My teenage son has been a code contributor to MX since before their October 2019 release of MX-19. He loved MX from his first install, but I dismissed it for my use. I have used distros based on Debian Stable and longed for updated packages. Honestly from a distance, MX appeared to be an eclectic mix of applications from different frameworks on top of a stable (dare I say boring) base of Debian and XFCE. Fedora Workstation gave me the new and shinny of Gnome 3 with their 6 month fast paced release cycle. Ubuntu Mate assembled a desktop and app selection that fits together like a beautifully tailored suit. Because I had never taken the time to run MX-Linux on my personal hardware, I just didn’t get it.&lt;/p&gt;
+&lt;p&gt;Our family’s summer vacation, a week away from home, was around the corner. I planned to bring an old laptop with Linux, but its SSD needed a fresh install. When I asked my son for suggestions of distros I should try out for a week, he suggested MX-19.2 which released at the beginning of June. At first I thought of dismissing his suggestion, but then I remembered. MX-Fluxbox had been released as a supported desktop. When I first got into Linux in the early 2000’s fluxbox quickly became my window manger of choice as I often ran older hardware that didn’t handle the heavy desktop environments as well. Longing for nostalgia and knowing that after this one week away I could wipe it and go back to a more familiar distro, I took the plunge.&lt;/p&gt;
+&lt;p&gt;After my first week with MX-19.2 spending the majority of my time in MX-Fluxbox, this unique distro will keep its SSD. MX-Fluxbox put a shine on the fluxbox code which was last updated in February 2015. Because MX-Fluxbox runs on top of the install of MX’s XFCE4 edition, you have access to the MX goodness inside of fluxbox. You can use the MX Tools, community created utilities, for system administration tasks. You have the suite of pre-installed applications to get work done inside of fluxbox.&lt;/p&gt;
+&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/mxfb-shine-mxtools.png&#34;
+        alt=&#34;MX Tools&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;You can’t fully appreciate MX without entering the welcoming and active community that they have nurtured. Spend time in their forum and you will discover that MX-Linux is a true labor of love. The community drives innovation. Community members roll up their sleeves to create the unique solutions that you only find in MX. The development team participates daily in the forum, and those interactions often lead them to implement the ideas of the community or mentor a community member to bring an idea into the next distro release. From my interactions with the community, I soon realized that MX application selection was not an eclectic mix, but the result of curation based upon community feedback. This leads to the inclusion of applications that offer features you may long for in the default installs of other distros. Nomacs, their choice for an image viewer, has simple editing features like cropping that I long to see in Gnome 3’s image viewer. MX wants to help users solve problems. MX Tools provide GUI utilities that fix system issues that normally involve manually editing configuration files with a text editor. MX provides a comprehensive manual to guide its users to solutions of common issues that arise as you run a Linux distro as your main operating system. Community package maintainers and testers ensure newer packages of the software you love on top of a Debian Stable base. Besides all of the goodness that MX bakes into their distro release, their active forum is filled with even more nuggets of tips and tricks.&lt;/p&gt;
+&lt;p&gt;Although I have touched on benefits that you would enjoy whether you log into MX-Fluxbox or their standard XFCE4 desktop, I want to encourage you to give MX-Fluxbox a try when you get to the login screen. Just click on the icon in the middle at the top of the screen and pick “Fluxbox”. You will find a polished introduction to a floating window manager. Applets in the toolbar will help you connect to WiFi, monitor your battery level, adjust your volume, and alert you to updates. MX-Fluxbox also comes with an application dock that you can configure with a community contributed tool. MX-Fluxbox comes preconfigured with just enough defaults so you can be productive or gradually customize fluxbox to your liking. Remember to head to the MX forum for even more tips and tricks. You will find some great ideas in the MX-Fluxbox sub forum to further customize this versatile window manager.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The original image in the article header was by &lt;a href=&#34;https://pixabay.com/users/markusspiske-670330/?utm_source=link-attribution&amp;amp;amp;utm_medium=referral&amp;amp;amp;utm_campaign=image&amp;amp;amp;utm_content=3690244&#34;target=&#34;_blank&#34;&gt;Markus Spiske&lt;/a&gt; from &lt;a href=&#34;https://pixabay.com/?utm_source=link-attribution&amp;amp;amp;utm_medium=referral&amp;amp;amp;utm_campaign=image&amp;amp;amp;utm_content=3690244&#34;target=&#34;_blank&#34;&gt;Pixabay&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Fedora</title>
+      <link>https://discoverfoss.com/tags/fedora/</link>
+      <pubDate>Sun, 09 Aug 2020 11:01:08 -0400</pubDate>
       
+      <guid>https://discoverfoss.com/tags/fedora/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>Introduction and Terms</title>
-      <link>/posts/introduction/</link>
+      <link>https://discoverfoss.com/posts/introduction/</link>
       <pubDate>Sun, 09 Aug 2020 11:01:08 -0400</pubDate>
       
-      <guid>/posts/introduction/</guid>
-      <description>Welcome to Discover FOSS or &amp;ldquo;Discover Free and Open Source Software.&amp;rdquo; I have enjoyed FOSS and running a variety of Linux distributions since the early 2000&amp;rsquo;s. I started Discover FOSS to document my own journey of discovery and to share that journey with the wider community of enthusiastic users. I hope to provide content that tells my story of discovery while at the same time introduces you to perhaps new corners of the free and open source world that you have not discovered on your own.</description>
+      <guid>https://discoverfoss.com/posts/introduction/</guid>
+      <description>&lt;p&gt;Welcome to Discover FOSS or &amp;ldquo;Discover Free and Open Source Software.&amp;rdquo; I have enjoyed FOSS and running a variety of Linux distributions since the early 2000&amp;rsquo;s. I started Discover FOSS to document my own journey of discovery and to share that journey with the wider community of enthusiastic users. I hope to provide content that tells my story of discovery while at the same time introduces you to perhaps new corners of the free and open source world that you have not discovered on your own. Enjoy this journey of discovery with me.&lt;/p&gt;
+&lt;p&gt;Here are a few terms that I don&amp;rsquo;t plan to explain in every post. You can find FOSS that will run on Windows 10, Mac OS, Android, IOS, and of course on top of a Linux distribution. I will primarily write posts about using FOSS in a Linux distribution. Currently I run the following distributions with their links below. If you want to know more about those individual distributions I would head over to their websites.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://mxlinux.org/&#34;target=&#34;_blank&#34;&gt;MX-Linux&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://getfedora.org/&#34;target=&#34;_blank&#34;&gt;Fedora&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ubuntu-mate.org/&#34;target=&#34;_blank&#34;&gt;Ubuntu Mate&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;When you see a reference to MX, I&amp;rsquo;m referring to the MX-Linux distribution. When I make references to the Mate desktop environment, I&amp;rsquo;m usually referring to my experience with it when using Ubuntu Mate. When I make references to Gnome that comes from my experience using it on Fedora.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu-Mate</title>
+      <link>https://discoverfoss.com/tags/ubuntu-mate/</link>
+      <pubDate>Sun, 09 Aug 2020 11:01:08 -0400</pubDate>
       
+      <guid>https://discoverfoss.com/tags/ubuntu-mate/</guid>
+      <description></description>
     </item>
     
   </channel>
