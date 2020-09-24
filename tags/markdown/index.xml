@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>static on Discover FOSS</title>
-    <link>https://discoverfoss.com/tags/static/</link>
-    <description>Recent content in static on Discover FOSS</description>
+    <title>markdown on Discover FOSS</title>
+    <link>https://discoverfoss.com/tags/markdown/</link>
+    <description>Recent content in markdown on Discover FOSS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <lastBuildDate>Sun, 30 Aug 2020 11:46:22 -0400</lastBuildDate><atom:link href="https://discoverfoss.com/tags/static/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 23 Sep 2020 23:18:25 -0400</lastBuildDate><atom:link href="https://discoverfoss.com/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <author>Steve (mowest)</author>
       <title>Pandoc and Markdown for the Win</title>
