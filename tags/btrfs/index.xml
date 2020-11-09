@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>fluxbox on Discover FOSS</title>
-    <link>https://discoverfoss.com/tags/fluxbox/</link>
-    <description>Recent content in fluxbox on Discover FOSS</description>
+    <title>btrfs on Discover FOSS</title>
+    <link>https://discoverfoss.com/tags/btrfs/</link>
+    <description>Recent content in btrfs on Discover FOSS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <lastBuildDate>Sun, 30 Aug 2020 11:46:22 -0400</lastBuildDate><atom:link href="https://discoverfoss.com/tags/fluxbox/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 08 Nov 2020 21:45:00 -0400</lastBuildDate><atom:link href="https://discoverfoss.com/tags/btrfs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <author>Steve (mowest)</author>
       <title>Bake Up a Btrfs RAID1 Array</title>

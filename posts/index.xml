@@ -7,7 +7,58 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <lastBuildDate>Wed, 23 Sep 2020 23:18:25 -0400</lastBuildDate><atom:link href="https://discoverfoss.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 08 Nov 2020 21:45:00 -0400</lastBuildDate><atom:link href="https://discoverfoss.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <author>Steve (mowest)</author>
+      <title>Bake Up a Btrfs RAID1 Array</title>
+      <link>https://discoverfoss.com/posts/btrfsandraid1/</link>
+      <pubDate>Sun, 08 Nov 2020 21:45:00 -0400</pubDate>
+      
+      <guid>https://discoverfoss.com/posts/btrfsandraid1/</guid>
+      <description>&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/btrfs-array-header.png&#34;
+        alt=&#34;A Hard Drive on top of a pile of flour and butter&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;I recently gave my spare work computer which runs Linux a serious upgrade. My old Toshiba laptop had served me well at my standing desk. Since I never unplugged the laptop from its perch on the standing desk it seemed natural to upgrade that machine to a &amp;ldquo;new to me&amp;rdquo; desktop computer. Now I had a desktop case that could hold three 3.5&amp;quot; HDD&amp;rsquo;s. I filled those three bays with these spare drives that I had on hand.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Bay #1 = 120GB SSD&lt;/li&gt;
+&lt;li&gt;Bay #2 = 1TB Western Digital Blue HDD&lt;/li&gt;
+&lt;li&gt;Bay #3 = 1TB Western Digital Blue HDD&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This is the first time in recent history that I have run Linux on a desktop computer with multiple drives installed. Since I have never tried the btrfs file system or a RAID storage array, I decided to experiement. I decided to install my Linux distro on the 120GB SSD using the EXT4 file system. I decided to make the two identical 1TB Western Digital Blues my RAID1 array with the Btrfs file system. Here were my steps to get a working Btrfs RAID1 array up and running on the new desktop.&lt;/p&gt;
+&lt;h2 id=&#34;1-creating-the-file-system-and-array&#34;&gt;1. Creating the File System and Array&lt;/h2&gt;
+&lt;p&gt;I read a few tutorials, but none of them seemed to apply to the exact situation I was trying to create. In the end I used &lt;a href=&#34;https://gparted.org/&#34;target=&#34;_blank&#34;&gt;Gparted&lt;/a&gt; to erase both of the 1TB drives that I was recycling for this project. I did this by creating a new &lt;em&gt;&lt;strong&gt;msdos&lt;/strong&gt;&lt;/em&gt; partition table on each of the drives, and then creating one large unformated partition that took up the whole drive.&lt;/p&gt;
+&lt;p&gt;The following command created the file system and joined the two drives into a RAID1 configuration using the Btrfs file system.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo mkfs.btrfs -m raid1 -d raid1 /dev/sdb1 /dev/sdc1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;2-mounting-your-new-btrfs-raid1-array&#34;&gt;2. Mounting Your New Btrfs RAID1 Array&lt;/h2&gt;
+&lt;p&gt;I struggled with this part, because I wanted to have this RAID1 array accessable by my normal user so it could be used to hold all of my user&amp;rsquo;s data files like documents, pictures, music, and videos. I found plenty of tutorials mentioning the importance of creating a mount point in &lt;code&gt;/mnt&lt;/code&gt; but they all failed to mention that you needed to change the permissions on the folder that you create. The following commands created the folder that I would use for the RAID1 array.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo mkdir /mnt/butter
+sudo chmod -R 777 /mnt/butter
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Next you need to add an entry into your &lt;code&gt;/etc/fstab&lt;/code&gt; file, but you first need to grab the &lt;strong&gt;UUID&lt;/strong&gt; which can be easily found by running the following command.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo btrfs fi show
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now armed with the &lt;strong&gt;UUID&lt;/strong&gt; we can add a line to the &lt;code&gt;/etc/fstab&lt;/code&gt; file by editing the file with the following command.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo nano /etc/fstab
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You will want to add a line to the file that looks something like this.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;UUID=99910bf7-bcdf-429e-a5b2-f36b5d5ebcfc /mnt/butter btrfs defaults 0 0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Finally, to mount your array run the following command which will remount all of the mount points that are specified in your &lt;code&gt;/etc/fstab&lt;/code&gt; file.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo mount -a
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Additional Note:&lt;/strong&gt; In the end, I decided to use this new btrfs RAID1 array as my /HOME folder. After I had copied all of my /HOME files to the btrfs RAID1 array, I changed the &lt;code&gt;/etc/fstab&lt;/code&gt; file to mount the btrfs RAID1 array as /HOME instead of /mnt/butter. At first I hesitated putting all of /HOME on the array, because I thought I would loose some speed in the starting of applications if their configuration files were on the array. This has not been an issue. I&amp;rsquo;m enjoying this setup and the peace of mind of knowing that my root folder gets the whole of the 120GB SSD while my data files in /HOME have plenty of room to multiply on the 1TB RAID1 array.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;3-checking-the-available-space-on-your-btrfs-raid1-array&#34;&gt;3. Checking the Available Space on your Btrfs RAID1 Array&lt;/h2&gt;
+&lt;p&gt;At this point you should have your newly formated btrfs drives mounted as as a RAID1 array which means that your total available drive space will be exactly half of the total amount of diskspace you have available on the physical drives. You can check on how much of that space you are using by running the following command again.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo btrfs fi show
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The original pictures used in the header graphic for this article are the following:&lt;/p&gt;
+&lt;p&gt;The butter squares on flour was from &lt;a href=&#34;https://pixabay.com&#34;target=&#34;_blank&#34;&gt;Pixabay&lt;/a&gt; taken by &lt;a href=&#34;https://pixabay.com/users/hans-2/?utm_source=link-attribution&amp;amp;amp;utm_medium=referral&amp;amp;amp;utm_campaign=image&amp;amp;amp;utm_content=4753498&#34;target=&#34;_blank&#34;&gt;Hans Braxmeier&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The picture of the Western Digital hard drive also came from &lt;a href=&#34;https://pixabay.com&#34;target=&#34;_blank&#34;&gt;Pixabay&lt;/a&gt; provided by &lt;a href=&#34;https://pixabay.com/users/byrev-23277/?utm_source=link-attribution&amp;amp;amp;utm_medium=referral&amp;amp;amp;utm_campaign=image&amp;amp;amp;utm_content=88004&#34;target=&#34;_blank&#34;&gt;Emilian Robert Vicol&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <author>Steve (mowest)</author>
       <title>Pandoc and Markdown for the Win</title>
