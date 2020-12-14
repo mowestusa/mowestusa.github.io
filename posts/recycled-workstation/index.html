@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.75.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>Recycled Workstation Build&nbsp;&ndash;&nbsp;Discover FOSS</title><link rel="stylesheet" href="/css/core.min.c898e352caefb932ccff585985a35766e5ce9677fb58048dd3bc66c7dbe7901b1c255ab79d1b230150fa1624aec127a6.css" integrity="sha384-yJjjUsrvuTLM/1hZhaNXZuXOlnf7WASN07xmx9vnkBscJVq3nRsjAVD6FiSuwSem"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Recycled Workstation Build" /><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#00a300">
+<meta name="theme-color" content="#ffffff">
+<body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><img class="site logo" src="/img/discover-100px.png" alt /><span class="site name">Discover FOSS</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">Categories</a><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/index%2exml">RSS</a></nav></div></span></div><div class="site slogan"><span class="title">Discover Free and Open Source Software</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">Recycled Workstation Build</h1><p class="article date">2020-12-06</p></section><article class="article markdown-body"><p><a href="/img/newworkstation.jpg">Picture of Workstation</a></p>
+<p>I recycle computers into Linux boxes. Either I repurpose old hardware that I have purchased or I give a second life to computers that others plan to get ride of. Recently I assembled a new workstation to replace the spare computer that I use at work when I&rsquo;m at my standing desk.</p>
+<p>My primary computer at work runs Windows 10 so that I can still use a priopritary program that I need for my vocation. I have moved all of my other work tasks to FOSS programs that will run on Linux. My spare computer at my standing desk for the last 3 years was an old Toshiba Satellite C650-ST5N03 with the following specs.</p>
+<ul>
+<li>Intel i3-2310M CPU</li>
+<li>4GB of RAM</li>
+<li>Built in screen with a resolution of 1366x768</li>
+<li>Silicon Power 120GB SSD</li>
+<li>Attached Acer 223W external monitor</li>
+</ul>
+<p>The Toshiba has served well as my spare work computer. When I first set up the laptop, I installed Ubuntu Mate and recently I installed MX Linux using MX Fluxbox as my desktop or window manager environment. Overall, I was happy with the performance. When I recorded virtual instruction videos, I noticed that the sound and video were out of sync. I&rsquo;m not sure if the problem came from performance limitations, the software stack I had chosen, or my poor choices of settings. This workstation proved to me the value of using dual screens, so I knew that I wanted that feature if I ever replaced the Toshiba laptop.</p>
+<p>My local library provided the opportunity to upgrade my workstation. The library is remodeling the interior and replacing all of their computers. Not too long ago the local high school remodeled and donated their used desktops to the library a mix of Dells and Asus desktops. Since I know one of the librarians they allowed me to go through all of the computers they were going to recycle and pick out ones that I could upcycle with Linux. The best desktop that I found was a Dell Optiplex 5040 with a 6th generation Intel i5 and 8GB of RAM. I set that aside to replace my son&rsquo;s primary desktop that he uses for programming. This would replace his Dell Optiplex with 4GB of RAM and a 2nd generation i3. For myself, I set aside an Asus M11AA desktop with the following specs.</p>
+<ul>
+<li>Intel i5-3340S (Quad Core Ivy Bridge)</li>
+<li>4GB of RAM (upgraded to 8GB of RAM)</li>
+<li>1TB Western Digital Blue 3.5&quot; Hard Drive (upgraded to 1 Silicon Power 120GB SSD, and 2 1TB Western Digital Blue 3.5&quot; Hard Drives)</li>
+<li>Two Dell E228WFP at 1680x1050 (mounted on a Mount-It! two monitor stand)</li>
+<li>One Dell AX510 speaker bar</li>
+</ul>
+<p>Everything was recycled except the new monitor stand to hold the two Dell 22&quot; monitors for $30 from Amazon. The memory upgrade and extra 1TB hard drive came from another Asus M11AA desktop that I stripped for parts. The SSD was in an old laptop that has not been used for more than a year. All the other parts were from the library recycling pile.</p>
+<p>Even though this new system could handle the extra weight of a Fedora 33 Workstation install which is the Linux distribution I run on my home workstation, I knew that I wanted MX Linux on this computer. I have fallen in love with MX Fluxbox which I had been running on the old Toshiba laptop, and the MX community has been a wonderful support network as I continue to grow in the ways I use FOSS for both home and work tasks. I did try some new things with this workstation. I have never used RAID, and I have never had more than one drive in my Linux machines. So I decided to install MX Linux on the 120GB SSD using the EXT4 file system. I configured the two 1TB Western Digital Blues in a RAID-1 configuration with BTRFS file system. On the RAID array I have put my home folder keeping my data separate from the OS for the first time. 1TB is more than enough space for two decades of office documents, a few ripped CD&rsquo;s, and some beautiful wallpapers. Currently I&rsquo;m only using 33GB of the 1TB RAID array. Everything starts up quickly and runs smoothly. I haven&rsquo;t played much with the BTRFS RAID array, but I would like to learn more about the BTRFS file system and its monitoring and repair tools. For now it is just doing its thing, saving and organizing my data files.</p>
+<p>I&rsquo;m enjoying this new workstation so much, that I have found myself at my standing desk for a longer period of my work day than in the past. I do a lot of teaching in my profession, and I&rsquo;m enjoying having LibreOffice Writer or Impress open on one screen while gathering information and looking things up on the other screen. I find myself using the rightside dock in LibreOffice Writer and Impress often, especially when I&rsquo;m in Impress, so having a full 1680x1050 just for those programs is nice.</p>
+<p>The two Dell monitors have also eliminated another pain point that I had before with my former standing desk workstation. I have eliminated the Acer 223W monitor. This monitor does not work well with Linux. Every Linux distribution that I have tried fails to correctly identify the monitor&rsquo;s refresh rate as 60Hz. Instead every distribution believes the refresh rate needs to be 59Hz. Because of this misidentification of the refresh rate, the screen will be off center when Linux boots to the login manager or into a desktop environment. You can fix this by running a few <code>xrandr</code> commands like the ones below.</p>
+<pre><code>xrandr --newmode &quot;1680x1050_60.00&quot;  146.25  1680 1784 1960 2240  1050 1053 1059 1089 -hsync +vsync
+xrandr --addmode VGA-1 1680x1050_60.00
+xrandr --output  VGA-1 --mode 1680x1050_60.00
+</code></pre><p>You may need to adjust <code>VGA-1</code> to <code>HDMI-1</code> or something else depending on how xrandr identifies your connection to that monitor. Typically, I place those lines above along with additional flags to identify the primary monitor and the physical arrangment of the monitors when I have used the Acer 223W in a dual monitor configuration. Depending on the desktop environment that I&rsquo;m using, I auto run a script with these lines so that when the desktop environment is loaded the screen is no longer off center. Although this fixes the display, I found it to be annoying. Thankfully, my Dell monitors are correctly identified by Linux, and I no longer have that annoying paper cut issue.</p>
+<p>I recycle hardware to run Linux out of financial necessity. If you can afford the latest hardware to run your favorite Linux distribution, that&rsquo;s great, enjoy the journey. If you struggle to find the funds necessary buy hardware to run Linux, don&rsquo;t be afraid to see what you can do with Linux and a computer that a family member, friend, or local business is going to send to the electronic recycler. You might be able to put together a great system from recycled parts that will serve you well and allow you to dive more deeply into Linux with a dedicated box.</p>
+</article><section class="article labels"><a class="category" href=/categories/articles/>Articles</a><a class="tag" href=/tags/mx-linux/>MX-Linux</a><a class="tag" href=/tags/hardware/>hardware</a></section><section class="article author"><img class="avatar" src="/img/myAvatar.png" alt><p class="name">Steve (mowest)</p><div class="bio">A free and open source enthusiast using these tools for work and fun.</div><div class="details"><a class="item" href="https://github.com/mowestusa" target="_blank"><span class="iconfont icon-github"></span>&nbsp;mowestusa</a></div>
+</section>
+</div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/posts/sharpentools/"><span class="iconfont icon-article"></span>Sharpening Your Tools</a></p></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</p>
+    <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p></div></section></body>
+
+</html>
