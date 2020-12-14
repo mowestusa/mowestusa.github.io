@@ -15,7 +15,8 @@
       <pubDate>Sun, 06 Dec 2020 22:18:27 -0500</pubDate>
       
       <guid>https://discoverfoss.com/posts/recycled-workstation/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://discoverfoss.com/img/newworkstation.jpg&#34;&gt;Picture of Workstation&lt;/a&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/newworkstation.jpg&#34;
+        alt=&#34;Picture of Workstation&#34;/&gt;&lt;/p&gt;
 &lt;p&gt;I recycle computers into Linux boxes. Either I repurpose old hardware that I have purchased or I give a second life to computers that others plan to get ride of. Recently I assembled a new workstation to replace the spare computer that I use at work when I&amp;rsquo;m at my standing desk.&lt;/p&gt;
 &lt;p&gt;My primary computer at work runs Windows 10 so that I can still use a priopritary program that I need for my vocation. I have moved all of my other work tasks to FOSS programs that will run on Linux. My spare computer at my standing desk for the last 3 years was an old Toshiba Satellite C650-ST5N03 with the following specs.&lt;/p&gt;
 &lt;ul&gt;
