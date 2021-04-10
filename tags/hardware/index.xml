@@ -10,6 +10,60 @@
     <lastBuildDate>Sun, 06 Dec 2020 22:18:27 -0500</lastBuildDate><atom:link href="https://discoverfoss.com/tags/hardware/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <author>Steve (mowest)</author>
+      <title>Docsify a Different Animal</title>
+      <link>https://discoverfoss.com/posts/docsify-animal/</link>
+      <pubDate>Fri, 09 Apr 2021 20:10:00 -0500</pubDate>
+      
+      <guid>https://discoverfoss.com/posts/docsify-animal/</guid>
+      <description>&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/docsify-animal.png&#34;
+        alt=&#34;Docsify Icon on a Spotted Cow&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;I thought I would break the silence on this &lt;a href=&#34;https://gohugo.io&#34;target=&#34;_blank&#34;&gt;Hugo Powered&lt;/a&gt; blog with a post about another SSG &lt;a href=&#34;https://jamstack.org/generators&#34;target=&#34;_blank&#34;&gt;Static Site Generator&lt;/a&gt;. &lt;a href=&#34;https://docsify.js.org&#34;target=&#34;_blank&#34;&gt;Docsify&lt;/a&gt; is a SSG that is truly a different kind of animal. To illustrate the difference, let me start by mapping my current workflow to make a post using Hugo as my SSG.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Make sure I have the latest version of Hugo on my local machine. Admittedly, because it is written in Golang and comes as a single binary this is pretty easy. On my Debian workstations, I download the released deb package and install using the simple command replacing the deb package name with the latest released version of Hugo.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt install ./hugo_0.82.0_Linux-64bit.deb
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;On Fedora, I have installed a COPR repo that has the latest version of Hugo, so every time there is an update, I pull down the latest Hugo version.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;At this stage if you don&amp;rsquo;t already have a Hugo site, you will need to use the Hugo tools to create the skeleton of directories and files that you need to begin authoring your site. You will also need to install a Hugo theme that will create the look of your site. Once you have installed your theme into the proper directory and edited your config.toml file you can begin creating posts and content for your site.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Since &lt;a href=&#34;https://discoverfoss.com&#34;target=&#34;_blank&#34;&gt;discoverfoss.com&lt;/a&gt; has step 2 done, I can jump into creating content. For me this begins with the creation of a Markdown file in the &lt;strong&gt;posts&lt;/strong&gt; directory.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;After the post is ready to be posted on the blog, the fun begins with Hugo. I run a &lt;code&gt;bash&lt;/code&gt; script that does the following steps:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Runs &lt;code&gt;hugo&lt;/code&gt; to create the static html pages in a separate &lt;code&gt;git&lt;/code&gt; repository.&lt;/li&gt;
+&lt;li&gt;Runs &lt;code&gt;git add .&lt;/code&gt; in that repository&lt;/li&gt;
+&lt;li&gt;Runs &lt;code&gt;git commit -m &amp;quot;Blog Updated on $(date)&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Runs &lt;code&gt;git push&lt;/code&gt; which pushes the newly created static HTML pages up to the repo on &lt;em&gt;github.com&lt;/em&gt; that hosts the site through &lt;em&gt;Github Pages&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;All of the steps of 4 take mere seconds. First, because Hugo is fast when it builds a static site, and second, because I have my SSH keys saved in Github enabling me to &lt;code&gt;git push&lt;/code&gt; using SSH which saves me the step of having to enter my password.&lt;/p&gt;
+&lt;p&gt;In general, SSG&amp;rsquo;s typically follow above workflow where you use a local install of the SSG to create the static site from your Markdown documents, and then you will SFTP, Rsync, or git push your static files to your web server or hosting provider. There appear to be hosted solutions or continuous integration pipelines that will remove the need for a local install of the SSG, but I haven&amp;rsquo;t looked into those options for &lt;a href=&#34;https://discoverfoss.com&#34;target=&#34;_blank&#34;&gt;discoverfoss.com&lt;/a&gt; at this time.&lt;/p&gt;
+&lt;p&gt;Docsify is a different animal in the SSG world. You can install a local CLI (command line interface) version of Docsify on Linux, but I have not seen the need to do so. You may want to consider that if you want to see a local instance of Docsify on your workstation where you are authoring the Markdown documents for Docsify. Additionally, Docsify shows you how you can with just a few lines of Python spin up a web server to see your local content in a browser. Since Python is usually installed in the major distributions, I feel this is an easier solution than setting up a local CLI of Docsify with all of its dependencies.&lt;/p&gt;
+&lt;p&gt;Docsify caught my attention months ago, when I looked into options for creation webpages of documentation for a FOSS project that is near and dear to my heart. At first, I considered just using Hugo and one of its templates which are geared towards documentation projects. Hugo would be an excellent solution, but since Docsify focuses on displaying project documentation, and is designed to work well with &lt;em&gt;Github Pages&lt;/em&gt; I felt Docsify was a better solution.&lt;/p&gt;
+&lt;p&gt;Yet, what pushed me into trying Docsify was my desire to have a personal, searchable, organized, wiki written in Markdown or ASCIIDOC files. Although, I enjoy writing my FOSS adventures in this blog, there are notes and documentation that I use everyday that I don&amp;rsquo;t need in a blog post. As an example, while I continue to learn &lt;a href=&#34;https://discoverfoss.com/posts/sharpentools/&#34;title=&#34;Sharpening Your Tools&#34;&gt;vim&lt;/a&gt; I have a notes file that has keyboard shortcuts that I have not committed to memory, but still find useful a few times a week. I also like to lay out the steps that I performed to get something installed and working in the homelab. Sometimes those turn into tutorials for this blog, but other times there are steps that I&amp;rsquo;m copying down from a variety of sources for my unique setup which would be of little value for the wider FOSS community. I have used a variety of tools for this in the past. When I lived in Windows and used more proprietary software, I used &lt;em&gt;Evernote&lt;/em&gt; until their &amp;ldquo;free&amp;rdquo; option became too limited, then I switched to &lt;em&gt;Onenote&lt;/em&gt;. In Linux, I have used something as simple as a directory filled with text files that was synced with &lt;a href=&#34;https://syncthing.net&#34;target=&#34;_blank&#34;&gt;Syncthing&lt;/a&gt; between all my machines to a more robust tool like &lt;a href=&#34;https://zim-wiki.org&#34;target=&#34;_blank&#34;&gt;Zim&lt;/a&gt;. Docsify let me check the following boxes which caused it to win in the contest of what will serve as my personal wiki.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I can do all of my documentation in Markdown. Since I&amp;rsquo;m already writing in Markdown for this blog, and using Markdown to the creation of printable PDF&amp;rsquo;s, adding another use for my Markdown skills was a plus.&lt;/li&gt;
+&lt;li&gt;I can easily host a Docsify site on a Raspberry Pi 1 Model B. Yes, I still have a 1st generation Raspberry Pi, actually two of them, and I wanted to find ways to keep these little SBC serving a useful purpose. Since Docsify uses static HTML and client side JavaScript the old Raspberry Pi just needs to serve up the files, for which I am using &lt;a href=&#34;https://www.lighttpd.net&#34;target=&#34;_blank&#34;&gt;Lighttpd&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;It is easy to add search to Docsify.&lt;/li&gt;
+&lt;li&gt;It is easy to add a dark theme to Docsify.&lt;/li&gt;
+&lt;li&gt;It is easy to have a full featured sidebar.&lt;/li&gt;
+&lt;li&gt;The active community have coded amazing plugins for Docsify that you can use too.&lt;/li&gt;
+&lt;li&gt;I believe Docsify would be a great solution for a FOSS project that hosts its files on Github because of the excellent support Docsify has for Github Pages. This opens Docsify up for future uses as I contribute to other FOSS projects.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Now, what makes Docsify a different animal? Docsify is an SSG, but it skips the build step of most SSG&amp;rsquo;s. Instead of reading in the Markdown files and converting a series of HTML files from those, Docsify converts the Markdown files on the fly. Docsify is up and running by creating a single &lt;code&gt;index.html&lt;/code&gt; file which references remotely served JavaScript files. The main JavaScript file finds the Markdown files in the root directory where &lt;code&gt;index.html&lt;/code&gt; is found along with subdirectories if used, and converts those Markdown files on the fly into HTML and includes their content in the resulting index.html file that is generated for the browser. This means your server is not being stressed. With my personal wiki that I&amp;rsquo;m serving on my Raspberry Pi 1 Model B I haven&amp;rsquo;t noticed a lag in loading pages or when searching the collection of files. I will have to see if an increase in files and content slows down Docsify&amp;rsquo;s performance as time goes on. If you follow their instructions you would be linking to a series of remotely hosted JavaScript files and at least one CSS file for the theming. This means you are putting some trust in the makers of Docsify that nothing malicious is being done in those JavaScript files. Of course, it should work to source those files, review their code, and then host them locally on your server as well, but you would miss out on minor version bumps and bug fixes.&lt;/p&gt;
+&lt;p&gt;Just one look at the &lt;a href=&#34;https://jamstack.org/generators&#34;target=&#34;_blank&#34;&gt;Jamstack list&lt;/a&gt; that I referenced above proves that there are plenty of possible solutions in this world of SSG&amp;rsquo;s. For me, Hugo and Docsify, have become personal favorites. What SSG do you use and love? How do you use SSG&amp;rsquo;s in your homelab to serve up information that you want access to?&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The header image for this article was assembled in &lt;a href=&#34;https://krita.org/&#34;target=&#34;_blank&#34;&gt;Krita&lt;/a&gt; using a cow image provided by &lt;a href=&#34;https://unsplash.com/@photomatic_s?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;target=&#34;_blank&#34;&gt;Matias Tapia&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com&#34;target=&#34;_blank&#34;&gt;Unsplash&lt;/a&gt; and the Docsify logo.&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <author>Steve (mowest)</author>
       <title>Recycled Workstation Build</title>
       <link>https://discoverfoss.com/posts/recycled-workstation/</link>
       <pubDate>Sun, 06 Dec 2020 22:18:27 -0500</pubDate>
