@@ -17,7 +17,7 @@
       <guid>https://discoverfoss.com/posts/docsify-animal/</guid>
       <description>&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/docsify-animal.png&#34;
         alt=&#34;Docsify Icon on a Spotted Cow&#34;/&gt;&lt;/p&gt;
-&lt;p&gt;I thought I would break the silence on this &lt;a href=&#34;https://gohugo.io&#34;target=&#34;_blank&#34;&gt;Hugo Powered&lt;/a&gt; blog with a post about another SSG &lt;a href=&#34;https://jamstack.org/generators&#34;target=&#34;_blank&#34;&gt;Static Site Generator&lt;/a&gt;. &lt;a href=&#34;https://docsify.js.org&#34;target=&#34;_blank&#34;&gt;Docsify&lt;/a&gt; is a SSG that is truly a different kind of animal. To illustrate the difference, let me start by mapping my current workflow to make a post using Hugo as my SSG.&lt;/p&gt;
+&lt;p&gt;I thought I would break the silence on this &lt;a href=&#34;https://gohugo.io&#34;target=&#34;_blank&#34;&gt;Hugo powered&lt;/a&gt; blog with a post about another SSG &lt;a href=&#34;https://jamstack.org/generators&#34;target=&#34;_blank&#34;&gt;Static Site Generator&lt;/a&gt;. &lt;a href=&#34;https://docsify.js.org&#34;target=&#34;_blank&#34;&gt;Docsify&lt;/a&gt; is a SSG that is truly a different kind of animal. To illustrate the difference, let me start by mapping my current workflow to make a post using Hugo as my SSG.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Make sure I have the latest version of Hugo on my local machine. Admittedly, because it is written in Golang and comes as a single binary this is pretty easy. On my Debian workstations, I download the released deb package and install using the simple command replacing the deb package name with the latest released version of Hugo.&lt;/li&gt;
 &lt;/ol&gt;
