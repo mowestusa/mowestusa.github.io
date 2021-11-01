@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml"><url>
-    <loc>https://discoverfoss.com/categories/articles/</loc><lastmod>2021-04-09T20:10:00-05:00</lastmod></url><url>
-    <loc>https://discoverfoss.com/categories/</loc><lastmod>2021-04-09T20:10:00-05:00</lastmod></url><url>
-    <loc>https://discoverfoss.com/</loc><lastmod>2021-04-09T20:10:00-05:00</lastmod></url><url>
+    <loc>https://discoverfoss.com/categories/articles/</loc><lastmod>2021-11-01T14:00:00-04:00</lastmod></url><url>
+    <loc>https://discoverfoss.com/tags/btrfs/</loc><lastmod>2021-11-01T14:00:00-04:00</lastmod></url><url>
+    <loc>https://discoverfoss.com/categories/</loc><lastmod>2021-11-01T14:00:00-04:00</lastmod></url><url>
+    <loc>https://discoverfoss.com/</loc><lastmod>2021-11-01T14:00:00-04:00</lastmod></url><url>
+    <loc>https://discoverfoss.com/posts/mx21andbtrf/</loc><lastmod>2021-11-01T14:00:00-04:00</lastmod></url><url>
+    <loc>https://discoverfoss.com/tags/hardware/</loc><lastmod>2021-11-01T14:00:00-04:00</lastmod></url><url>
+    <loc>https://discoverfoss.com/tags/mx-linux/</loc><lastmod>2021-11-01T14:00:00-04:00</lastmod></url><url>
+    <loc>https://discoverfoss.com/posts/</loc><lastmod>2021-11-01T14:00:00-04:00</lastmod></url><url>
+    <loc>https://discoverfoss.com/tags/raid1/</loc><lastmod>2021-11-01T14:00:00-04:00</lastmod></url><url>
+    <loc>https://discoverfoss.com/tags/</loc><lastmod>2021-11-01T14:00:00-04:00</lastmod></url><url>
+    <loc>https://discoverfoss.com/tags/timeshift/</loc><lastmod>2021-11-01T14:00:00-04:00</lastmod></url><url>
     <loc>https://discoverfoss.com/tags/docsify/</loc><lastmod>2021-04-09T20:10:00-05:00</lastmod></url><url>
     <loc>https://discoverfoss.com/posts/docsify-animal/</loc><lastmod>2021-04-09T20:10:00-05:00</lastmod></url><url>
     <loc>https://discoverfoss.com/tags/markdown/</loc><lastmod>2021-04-09T20:10:00-05:00</lastmod></url><url>
-    <loc>https://discoverfoss.com/posts/</loc><lastmod>2021-04-09T20:10:00-05:00</lastmod></url><url>
     <loc>https://discoverfoss.com/tags/ssg/</loc><lastmod>2021-04-09T20:10:00-05:00</lastmod></url><url>
-    <loc>https://discoverfoss.com/tags/</loc><lastmod>2021-04-09T20:10:00-05:00</lastmod></url><url>
-    <loc>https://discoverfoss.com/tags/hardware/</loc><lastmod>2020-12-06T22:18:27-05:00</lastmod></url><url>
-    <loc>https://discoverfoss.com/tags/mx-linux/</loc><lastmod>2020-12-06T22:18:27-05:00</lastmod></url><url>
     <loc>https://discoverfoss.com/posts/recycled-workstation/</loc><lastmod>2020-12-06T22:18:27-05:00</lastmod></url><url>
     <loc>https://discoverfoss.com/tags/featherpad/</loc><lastmod>2020-12-01T11:52:47-05:00</lastmod></url><url>
     <loc>https://discoverfoss.com/posts/sharpentools/</loc><lastmod>2020-12-01T11:52:47-05:00</lastmod></url><url>
     <loc>https://discoverfoss.com/tags/vim/</loc><lastmod>2020-12-01T11:52:47-05:00</lastmod></url><url>
     <loc>https://discoverfoss.com/posts/btrfsandraid1/</loc><lastmod>2020-11-08T21:45:00-04:00</lastmod></url><url>
-    <loc>https://discoverfoss.com/tags/btrfs/</loc><lastmod>2020-11-08T21:45:00-04:00</lastmod></url><url>
     <loc>https://discoverfoss.com/tags/pandoc/</loc><lastmod>2020-09-23T23:18:25-04:00</lastmod></url><url>
     <loc>https://discoverfoss.com/posts/pandoc-markdown-win/</loc><lastmod>2020-09-23T23:18:25-04:00</lastmod></url><url>
     <loc>https://discoverfoss.com/tags/fluxbox/</loc><lastmod>2020-08-30T11:46:22-04:00</lastmod></url><url>

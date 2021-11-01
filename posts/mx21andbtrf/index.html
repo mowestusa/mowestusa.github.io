@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>Diving Into a Pool of Butter with MX-21 and Btrfs&nbsp;&ndash;&nbsp;Discover FOSS</title><link rel="stylesheet" href="/css/core.min.8fcc997aaf0b7d1431766f03c0584efbb1dcef68fa3b5fb329959e4c9e9432ad5710a67de0b8243479ff1af208220074.css" integrity="sha384-j8yZeq8LfRQxdm8DwFhO&#43;7Hc72j6O1&#43;zKZWeTJ6UMq1XEKZ94LgkNHn/GvIIIgB0"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Diving Into a Pool of Butter with MX-21 and Btrfs" /><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#00a300">
+<meta name="theme-color" content="#ffffff">
+<body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><img class="site logo" src="/img/discover-100px.png" alt /><span class="site name">Discover FOSS</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">Categories</a><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/index%2exml">RSS</a></nav></div></span></div><div class="site slogan"><span class="title">Discover Free and Open Source Software</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">Diving Into a Pool of Butter with MX-21 and Btrfs</h1><p class="article date">2021-11-01</p></section><article class="article markdown-body"><p><img  src="/img/diveintobtrfs-header.png"
+        alt="MX Logo diving into pool of butter labeled with the btrfs logo"/></p>
+<h2 id="thoughts-before-mx-21-install">Thoughts Before MX-21 Install</h2>
+<p>MX-21 was officially released on October 21, 2021 in its XFCE, KDE, and Fluxbox editions with the standard Debian 11 kernel. MX Linux has been a joy to use since my first install that you can read about in <a href="https://discoverfoss.com/posts/mxfb-shine/"target="_blank" rel="noopener noreferrer">MX Fluxbox Puts a Shine on Old Code</a>
+. Now with two of my computers running MX Linux Fluxbox Edition, I definitely planned to upgrade. I had done some testing while MX-21 Fluxbox was in beta, but I didn&rsquo;t know how I would handle upgrading my MX Linux desktop that had a btrfs RAID1 array. After unproductive Internet searches and a MX forum post that received the chirps of crickets, I figured I would need to come up with my own solution. Yes, I had a backup of the data on the btrfs RAID1 array, but this was my home folder. I wanted to avoid the pain of restoring the data to my <code>/home</code> folder when I move from one version of MX Linux to the next.</p>
+<p>As he often does, Dolphin Oracle, one of the main devs, released a <a href="https://www.youtube.com/watch?v=Y_Xz4GJO9Bo"target="_blank" rel="noopener noreferrer">video</a>
+ showcasing the new custom partition editor in the MX-21 installer. He does this by creating a btrfs partition and sub volumes for the root partition that enables you to use <a href="https://teejeetech.com/timeshift/"target="_blank" rel="noopener noreferrer">Timeshift</a>
+ which makes use of the snapshot features of btrfs to both create and restore system snapshots. Once I saw that video, I wanted all of my drives with btrfs. I was already taking advantage of having a btrfs RAID1 array to help preserve my data from bit rot. Now on my system drive I could take advantage of snapshots, another great feature of btrfs.</p>
+<p>This video and the overwhelming sound of crickets on my MX Forum post still left me wondering if I could safely use the installer with its custom partition editor to reconnect to my btrfs RAID1 pool as my <code>/home</code> folder.</p>
+<h2 id="jumping-into-the-deep-end-of-the-buttery-pool">Jumping Into the Deep End of the Buttery Pool</h2>
+<p>As a reminder, here are the 3 drives that I have in the system.</p>
+<ul>
+<li>Bay #1 = 120GB SSD</li>
+<li>Bay #2 = 1TB Western Digital Blue HDD</li>
+<li>Bay #3 = 1TB Western Digital Blue HDD</li>
+</ul>
+<p>The 120GB SSD had the <code>/root</code> system install of MX-19, and I decided that I would again use that drive as <code>/root</code> for MX-21. This time I would install btrfs with the new custom partition editor in the MX installer, and add the appropriate sub volumes needed by Timeshift for btrfs snapshots. Bay #2 and #3 or sdb1 and sdc1 were my btrfs RAID1 array mounted as <code>/home</code>.I decided that I would not touch those drives during the install. The reason I went this route is because when I got to the custom partition editor in the MX installer, it saw both drives and saw that they were both running with btrfs. What the installer didn&rsquo;t seem to see was that they were in a RAID1 array. After you run the command to format the partitions and create the RAID1 array, the system usually sees the two separate drives as one drive with a single UUID. Since the installer saw two drives, I couldn&rsquo;t trust that it recognized that these drives were formatted to be in a RAID1 array. By leaving them untouched this meant that the installer would put both <code>/root</code> and <code>/home</code> on the 120GB SSD. This ended up being an advantage, because of the significant changes that have been made to the MX-21 Fluxbox edition. Since the customizations of MX Fluxbox are saved and installed into <code>/home</code> this would mean that I would have a <code>/home</code> folder with all of the new MX-21 customizations instead of this new version of MX-21 trying to use my <code>.fluxbox</code> folder from my MX-19 install.</p>
+<p>The MX-21 Fluxbox edition install went off without a hitch, then came the adventure.</p>
+<h2 id="reconnecting-the-raid-array">Reconnecting the RAID Array</h2>
+<p>I didn&rsquo;t know if my formatted btrfs RAID1 array would survive the install of a new OS. Yes, it was still MX with its lovely Debian Stable base, but it was a clean install of the system without touching or formatting the two 1TB drives. After booting into my fresh install of MX-21 Fluxbox edition, I ran the following command to see what it would say.</p>
+<pre><code>sudo btrfs fi show
+</code></pre>
+<p>The output of this command made my day. It recognized all three drives as btrfs formatted drives, but it also saw the two 1TB drives as a RAID1 array with a single UUID. Now for the moment of truth. Could I mount my RAID1 array and browse my files? I ran the next two commands so that I would have a mount point that I could use to transfer files from my new <code>/home</code> on the SSD to my old <code>/home</code> on the RAID1 array.</p>
+<pre><code>sudo mkdir /mnt/butter
+sudo chmod -R 777 /mnt/butter
+</code></pre>
+<p>Next I added an entry into the <code>/etc/fstab</code> file, that used the same <strong>UUID</strong> that I used in MX-19 and used <code>/mnt/butter</code> as the mount point. See <a href="https://discoverfoss.com/posts/btrfsandraid1/"target="_blank" rel="noopener noreferrer">Bake Up a Btrfs RAID1 Array</a>
+ for the details.</p>
+<p>Now I took advantage of having all of the new configuration files that were installed by MX-21 Fluxbox into <code>/home</code>. First, I changed all of the folders on the btrfs RAID1 array that had configuration files from my old MX-19 install to something like:</p>
+<pre><code>    /home/.fluxbox to /home/.fluxbox-mx19 
+</code></pre>
+<p>Now I would be able to copy over the <code>.config</code> and <code>.fluxbox</code> and other directories to the RAID1 array without loosing my old configuration files. I copied every file that was in <code>/home</code> over to the RAID1 array, and took the next steps in making the RAID1 array my new <code>/home</code> folder.</p>
+<ol>
+<li>I changed the name of the <code>/home</code> folder on the 120GB SSD to <code>/home-original</code>.</li>
+<li>I created a new <code>/home</code> folder that was empty.</li>
+<li>I changed the <code>/etc/fstab</code> file from the mount point <code>/mnt/butter</code> to <code>/home</code>.</li>
+<li>Then I rebooted just to be safe that everything would be found and restarted from the RAID1 array <code>/home</code> folder.</li>
+</ol>
+<p>It worked! My new MX-21 Wildflower Fluxbox edition booted up with the btrfs RAID1 array mounted as <code>/home</code>. I&rsquo;m thrilled!</p>
+<h2 id="final-steps-in-using-btrfs-to-the-fullest">Final Steps in Using Btrfs to the Fullest</h2>
+<p>I would encourage you to watch Dolphin Oracle&rsquo;s video that I referenced above. I used his tutorial at the end of that video to set up Timeshift to use the btrfs snapshots on a weekly basis. I&rsquo;m looking forward to putting btrfs to the test in the months to come. This whole system is running with recycled hard drives and hardware, so a drive failure is a possibility, but I&rsquo;m hoping that with my weekly snapshots and RAID1 array that I will be able to recover from either a messed up upgrade or a failing data drive. Thanks to MX-21 being committed to track with all of the point releases of Debian 11, I won&rsquo;t have to deal with a clean install for probably two more years or whenever Debian 12 gets released. I like the idea of having a solid system that I can count on at work for the years to come.</p>
+<h2 id="wrap-up">Wrap Up</h2>
+<p><em>Could I have used the MX installer and assigned <code>/home</code> to sdb1 without issues?</em> Maybe, but I didn&rsquo;t want to take the risk. This is more of a production machine that I use regularly at work to get things done. Although it would have been good to test the MX installer so I could offer feedback on its future development, I didn&rsquo;t want to be without this computer for too long at work.</p>
+<p><em>Are there easier ways to achieve what I accomplished?</em> Possibly, but I was surprised how little I found in my Internet searches. I found information about creating a btrfs RAID1 array in different distros either during the install or post install, but I didn&rsquo;t find a single article that talked about reattaching to a btrfs RAID1 array that already existed. Because of this I was convinced that when I did a clean install of the system, that I might destroy the bits that told the OS that the two drivers were in a RAID1 array. Clearly, I have much to learn about file systems, RAID arrays, and what happens during the creation of a file system on a disk and how those details are stored.</p>
+<p>I&rsquo;m hoping that the search engines will find this article and provide it as a resource to others who would like to do a clean install of their system, but would also like to preserve their <code>/home</code> folder that rests on top of a btrfs RAID1 array.</p>
+<p>The original pictures used in the header graphic for this article are the following:</p>
+<ul>
+<li>&ldquo;Butter and sugar melt together&rdquo; by jessicafm on <a href="https://flickr.com/photos/jessicafm"target="_blank" rel="noopener noreferrer">Flickr</a>
+ is licensed with CC BY 2.0. <a href="https://creativecommons.org/licenses/by/2.0/"target="_blank" rel="noopener noreferrer">A Copy of this License</a>
+</li>
+<li><a href="https://mxlinux.org/art/"target="_blank" rel="noopener noreferrer">MX Logo</a>
+</li>
+<li><a href="https://btrfs.wiki.kernel.org/index.php/Main_Page"target="_blank" rel="noopener noreferrer">Btrfs Logo</a>
+</li>
+</ul>
+</article><section class="article labels"><a class="category" href=/categories/articles/>Articles</a><a class="tag" href=/tags/btrfs/>btrfs</a><a class="tag" href=/tags/mx-linux/>MX-Linux</a><a class="tag" href=/tags/timeshift/>timeshift</a><a class="tag" href=/tags/raid1/>RAID1</a><a class="tag" href=/tags/hardware/>hardware</a></section><section class="article author"><img class="avatar" src="/img/myAvatar.png" alt><p class="name">Steve (mowest)</p><div class="bio">A free and open source enthusiast using these tools for work and fun.</div><div class="details"><a class="item" href="https://github.com/mowestusa" target="_blank" rel="noopener noreferrer"><span class="iconfont icon-github"></span>&nbsp;mowestusa</a><a class="item" href="mailto:mowestusa@pm.me" target="_blank" rel="noopener noreferrer"><span class="iconfont icon-email"></span>&nbsp;mowestusa@pm.me</a></div>
+</section>
+</div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/posts/docsify-animal/"><span class="iconfont icon-article"></span>Docsify a Different Animal</a></p></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</p>
+    <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
+        target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank" rel="noopener noreferrer">Notepadium</a></p></div>
+</section></body>
+
+</html>
