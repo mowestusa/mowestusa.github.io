@@ -10,6 +10,56 @@
     <lastBuildDate>Sun, 30 Aug 2020 11:46:22 -0400</lastBuildDate><atom:link href="https://discoverfoss.com/tags/static/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <author>Steve (mowest)</author>
+      <title>ROXterm a Full Featured Terminal</title>
+      <link>https://discoverfoss.com/posts/roxterm/</link>
+      <pubDate>Tue, 21 Dec 2021 15:30:48 -0400</pubDate>
+      
+      <guid>https://discoverfoss.com/posts/roxterm/</guid>
+      <description>&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/roxterm-header.png&#34;
+        alt=&#34;ROXterm header graphic&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://mxlinux.org/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;MX Linux&lt;/a&gt;
+ often introduces me to new FOSS (Free and Open Source Software). My preferred flavor of MX Linux is &lt;a href=&#34;https://mxlinux.org/mx-fluxbox/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;MX-Fluxbox&lt;/a&gt;
+. This MX Linux flavor used to be bundled with the flagship version of MX Linux that installed the &lt;a href=&#34;https://xfce.org/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;XFCE Desktop&lt;/a&gt;
+. Since the ISO already had all of the XFCE tools, MX-Fluxbox often used XFCE tools as its defaults too. With the latest release of MX-21 the development team decided that there would be three separate ISO&amp;rsquo;s for the three main flavors plus an additional ISO of XFCE offering Advanced Hardware Support for computers with the latest hardware and graphics cards. MX-Fluxbox took advantage of having their own separate ISO by revising their default tool set. This change brought &lt;a href=&#34;https://github.com/realh/roxterm&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;ROXterm&lt;/a&gt;
+ to my attention. I wanted to share ROXterm with you as a little Christmas gift just before you head out with your Linux powered laptop to visit family and friends.&lt;/p&gt;
+&lt;p&gt;Originally, ROXterm was part of the tool set created for the &lt;a href=&#34;http://rox.sourceforge.net/desktop/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;ROX Desktop Environment&lt;/a&gt;
+, a project that is not actively maintained, but you can find parts of the ROX tool set in your distribution repositories. The ROX desktop embraced the UNIX idea of everything being a file, and created an interface the made use of &amp;ldquo;drag-and-drop&amp;rdquo; and built itself around the ROX-Filer, their version of a graphical file manager. If you enjoyed RISC OS or AmigaOS in the past, the ROX Desktop might bring back some of those pleasant memories. This &lt;a href=&#34;https://opensource.com/article/19/12/linux-rox-desktop&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;article&lt;/a&gt;
+ gives you a nice overview of the ROX Desktop. My exposure to the ROX Desktop came from my use of the ROX-Filer in both Puppy Linux years ago, and more recently in AntiX. I enjoyed the simplicity and power of ROX-Filer in those distributions of Linux.&lt;/p&gt;
+&lt;p&gt;ROXterm&amp;rsquo;s main developer, realh, renewed his development of ROXterm when he moved from its old home on &lt;a href=&#34;http://roxterm.sourceforge.net/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Sourceforge&lt;/a&gt;
+ to &lt;a href=&#34;https://github.com/realh/roxterm&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Github&lt;/a&gt;
+. The &lt;a href=&#34;https://realh.github.io/roxterm/en/guide.html&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;User Guide&lt;/a&gt;
+ provides a nice overview of all of ROXterm&amp;rsquo;s features. Although ROXterm has a long history, the developer has provided the FOSS community with a modern, full featured terminal. I have been running ROXterm on both MX-21 and Fedora 35 without issues. Having a feature rich, highly configurable, and rock solid stable terminal as a Linux user is a delight. Is ROXterm way better than XFCE terminal or Gnome terminal? In my testing, those terminals are also stable and highly configurable. ROXterm doesn&amp;rsquo;t seem to save me large portions of RAM. Because of the amazing &lt;a href=&#34;https://github.com/Mayccoll/Gogh&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Gogh Script&lt;/a&gt;
+, which offers an easy way to switch between over a 100 colour schemes, XFCE and Gnome terminals are easier to dress up with new color schemes. Yet, I&amp;rsquo;m enjoying how ROXterm presents its features and its customization options. Here are some of my favorites.&lt;/p&gt;
+&lt;h3 id=&#34;tabs&#34;&gt;Tabs&lt;/h3&gt;
+&lt;p&gt;I&amp;rsquo;m not a fan of computer use being tied so intimately to an Internet connection. I&amp;rsquo;m sure you have noticed that most of your work that you do on your computer takes place inside a web browser. The apps of your phone are often just mobile versions of web apps that won&amp;rsquo;t work unless you have your mobile data on. The benefit comes in the form of making it easier to collaborate with a co-worker and making remote work even easier. The disadvantages that I have found include being easily distracted by &amp;ldquo;non-work&amp;rdquo; related sites and content, and a disruption of my work when suddenly the Internet connection is lost because the Cable Internet provider&amp;rsquo;s modem is not as dependable as I would like or my wireless card in my aging computer has become more temperamental with age. Yes, I could work on a document &amp;ldquo;off line&amp;rdquo; but the collaborative planning document that I was using to pull information from is online.&lt;/p&gt;
+&lt;p&gt;Even though, I&amp;rsquo;m not a fan of being tied to an Internet connection to get my work done during the day, the Internet has influenced my workflow. I&amp;rsquo;m used to thinking in &amp;ldquo;tabs&amp;rdquo;. This is the first ROXterm feature that I appreciate, &amp;ldquo;tabs.&amp;rdquo; Instead, of trying to tile my terminals in nice columns and rows as a tiling window manager achieves with ease, I find that my brain likes full screen terminals in different tabs. ROXterm comes with a full set of commands that I can use to create, move through and rearrange tabs of terminals, just like I do with tabs in a web browser. ROXterm gives you the power to customize your keyboard shortcuts or add shortcuts for commands that don&amp;rsquo;t have one already. Here are a couple of hints to make your use of &lt;strong&gt;Tabs&lt;/strong&gt; more enjoyable.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;In web browsers the common shortcut &lt;code&gt;Ctrl+Tab&lt;/code&gt; to cycle through your web browser tabs won&amp;rsquo;t work in ROXterm. This actually impacts Gnome Terminal as well because it is a limitation of the GTK stack. There is a complicated work around that you can implement for Gnome Terminal, but since ROXterm doesn&amp;rsquo;t use &lt;code&gt;dconf&lt;/code&gt; to edit its keyboard shortcuts the work around won&amp;rsquo;t work for ROXterm. However, I have found a satisfactory workaround. Just use the defaults that come with ROXterm which are &lt;code&gt;Ctrl+Page_Down&lt;/code&gt; for &lt;strong&gt;Next Tab&lt;/strong&gt; and &lt;code&gt;Ctrl+Page_Up&lt;/code&gt; for &lt;strong&gt;Previous Tab&lt;/strong&gt;. These keyboard shortcuts also work in Firefox and Vivaldi the two browsers that I tend to use on Linux. This simple retraining of my brain didn&amp;rsquo;t hurt too much.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/roxtermConfigureProfile.png&#34;
+        alt=&#34;ROXterm Preferences Dialog&#34;/&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Under &lt;strong&gt;Preferences - Edit Current Profile&lt;/strong&gt; go to the section &lt;strong&gt;Tabs&lt;/strong&gt; and turn on the option &lt;strong&gt;Wrap when switching tabs&lt;/strong&gt;. This is handy and will enable you to cycle through all of your tabs by just using &lt;code&gt;Ctrl+Page_Down&lt;/code&gt; or &lt;code&gt;Ctrl+Page_Up&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Finally in that same &lt;strong&gt;Preferences&lt;/strong&gt; dialog mentioned in &lt;em&gt;#2&lt;/em&gt; notice that you can move your tabs to the left, right, or bottom. I have moved my tabs in to the bottom, since most of the time my eyes are looking at the bottom of a terminal window.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;custom-colour-schemes&#34;&gt;Custom Colo&lt;strong&gt;u&lt;/strong&gt;r Schemes&lt;/h3&gt;
+&lt;p&gt;I mentioned above the &lt;a href=&#34;https://github.com/Mayccoll/Gogh&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Gogh Script&lt;/a&gt;
+. That script is not compatible with ROXterm, but you can create custom colour schemes for ROXterm. I have collected the ones that I could find on Github in this &lt;a href=&#34;https://github.com/mowestusa/ROXterm_Colours&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Repository&lt;/a&gt;
+. I do have one original in that collection that I created myself called &lt;strong&gt;Mountain&lt;/strong&gt; which is inspired by the &lt;strong&gt;mountain.vim&lt;/strong&gt; theme which you can find &lt;a href=&#34;https://github.com/TheNiteCoder/mountaineer.vim&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;here&lt;/a&gt;
+. It is a dark theme that I find pleasant to work with in vim and in ROXterm. To add colour schemes to ROXterm drop those configuration files in &lt;code&gt;~/.config/roxterm.sourceforge.net/Colours&lt;/code&gt;, and they will show up the next time you open ROXterm as optional colour schemes.&lt;/p&gt;
+&lt;p&gt;I have been enjoying my last month in ROXterm. No crashes, no weird glitches, and easy to customize, what&amp;rsquo;s not to love! Give it a try, or just explore your terminal emulator of choice. Most of them in Linux are rock solid and offer plenty of configuration to make you feel at home. My extra time in the CLI that you will hear about in my next blog article has been pleasant thanks to ROXterm in my daily workflow on Fedora 35 and in MX-21.&lt;/p&gt;
+&lt;p&gt;Original photo used in the article header comes from &lt;a href=&#34;https://unsplash.com/@benwhitephotography?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText%22&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Ben White&lt;/a&gt;
+ on &lt;a href=&#34;https://unsplash.com/s/photos/christmas-gift?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Unsplash&lt;/a&gt;
+. All other graphics were screenshots taken by me.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <author>Steve (mowest)</author>
       <title>Diving Into a Pool of Butter with MX-21 and Btrfs</title>
       <link>https://discoverfoss.com/posts/mx21andbtrf/</link>
       <pubDate>Mon, 01 Nov 2021 14:00:00 -0400</pubDate>
@@ -89,7 +139,7 @@ sudo chmod -R 777 /mnt/butter
 &lt;ol&gt;
 &lt;li&gt;Make sure I have the latest version of Hugo on my local machine. Admittedly, because it is written in Golang and comes as a single binary this is pretty easy. On my Debian workstations, I download the released deb package and install using the simple command replacing the deb package name with the latest released version of Hugo.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo apt install ./hugo_0.82.0_Linux-64bit.deb
+&lt;pre&gt;&lt;code&gt;sudo apt install ./hugo_0.82.0_Linux-64bit.deb
 &lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
 &lt;li&gt;On Fedora, I have installed a COPR repo that has the latest version of Hugo, so every time there is an update, I pull down the latest Hugo version.&lt;/li&gt;
 &lt;/ul&gt;
@@ -172,7 +222,7 @@ sudo chmod -R 777 /mnt/butter
 &lt;p&gt;In the picture above you might notice that the new workstation has an HP 1018 printer and a Fujitsu ScanSnap 1300s attached to it. For the first time ever, I have the Fujitsu ScanSnap 1300s working on Linux. This new system has opened a new world of possibilities in using hardware with FOSS.&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;m enjoying this new workstation so much, that I have found myself at my standing desk for a longer period of my work day than in the past. I do a lot of teaching in my profession, and I&amp;rsquo;m enjoying having LibreOffice Writer or Impress open on one screen while gathering information and looking things up on the other screen. I find myself using the rightside dock in LibreOffice Writer and Impress often, especially when I&amp;rsquo;m in Impress, so having a full 1680x1050 just for those programs is nice.&lt;/p&gt;
 &lt;p&gt;The two Dell monitors have also eliminated another pain point that I had before with my former standing desk workstation. I have eliminated the Acer 223W monitor. This monitor does not work well with Linux. Every Linux distribution that I have tried fails to correctly identify the monitor&amp;rsquo;s refresh rate as 60Hz. Instead every distribution believes the refresh rate needs to be 59Hz. Because of this misidentification of the refresh rate, the screen will be off center when Linux boots to the login manager or into a desktop environment. You can fix this by running a few &lt;code&gt;xrandr&lt;/code&gt; commands like the ones below.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;xrandr --newmode &amp;quot;1680x1050_60.00&amp;quot;  146.25  1680 1784 1960 2240  1050 1053 1059 1089 -hsync +vsync
+&lt;pre&gt;&lt;code&gt;xrandr --newmode &amp;quot;1680x1050_60.00&amp;quot;  146.25  1680 1784 1960 2240  1050 1053 1059 1089 -hsync +vsync
 xrandr --addmode VGA-1 1680x1050_60.00
 xrandr --output  VGA-1 --mode 1680x1050_60.00
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You may need to adjust &lt;code&gt;VGA-1&lt;/code&gt; to &lt;code&gt;HDMI-1&lt;/code&gt; or something else depending on how xrandr identifies your connection to that monitor. Typically, I place those lines above along with additional flags to identify the primary monitor and the physical arrangment of the monitors when I have used the Acer 223W in a dual monitor configuration. Depending on the desktop environment that I&amp;rsquo;m using, I auto run a script with these lines so that when the desktop environment is loaded the screen is no longer off center. Although this fixes the display, I found it to be annoying. Thankfully, my Dell monitors are correctly identified by Linux, and I no longer have that annoying paper cut issue.&lt;/p&gt;
@@ -395,7 +445,7 @@ $HOME/.gitconfig/
 &lt;ol&gt;
 &lt;li&gt;Install git and configure git before using yadm to avoid issues. You set up git with the following commands.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;	$ git config --global user.name &amp;quot;John Doe&amp;quot;
+&lt;pre&gt;&lt;code&gt;	$ git config --global user.name &amp;quot;John Doe&amp;quot;
 	$ git config --global user.email johndoe@example.com
 &lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;2&#34;&gt;
 &lt;li&gt;Because yadm is a wrapper for git, error messages will contain &lt;em&gt;git&lt;/em&gt; commands and flags.&lt;/li&gt;
