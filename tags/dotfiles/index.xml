@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <lastBuildDate>Tue, 22 Dec 2020 16:50:48 -0400</lastBuildDate><atom:link href="https://discoverfoss.com/tags/dotfiles/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 23 Aug 2020 16:50:48 -0400</lastBuildDate><atom:link href="https://discoverfoss.com/tags/dotfiles/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <author>Steve (mowest)</author>
       <title>ROXterm a Full Featured Terminal</title>
@@ -187,65 +187,6 @@ sudo chmod -R 777 /mnt/butter
  using a cow image provided by &lt;a href=&#34;https://unsplash.com/@photomatic_s?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Matias Tapia&lt;/a&gt;
  on &lt;a href=&#34;https://unsplash.com&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Unsplash&lt;/a&gt;
  and the Docsify logo.&lt;/em&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <author>Steve (mowest)</author>
-      <title>Wrangle Dotfiles Round 2</title>
-      <link>https://discoverfoss.com/posts/yadm-02/</link>
-      <pubDate>Tue, 22 Dec 2020 16:50:48 -0400</pubDate>
-      
-      <guid>https://discoverfoss.com/posts/yadm-02/</guid>
-      <description>&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/yadm-wrangle.png&#34;
-        alt=&#34;Wrangling dotfiles header graphic&#34;/&gt;&lt;/p&gt;
-&lt;p&gt;What do the following technologies have in common?&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;1st Generation Raspberry Pi B with 512mb of RAM&lt;/li&gt;
-&lt;li&gt;Wireguard VPN&lt;/li&gt;
-&lt;li&gt;Git&lt;/li&gt;
-&lt;li&gt;Bash &amp;ldquo;if than elif fi&amp;rdquo;&lt;/li&gt;
-&lt;li&gt;yadm&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Well, I kind of gave it away with the title to this article. These technologies have taken my management of configuration files to the next level. I have been able to implement the 2.0 version of managing my dotfiles, and I&amp;rsquo;m thrilled with the results. So, let me tell you about the time I have been spending in the Linux CLI lately.&lt;/p&gt;
-&lt;h2 id=&#34;raspberry-pi-1-b&#34;&gt;Raspberry Pi 1 B&lt;/h2&gt;
-&lt;p&gt;Released in Febuary 2012, it became the first mainstream RPi, and it was the first one that came into my possession. Its CPU runs at 700mhz, has 512mb of RAM, and only had two USB ports next to the ethernet port. Unlike the models that came after it, it didn&amp;rsquo;t even have the familiar 40 pin GPIO pins that have become one of the most familar features of the RPi single board computers. It doesn&amp;rsquo;t have wifi or bluetooth either. Yet, 4 and 1/2 years ago my son learned how to program in C++ on this RPi. Since the GUI was so slow and limited on that machine, he fell in love with the Linux CLI and vim as his text editor. My son has moved onto a Dell refurbished laptop and desktops that we salvaged from schools and a library that no longer of have uses for them. In fact, the vast majority of computer hardware that he and I run Linux on are what most people would consider ewaste, but we have breathed a second life into this older hardware. This old RPi was just sitting in the pile of unused hardware, and I wanted to find a way to give it purpose. First, I practiced setting it up as a server with just ssh running and applying the principles that I had learned from a number of articles that involve securing a Linux server. I applied those principles to a Debian server that I set up at the office running a web based CRM just on our Intranet with no access to the broader Internet. Because it just sips power, I decided to use the RPi as my network device that would wake on lan the Debian server so that it wasn&amp;rsquo;t on all of the time, but only when I needed it running. Okay all of that is working great, but what else could I do with it?&lt;/p&gt;
-&lt;p&gt;As I examined my computer collection I realized that I had the following systems that I was using regularly at work and at home.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Home: Main System (&amp;ldquo;Half Top&amp;rdquo; the bottom half of an HP Envy 17&amp;quot; Laptop that had a broken screen that I removed, and hooked up to a new 32&amp;quot; monitor through the HDMI port. This is my best speced system with an i7-7500U CPU, Nvidia GeForce 940MX, 16GB of RAM, and an upgraded 512GB SSD.) running Fedora 35 Workstation.&lt;/li&gt;
-&lt;li&gt;Home: Home Storage Server (Repurposed tower with the same motherboard, RAM, and power supply as mentioned in this &lt;a href=&#34;https://discoverfoss.com/posts/recycled-workstation/&#34;title=&#34;Recycled Workstation Build&#34;&gt;article&lt;/a&gt;
- running Fedora 35 Server, but is rarely on.&lt;/li&gt;
-&lt;li&gt;Home: Old HP DV4 &amp;ldquo;Entertainment&amp;rdquo; Laptop running MX Linux 21, Fluxbox Edition. I enjoy taking this laptop when I&amp;rsquo;m on vacation, so it doesn&amp;rsquo;t get a lot of use, but I like it to mirror my recycled workstation that I have at work with my standing desk.&lt;/li&gt;
-&lt;li&gt;Work: 8 Year Old Toshiba Laptop running Windows 10 and Ubuntu LTS in WSL 2. I have a new system on order for work, but it hasn&amp;rsquo;t arrived yet.&lt;/li&gt;
-&lt;li&gt;Work: 11-12 Year Old Toshiba Laptop running Ubuntu Mate LTS and is hooked up to a projector for presentations.&lt;/li&gt;
-&lt;li&gt;Work: 11-12 Year Old Toshiba Laptop (twin of one above) running Debian and acting as my server that runs the web based CRM that I mentioned earlier.&lt;/li&gt;
-&lt;li&gt;Work: The Recycled Workstation that was mentioned above in the blog article that was referenced. I love this system which is what I use when I&amp;rsquo;m at my standing desk. This system is running MX Linux 21, the Fluxbox Edition.&lt;/li&gt;
-&lt;li&gt;Work: The Raspberry Pi 1 B&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Besides the Ubuntu Mate laptop that is attached to the projector, I like to have similar configurations on those systems. I like to have the same &lt;code&gt;.vimrc&lt;/code&gt; and &lt;code&gt;.bashrc&lt;/code&gt;. I also have been using ROXterm (see this &lt;a href=&#34;https://discoverfoss.com/posts/roxterm/&#34;title=&#34;ROXterm a Full Featured Terminal&#34;&gt;article&lt;/a&gt;
- for more details), and I appreciate having the same configurations available on all of my systems for my terminal emulator. The last time I wrangled my dotfiles it was mostly so I could keep my two computers that were running MX Linux Fluxbox in sync with each other. I wanted the same keyboard shortcuts in both of my Fluxbox environments. I had planned to add my Fedora system into the mix, but it runs Gnome, and Fedora does things a bit differently than Debian, so I never figured out how I could bring those two worlds together until recently.&lt;/p&gt;
-&lt;p&gt;I&amp;rsquo;m trying to learn bash scripting, but I&amp;rsquo;m moving at a snail&amp;rsquo;s pace. Now with the 2.0 version of managing my dotfiles, I had some motivation to dive back into learning bash scripting. Little did I realize that I wouldn&amp;rsquo;t even need to leave the kiddie pool of bash scripting to accomplish what I wanted to do with my 2.0 version of dotfiles. I had the following goals with the 2.0 version of dotfile management.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Unify my configuration files so that I could have one system that would work on Fedora, MX, Debian, and Raspberry Pi OS. Since three out of those four are almost pure Debian that should make things easier.&lt;/li&gt;
-&lt;li&gt;Move my dotfiles off of Github. Yes, it is fun to show off your dotfiles on Github, but I always feared that I would accidently send a file with my secrets up to the Github repo and then my &amp;ldquo;git fu&amp;rdquo; would fail me when I tried to remove them. So to be on the safe side, I wanted my git repo to stay on one of my Intranets, either at home or work without access to the Internet.&lt;/li&gt;
-&lt;li&gt;Securely connect my home and work networks together without opening up Port 22 for ssh. I knew that this would involve setting up a VPN, but I wasn&amp;rsquo;t sure how to accomplish this piece. I&amp;rsquo;m doing some major network upgrades at work, so I contemplated waiting till I had that new equipment in place, but with the current climate of back orders and part shortages, I would try to use tools that I already had. This is when I remembered my RPi 1 B.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;wireguard-vpn-on-bullseye-raspberry-pi-os-with-pivpn&#34;&gt;Wireguard VPN on Bullseye Raspberry Pi OS with PiVPN&lt;/h2&gt;
-&lt;p&gt;I had heard great things about &lt;em&gt;Wireguard&lt;/em&gt; and &lt;em&gt;VPN&amp;rsquo;s&lt;/em&gt;, but I had never set one up, and I had no idea if the RPi 1 B could handle being my VPN connection point on my work network. It was time to install a fresh version of Raspberry Pi OS since the Bullseye version had come out at the end of October 2021. I wiped the SD card, installed the latest version of Raspberry Pi OS Lite, Bullseye Edition. I did my RPi hardening that I have done in the past to make the RPi more secure. Then I ran the PiVPN install script which further hardens the Raspberry Pi OS against possible attacks. I created my Wireguard client configuration files for my home systems, but this is where I got stuck for a little bit.&lt;/p&gt;
-&lt;p&gt;Although, Network Manager (the Linux utility that most distros use to access and control the system&amp;rsquo;s network interfaces) supports Wireguard, their are not GUI&amp;rsquo;s on Linux yet. As an example, it is easy to import an OpenVPN configuration file in Gnome on Fedora 35, but the GUI in Gnome 41 doesn&amp;rsquo;t recognize Wireguard configuration files yet.&lt;/p&gt;
-&lt;p&gt;FOSS programmers have given us amazing choices to use when wrangling our dotfiles. You can try &lt;a href=&#34;https://github.com/thoughtbot/rcm&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;rcm&lt;/a&gt;
- from the amazing coders at &lt;a href=&#34;https://thoughtbot.com/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Thoughtbot&lt;/a&gt;
-. &lt;a href=&#34;https://github.com/technicalpickles/homesick&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Homesick&lt;/a&gt;
- seems to have its fans. Besides being a french word that I probably shouldn&amp;rsquo;t attempt to say out load &lt;a href=&#34;https://www.chezmoi.io/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Chezmoi&lt;/a&gt;
- can take your dotfile management to a whole new level. This tutorial by Ryan Walter will get you started with this powerful tool &lt;a href=&#34;https://fedoramagazine.org/take-back-your-dotfiles-with-chezmoi/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;&amp;ldquo;Take back your dotfiles with Chezmoi&amp;rdquo;&lt;/a&gt;
-. You can find others that I failed to mention, but I like &lt;a href=&#34;https://yadm.io/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;yadm&lt;/a&gt;
- as my dotfile wrangler.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Original header image by &lt;a href=&#34;https://pixabay.com/users/VViktor-5823236/?utm_source=link-attribution&amp;amp;amp;utm_medium=referral&amp;amp;amp;utm_campaign=image&amp;amp;amp;utm_content=2826195&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;VViktor&lt;/a&gt;
- from &lt;a href=&#34;https://pixabay.com/?utm_source=link-attribution&amp;amp;amp;utm_medium=referral&amp;amp;amp;utm_campaign=image&amp;amp;amp;utm_content=2826195&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Pixabay&lt;/a&gt;
-. Image effects were created using the FOSS &lt;a href=&#34;https://krita.org/en/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Krita&lt;/a&gt;
-, &lt;a href=&#34;http://www.figlet.org/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;figlet&lt;/a&gt;
-, and &lt;a href=&#34;https://github.com/busyloop/lolcat&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;lolcat&lt;/a&gt;
-.&lt;/em&gt;&lt;/p&gt;
 </description>
     </item>
     
