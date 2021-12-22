@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>static on Discover FOSS</title>
+    <link>https://discoverfoss.com/tags/static/</link>
+    <description>Recent content in static on Discover FOSS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
+    <lastBuildDate>Sun, 30 Aug 2020 11:46:22 -0400</lastBuildDate><atom:link href="https://discoverfoss.com/tags/static/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <author>Steve (mowest)</author>
+      <title>ROXterm a Full Featured Terminal</title>
+      <link>https://discoverfoss.com/posts/roxterm/</link>
+      <pubDate>Tue, 21 Dec 2021 15:30:48 -0400</pubDate>
+      
+      <guid>https://discoverfoss.com/posts/roxterm/</guid>
+      <description>&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/roxterm-header.png&#34;
+        alt=&#34;ROXterm header graphic&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://mxlinux.org/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;MX Linux&lt;/a&gt;
+ often introduces me to new FOSS (Free and Open Source Software). My preferred flavor of MX Linux is &lt;a href=&#34;https://mxlinux.org/mx-fluxbox/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;MX-Fluxbox&lt;/a&gt;
+. This MX Linux flavor used to be bundled with the flagship version of MX Linux that installed the &lt;a href=&#34;https://xfce.org/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;XFCE Desktop&lt;/a&gt;
+. Since the ISO already had all of the XFCE tools, MX-Fluxbox often used XFCE tools as its defaults too. With the latest release of MX-21 the development team decided that there would be three separate ISO&amp;rsquo;s for the three main flavors plus an additional ISO of XFCE offering Advanced Hardware Support for computers with the latest hardware and graphics cards. MX-Fluxbox took advantage of having their own separate ISO by revising their default tool set. This change brought &lt;a href=&#34;https://github.com/realh/roxterm&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;ROXterm&lt;/a&gt;
+ to my attention. I wanted to share ROXterm with you as a little Christmas gift just before you head out with your Linux powered laptop to visit family and friends.&lt;/p&gt;
+&lt;p&gt;Originally, ROXterm was part of the tool set created for the &lt;a href=&#34;http://rox.sourceforge.net/desktop/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;ROX Desktop Environment&lt;/a&gt;
+, a project that is not actively maintained, but you can find parts of the ROX tool set in your distribution repositories. The ROX desktop embraced the UNIX idea of everything being a file, and created an interface the made use of &amp;ldquo;drag-and-drop&amp;rdquo; and built itself around the ROX-Filer, their version of a graphical file manager. If you enjoyed RISC OS or AmigaOS in the past, the ROX Desktop might bring back some of those pleasant memories. This &lt;a href=&#34;https://opensource.com/article/19/12/linux-rox-desktop&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;article&lt;/a&gt;
+ gives you a nice overview of the ROX Desktop. My exposure to the ROX Desktop came from my use of the ROX-Filer in both Puppy Linux years ago, and more recently in AntiX. I enjoyed the simplicity and power of ROX-Filer in those distributions of Linux.&lt;/p&gt;
+&lt;p&gt;ROXterm&amp;rsquo;s main developer, realh, renewed his development of ROXterm when he moved from its old home on &lt;a href=&#34;http://roxterm.sourceforge.net/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Sourceforge&lt;/a&gt;
+ to &lt;a href=&#34;https://github.com/realh/roxterm&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Github&lt;/a&gt;
+. The &lt;a href=&#34;https://realh.github.io/roxterm/en/guide.html&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;User Guide&lt;/a&gt;
+ provides a nice overview of all of ROXterm&amp;rsquo;s features. Although ROXterm has a long history, the developer has provided the FOSS community with a modern, full featured terminal. I have been running ROXterm on both MX-21 and Fedora 35 without issues. Having a feature rich, highly configurable, and rock solid stable terminal as a Linux user is a delight. Is ROXterm way better than XFCE terminal or Gnome terminal? In my testing, those terminals are also stable and highly configurable. ROXterm doesn&amp;rsquo;t seem to save me large portions of RAM. Because of the amazing &lt;a href=&#34;https://github.com/Mayccoll/Gogh&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Gogh Script&lt;/a&gt;
+, which offers an easy way to switch between over a 100 colour schemes, XFCE and Gnome terminals are easier to dress up with new color schemes. Yet, I&amp;rsquo;m enjoying how ROXterm presents its features and its customization options. Here are some of my favorites.&lt;/p&gt;
+&lt;h3 id=&#34;tabs&#34;&gt;Tabs&lt;/h3&gt;
+&lt;p&gt;I&amp;rsquo;m not a fan of computer use being tied so intimately to an Internet connection. I&amp;rsquo;m sure you have noticed that most of your work that you do on your computer takes place inside a web browser. The apps of your phone are often just mobile versions of web apps that won&amp;rsquo;t work unless you have your mobile data on. The benefit comes in the form of making it easier to collaborate with a co-worker and making remote work even easier. The disadvantages that I have found include being easily distracted by &amp;ldquo;non-work&amp;rdquo; related sites and content, and a disruption of my work when suddenly the Internet connection is lost because the Cable Internet provider&amp;rsquo;s modem is not as dependable as I would like or my wireless card in my aging computer has become more temperamental with age. Yes, I could work on a document &amp;ldquo;off line&amp;rdquo; but the collaborative planning document that I was using to pull information from is online.&lt;/p&gt;
+&lt;p&gt;Even though, I&amp;rsquo;m not a fan of being tied to an Internet connection to get my work done during the day, the Internet has influenced my workflow. I&amp;rsquo;m used to thinking in &amp;ldquo;tabs&amp;rdquo;. This is the first ROXterm feature that I appreciate, &amp;ldquo;tabs.&amp;rdquo; Instead, of trying to tile my terminals in nice columns and rows as a tiling window manager achieves with ease, I find that my brain likes full screen terminals in different tabs. ROXterm comes with a full set of commands that I can use to create, move through and rearrange tabs of terminals, just like I do with tabs in a web browser. ROXterm gives you the power to customize your keyboard shortcuts or add shortcuts for commands that don&amp;rsquo;t have one already. Here are a couple of hints to make your use of &lt;strong&gt;Tabs&lt;/strong&gt; more enjoyable.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;In web browsers the common shortcut &lt;code&gt;Ctrl+Tab&lt;/code&gt; to cycle through your web browser tabs won&amp;rsquo;t work in ROXterm. This actually impacts Gnome Terminal as well because it is a limitation of the GTK stack. There is a complicated work around that you can implement for Gnome Terminal, but since ROXterm doesn&amp;rsquo;t use &lt;code&gt;dconf&lt;/code&gt; to edit its keyboard shortcuts the work around won&amp;rsquo;t work for ROXterm. However, I have found a satisfactory workaround. Just use the defaults that come with ROXterm which are &lt;code&gt;Ctrl+Page_Down&lt;/code&gt; for &lt;strong&gt;Next Tab&lt;/strong&gt; and &lt;code&gt;Ctrl+Page_Up&lt;/code&gt; for &lt;strong&gt;Previous Tab&lt;/strong&gt;. These keyboard shortcuts also work in Firefox and Vivaldi the two browsers that I tend to use on Linux. This simple retraining of my brain didn&amp;rsquo;t hurt too much.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/roxtermConfigureProfile.png&#34;
+        alt=&#34;ROXterm Preferences Dialog&#34;/&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Under &lt;strong&gt;Preferences - Edit Current Profile&lt;/strong&gt; go to the section &lt;strong&gt;Tabs&lt;/strong&gt; and turn on the option &lt;strong&gt;Wrap when switching tabs&lt;/strong&gt;. This is handy and will enable you to cycle through all of your tabs by just using &lt;code&gt;Ctrl+Page_Down&lt;/code&gt; or &lt;code&gt;Ctrl+Page_Up&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Finally in that same &lt;strong&gt;Preferences&lt;/strong&gt; dialog mentioned in &lt;em&gt;#2&lt;/em&gt; notice that you can move your tabs to the left, right, or bottom. I have moved my tabs in to the bottom, since most of the time my eyes are looking at the bottom of a terminal window.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;custom-colour-schemes&#34;&gt;Custom Colo&lt;strong&gt;u&lt;/strong&gt;r Schemes&lt;/h3&gt;
+&lt;p&gt;I mentioned above the &lt;a href=&#34;https://github.com/Mayccoll/Gogh&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Gogh Script&lt;/a&gt;
+. That script is not compatible with ROXterm, but you can create custom colour schemes for ROXterm. I have collected the ones that I could find on Github in this &lt;a href=&#34;https://github.com/mowestusa/ROXterm_Colours&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Repository&lt;/a&gt;
+. I do have one original in that collection that I created myself called &lt;strong&gt;Mountain&lt;/strong&gt; which is inspired by the &lt;strong&gt;mountain.vim&lt;/strong&gt; theme which you can find &lt;a href=&#34;https://github.com/TheNiteCoder/mountaineer.vim&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;here&lt;/a&gt;
+. It is a dark theme that I find pleasant to work with in vim and in ROXterm. To add colour schemes to ROXterm drop those configuration files in &lt;code&gt;~/.config/roxterm.sourceforge.net/Colours&lt;/code&gt;, and they will show up the next time you open ROXterm as optional colour schemes.&lt;/p&gt;
+&lt;p&gt;I have been enjoying my last month in ROXterm. No crashes, no weird glitches, and easy to customize, what&amp;rsquo;s not to love! Give it a try, or just explore your terminal emulator of choice. Most of them in Linux are rock solid and offer plenty of configuration to make you feel at home. My extra time in the CLI that you will hear about in my next blog article has been pleasant thanks to ROXterm in my daily workflow on Fedora 35 and in MX-21.&lt;/p&gt;
+&lt;p&gt;Original photo used in the article header comes from &lt;a href=&#34;https://unsplash.com/@benwhitephotography?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText%22&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Ben White&lt;/a&gt;
+ on &lt;a href=&#34;https://unsplash.com/s/photos/christmas-gift?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Unsplash&lt;/a&gt;
+. All other graphics were screenshots taken by me.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <author>Steve (mowest)</author>
+      <title>Diving Into a Pool of Butter with MX-21 and Btrfs</title>
+      <link>https://discoverfoss.com/posts/mx21andbtrf/</link>
+      <pubDate>Mon, 01 Nov 2021 14:00:00 -0400</pubDate>
+      
+      <guid>https://discoverfoss.com/posts/mx21andbtrf/</guid>
+      <description>&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/diveintobtrfs-header.png&#34;
+        alt=&#34;MX Logo diving into pool of butter labeled with the btrfs logo&#34;/&gt;&lt;/p&gt;
+&lt;h2 id=&#34;thoughts-before-mx-21-install&#34;&gt;Thoughts Before MX-21 Install&lt;/h2&gt;
+&lt;p&gt;MX-21 was officially released on October 21, 2021 in its XFCE, KDE, and Fluxbox editions with the standard Debian 11 kernel. MX Linux has been a joy to use since my first install that you can read about in &lt;a href=&#34;https://discoverfoss.com/posts/mxfb-shine/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;MX Fluxbox Puts a Shine on Old Code&lt;/a&gt;
+. Now with two of my computers running MX Linux Fluxbox Edition, I definitely planned to upgrade. I had done some testing while MX-21 Fluxbox was in beta, but I didn&amp;rsquo;t know how I would handle upgrading my MX Linux desktop that had a btrfs RAID1 array. After unproductive Internet searches and a MX forum post that received the chirps of crickets, I figured I would need to come up with my own solution. Yes, I had a backup of the data on the btrfs RAID1 array, but this was my home folder. I wanted to avoid the pain of restoring the data to my &lt;code&gt;/home&lt;/code&gt; folder when I move from one version of MX Linux to the next.&lt;/p&gt;
+&lt;p&gt;As he often does, Dolphin Oracle, one of the main devs, released a &lt;a href=&#34;https://youtu.be/Rq06PCvJLt0&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;video&lt;/a&gt;
+ showcasing the new custom partition editor in the MX-21 installer. He does this by creating a btrfs partition and sub volumes for the root partition that enables you to use &lt;a href=&#34;https://teejeetech.com/timeshift/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Timeshift&lt;/a&gt;
+ which makes use of the snapshot features of btrfs to both create and restore system snapshots. Once I saw that video, I wanted all of my drives with btrfs. I was already taking advantage of having a btrfs RAID1 array to help preserve my data from bit rot. Now on my system drive I could take advantage of snapshots, another great feature of btrfs.&lt;/p&gt;
+&lt;p&gt;This video and the overwhelming sound of crickets on my MX Forum post still left me wondering if I could safely use the installer with its custom partition editor to reconnect to my btrfs RAID1 pool as my &lt;code&gt;/home&lt;/code&gt; folder.&lt;/p&gt;
+&lt;h2 id=&#34;jumping-into-the-deep-end-of-the-buttery-pool&#34;&gt;Jumping Into the Deep End of the Buttery Pool&lt;/h2&gt;
+&lt;p&gt;As a reminder, here are the 3 drives that I have in the system.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Bay #1 = 120GB SSD&lt;/li&gt;
+&lt;li&gt;Bay #2 = 1TB Western Digital Blue HDD&lt;/li&gt;
+&lt;li&gt;Bay #3 = 1TB Western Digital Blue HDD&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The 120GB SSD had the &lt;code&gt;/root&lt;/code&gt; system install of MX-19, and I decided that I would again use that drive as &lt;code&gt;/root&lt;/code&gt; for MX-21. This time I would install btrfs with the new custom partition editor in the MX installer, and add the appropriate sub volumes needed by Timeshift for btrfs snapshots. Bay #2 and #3 or sdb1 and sdc1 were my btrfs RAID1 array mounted as &lt;code&gt;/home&lt;/code&gt;.I decided that I would not touch those drives during the install. The reason I went this route is because when I got to the custom partition editor in the MX installer, it saw both drives and saw that they were both running with btrfs. What the installer didn&amp;rsquo;t seem to see was that they were in a RAID1 array. After you run the command to format the partitions and create the RAID1 array, the system usually sees the two separate drives as one drive with a single UUID. Since the installer saw two drives, I couldn&amp;rsquo;t trust that it recognized that these drives were formatted to be in a RAID1 array. By leaving them untouched this meant that the installer would put both &lt;code&gt;/root&lt;/code&gt; and &lt;code&gt;/home&lt;/code&gt; on the 120GB SSD. This ended up being an advantage, because of the significant changes that have been made to the MX-21 Fluxbox edition. Since the customizations of MX Fluxbox are saved and installed into &lt;code&gt;/home&lt;/code&gt; this would mean that I would have a &lt;code&gt;/home&lt;/code&gt; folder with all of the new MX-21 customizations instead of this new version of MX-21 trying to use my &lt;code&gt;.fluxbox&lt;/code&gt; folder from my MX-19 install.&lt;/p&gt;
+&lt;p&gt;The MX-21 Fluxbox edition install went off without a hitch, then came the adventure.&lt;/p&gt;
+&lt;h2 id=&#34;reconnecting-the-raid-array&#34;&gt;Reconnecting the RAID Array&lt;/h2&gt;
+&lt;p&gt;I didn&amp;rsquo;t know if my formatted btrfs RAID1 array would survive the install of a new OS. Yes, it was still MX with its lovely Debian Stable base, but it was a clean install of the system without touching or formatting the two 1TB drives. After booting into my fresh install of MX-21 Fluxbox edition, I ran the following command to see what it would say.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo btrfs fi show
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The output of this command made my day. It recognized all three drives as btrfs formatted drives, but it also saw the two 1TB drives as a RAID1 array with a single UUID. Now for the moment of truth. Could I mount my RAID1 array and browse my files? I ran the next two commands so that I would have a mount point that I could use to transfer files from my new &lt;code&gt;/home&lt;/code&gt; on the SSD to my old &lt;code&gt;/home&lt;/code&gt; on the RAID1 array.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo mkdir /mnt/butter
+sudo chmod -R 777 /mnt/butter
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Next I added an entry into the &lt;code&gt;/etc/fstab&lt;/code&gt; file, that used the same &lt;strong&gt;UUID&lt;/strong&gt; that I used in MX-19 and used &lt;code&gt;/mnt/butter&lt;/code&gt; as the mount point. See &lt;a href=&#34;https://discoverfoss.com/posts/btrfsandraid1/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Bake Up a Btrfs RAID1 Array&lt;/a&gt;
+ for the details.&lt;/p&gt;
+&lt;p&gt;Now I took advantage of having all of the new configuration files that were installed by MX-21 Fluxbox into &lt;code&gt;/home&lt;/code&gt;. First, I changed all of the folders on the btrfs RAID1 array that had configuration files from my old MX-19 install to something like:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    /home/.fluxbox to /home/.fluxbox-mx19 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now I would be able to copy over the &lt;code&gt;.config&lt;/code&gt; and &lt;code&gt;.fluxbox&lt;/code&gt; and other directories to the RAID1 array without loosing my old configuration files. I copied every file that was in &lt;code&gt;/home&lt;/code&gt; over to the RAID1 array, and took the next steps in making the RAID1 array my new &lt;code&gt;/home&lt;/code&gt; folder.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;I changed the name of the &lt;code&gt;/home&lt;/code&gt; folder on the 120GB SSD to &lt;code&gt;/home-original&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;I created a new &lt;code&gt;/home&lt;/code&gt; folder that was empty.&lt;/li&gt;
+&lt;li&gt;I changed the &lt;code&gt;/etc/fstab&lt;/code&gt; file from the mount point &lt;code&gt;/mnt/butter&lt;/code&gt; to &lt;code&gt;/home&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Then I rebooted just to be safe that everything would be found and restarted from the RAID1 array &lt;code&gt;/home&lt;/code&gt; folder.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;It worked! My new MX-21 Wildflower Fluxbox edition booted up with the btrfs RAID1 array mounted as &lt;code&gt;/home&lt;/code&gt;. I&amp;rsquo;m thrilled!&lt;/p&gt;
+&lt;h2 id=&#34;final-steps-in-using-btrfs-to-the-fullest&#34;&gt;Final Steps in Using Btrfs to the Fullest&lt;/h2&gt;
+&lt;p&gt;I would encourage you to watch Dolphin Oracle&amp;rsquo;s video that I referenced above. I used his tutorial at the end of that video to set up Timeshift to use the btrfs snapshots on a weekly basis. I&amp;rsquo;m looking forward to putting btrfs to the test in the months to come. This whole system is running with recycled hard drives and hardware, so a drive failure is a possibility, but I&amp;rsquo;m hoping that with my weekly snapshots and RAID1 array that I will be able to recover from either a messed up upgrade or a failing data drive. Thanks to MX-21 being committed to track with all of the point releases of Debian 11, I won&amp;rsquo;t have to deal with a clean install for probably two more years or whenever Debian 12 gets released. I like the idea of having a solid system that I can count on at work for the years to come.&lt;/p&gt;
+&lt;h2 id=&#34;wrap-up&#34;&gt;Wrap Up&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Could I have used the MX installer and assigned &lt;code&gt;/home&lt;/code&gt; to sdb1 without issues?&lt;/em&gt; Maybe, but I didn&amp;rsquo;t want to take the risk. This is more of a production machine that I use regularly at work to get things done. Although it would have been good to test the MX installer so I could offer feedback on its future development, I didn&amp;rsquo;t want to be without this computer for too long at work.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Are there easier ways to achieve what I accomplished?&lt;/em&gt; Possibly, but I was surprised how little I found in my Internet searches. I found information about creating a btrfs RAID1 array in different distros either during the install or post install, but I didn&amp;rsquo;t find a single article that talked about reattaching to a btrfs RAID1 array that already existed. Because of this I was convinced that when I did a clean install of the system, that I might destroy the bits that told the OS that the two drivers were in a RAID1 array. Clearly, I have much to learn about file systems, RAID arrays, and what happens during the creation of a file system on a disk and how those details are stored.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m hoping that the search engines will find this article and provide it as a resource to others who would like to do a clean install of their system, but would also like to preserve their &lt;code&gt;/home&lt;/code&gt; folder that rests on top of a btrfs RAID1 array.&lt;/p&gt;
+&lt;p&gt;The original pictures used in the header graphic for this article are the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;Butter and sugar melt together&amp;rdquo; by jessicafm on &lt;a href=&#34;https://flickr.com/photos/jessicafm&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Flickr&lt;/a&gt;
+ is licensed with CC BY 2.0. &lt;a href=&#34;https://creativecommons.org/licenses/by/2.0/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;A Copy of this License&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://mxlinux.org/art/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;MX Logo&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://btrfs.wiki.kernel.org/index.php/Main_Page&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Btrfs Logo&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <author>Steve (mowest)</author>
+      <title>Docsify a Different Animal</title>
+      <link>https://discoverfoss.com/posts/docsify-animal/</link>
+      <pubDate>Fri, 09 Apr 2021 20:10:00 -0500</pubDate>
+      
+      <guid>https://discoverfoss.com/posts/docsify-animal/</guid>
+      <description>&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/docsify-animal.png&#34;
+        alt=&#34;Docsify Icon on a Spotted Cow&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;I thought I would break the silence on this &lt;a href=&#34;https://gohugo.io&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Hugo powered&lt;/a&gt;
+ blog with a post about another SSG &lt;a href=&#34;https://jamstack.org/generators&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Static Site Generator&lt;/a&gt;
+. &lt;a href=&#34;https://docsify.js.org&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Docsify&lt;/a&gt;
+ is a SSG that is truly a different kind of animal. To illustrate the difference, let me start by mapping my current workflow to make a post using Hugo as my SSG.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Make sure I have the latest version of Hugo on my local machine. Admittedly, because it is written in Golang and comes as a single binary this is pretty easy. On my Debian workstations, I download the released deb package and install using the simple command replacing the deb package name with the latest released version of Hugo.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt install ./hugo_0.82.0_Linux-64bit.deb
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;On Fedora, I have installed a COPR repo that has the latest version of Hugo, so every time there is an update, I pull down the latest Hugo version.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;At this stage if you don&amp;rsquo;t already have a Hugo site, you will need to use the Hugo tools to create the skeleton of directories and files that you need to begin authoring your site. You will also need to install a Hugo theme that will create the look of your site. Once you have installed your theme into the proper directory and edited your config.toml file you can begin creating posts and content for your site.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Since &lt;a href=&#34;https://discoverfoss.com&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;discoverfoss.com&lt;/a&gt;
+ has step 2 done, I can jump into creating content. For me this begins with the creation of a Markdown file in the &lt;strong&gt;posts&lt;/strong&gt; directory.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;After the post is ready to be posted on the blog, the fun begins with Hugo. I run a &lt;code&gt;bash&lt;/code&gt; script that does the following steps:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Runs &lt;code&gt;hugo&lt;/code&gt; to create the static html pages in a separate &lt;code&gt;git&lt;/code&gt; repository.&lt;/li&gt;
+&lt;li&gt;Runs &lt;code&gt;git add .&lt;/code&gt; in that repository&lt;/li&gt;
+&lt;li&gt;Runs &lt;code&gt;git commit -m &amp;quot;Blog Updated on $(date)&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Runs &lt;code&gt;git push&lt;/code&gt; which pushes the newly created static HTML pages up to the repo on &lt;em&gt;github.com&lt;/em&gt; that hosts the site through &lt;em&gt;Github Pages&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;All of the steps of 4 take mere seconds. First, because Hugo is fast when it builds a static site, and second, because I have my SSH keys saved in Github enabling me to &lt;code&gt;git push&lt;/code&gt; using SSH which saves me the step of having to enter my password.&lt;/p&gt;
+&lt;p&gt;In general, SSG&amp;rsquo;s typically follow above workflow where you use a local install of the SSG to create the static site from your Markdown documents, and then you will SFTP, Rsync, or git push your static files to your web server or hosting provider. There appear to be hosted solutions or continuous integration pipelines that will remove the need for a local install of the SSG, but I haven&amp;rsquo;t looked into those options for &lt;a href=&#34;https://discoverfoss.com&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;discoverfoss.com&lt;/a&gt;
+ at this time.&lt;/p&gt;
+&lt;p&gt;Docsify is a different animal in the SSG world. You can install a local CLI (command line interface) version of Docsify on Linux, but I have not seen the need to do so. You may want to consider that if you want to see a local instance of Docsify on your workstation where you are authoring the Markdown documents for Docsify. Additionally, Docsify shows you how you can with just a few lines of Python spin up a web server to see your local content in a browser. Since Python is usually installed in the major distributions, I feel this is an easier solution than setting up a local CLI of Docsify with all of its dependencies.&lt;/p&gt;
+&lt;p&gt;Docsify caught my attention months ago, when I looked into options for creation webpages of documentation for a FOSS project that is near and dear to my heart. At first, I considered just using Hugo and one of its templates which are geared towards documentation projects. Hugo would be an excellent solution, but since Docsify focuses on displaying project documentation, and is designed to work well with &lt;em&gt;Github Pages&lt;/em&gt; I felt Docsify was a better solution.&lt;/p&gt;
+&lt;p&gt;Yet, what pushed me into trying Docsify was my desire to have a personal, searchable, organized, wiki written in Markdown or ASCIIDOC files. Although, I enjoy writing my FOSS adventures in this blog, there are notes and documentation that I use everyday that I don&amp;rsquo;t need in a blog post. As an example, while I continue to learn &lt;a href=&#34;https://discoverfoss.com/posts/sharpentools/&#34;title=&#34;Sharpening Your Tools&#34;&gt;vim&lt;/a&gt;
+ I have a notes file that has keyboard shortcuts that I have not committed to memory, but still find useful a few times a week. I also like to lay out the steps that I performed to get something installed and working in the homelab. Sometimes those turn into tutorials for this blog, but other times there are steps that I&amp;rsquo;m copying down from a variety of sources for my unique setup which would be of little value for the wider FOSS community. I have used a variety of tools for this in the past. When I lived in Windows and used more proprietary software, I used &lt;em&gt;Evernote&lt;/em&gt; until their &amp;ldquo;free&amp;rdquo; option became too limited, then I switched to &lt;em&gt;Onenote&lt;/em&gt;. In Linux, I have used something as simple as a directory filled with text files that was synced with &lt;a href=&#34;https://syncthing.net&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Syncthing&lt;/a&gt;
+ between all my machines to a more robust tool like &lt;a href=&#34;https://zim-wiki.org&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Zim&lt;/a&gt;
+. Docsify let me check the following boxes which caused it to win in the contest of what will serve as my personal wiki.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I can do all of my documentation in Markdown. Since I&amp;rsquo;m already writing in Markdown for this blog, and using Markdown to the creation of printable PDF&amp;rsquo;s, adding another use for my Markdown skills was a plus.&lt;/li&gt;
+&lt;li&gt;I can easily host a Docsify site on a Raspberry Pi 1 Model B. Yes, I still have a 1st generation Raspberry Pi, actually two of them, and I wanted to find ways to keep these little SBC serving a useful purpose. Since Docsify uses static HTML and client side JavaScript the old Raspberry Pi just needs to serve up the files, for which I am using &lt;a href=&#34;https://www.lighttpd.net&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Lighttpd&lt;/a&gt;
+.&lt;/li&gt;
+&lt;li&gt;It is easy to add search to Docsify.&lt;/li&gt;
+&lt;li&gt;It is easy to add a dark theme to Docsify.&lt;/li&gt;
+&lt;li&gt;It is easy to have a full featured sidebar.&lt;/li&gt;
+&lt;li&gt;The active community have coded amazing plugins for Docsify that you can use too.&lt;/li&gt;
+&lt;li&gt;I believe Docsify would be a great solution for a FOSS project that hosts its files on Github because of the excellent support Docsify has for Github Pages. This opens Docsify up for future uses as I contribute to other FOSS projects.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Now, what makes Docsify a different animal? Docsify is an SSG, but it skips the build step of most SSG&amp;rsquo;s. Instead of reading in the Markdown files and converting a series of HTML files from those, Docsify converts the Markdown files on the fly. Docsify is up and running by creating a single &lt;code&gt;index.html&lt;/code&gt; file which references remotely served JavaScript files. The main JavaScript file finds the Markdown files in the root directory where &lt;code&gt;index.html&lt;/code&gt; is found along with subdirectories if used, and converts those Markdown files on the fly into HTML and includes their content in the resulting index.html file that is generated for the browser. This means your server is not being stressed. With my personal wiki that I&amp;rsquo;m serving on my Raspberry Pi 1 Model B I haven&amp;rsquo;t noticed a lag in loading pages or when searching the collection of files. I will have to see if an increase in files and content slows down Docsify&amp;rsquo;s performance as time goes on. If you follow their instructions you would be linking to a series of remotely hosted JavaScript files and at least one CSS file for the theming. This means you are putting some trust in the makers of Docsify that nothing malicious is being done in those JavaScript files. Of course, it should work to source those files, review their code, and then host them locally on your server as well, but you would miss out on minor version bumps and bug fixes.&lt;/p&gt;
+&lt;p&gt;Just one look at the &lt;a href=&#34;https://jamstack.org/generators&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Jamstack list&lt;/a&gt;
+ that I referenced above proves that there are plenty of possible solutions in this world of SSG&amp;rsquo;s. For me, Hugo and Docsify, have become personal favorites. What SSG do you use and love? How do you use SSG&amp;rsquo;s in your homelab to serve up information that you want access to?&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The header image for this article was assembled in &lt;a href=&#34;https://krita.org/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Krita&lt;/a&gt;
+ using a cow image provided by &lt;a href=&#34;https://unsplash.com/@photomatic_s?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Matias Tapia&lt;/a&gt;
+ on &lt;a href=&#34;https://unsplash.com&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Unsplash&lt;/a&gt;
+ and the Docsify logo.&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <author>Steve (mowest)</author>
+      <title>Recycled Workstation Build</title>
+      <link>https://discoverfoss.com/posts/recycled-workstation/</link>
+      <pubDate>Sun, 06 Dec 2020 22:18:27 -0500</pubDate>
+      
+      <guid>https://discoverfoss.com/posts/recycled-workstation/</guid>
+      <description>&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/newworkstation.jpg&#34;
+        alt=&#34;Picture of Workstation&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;I recycle computers into Linux boxes. Either I repurpose old hardware that I have purchased or I give a second life to computers that others plan to get ride of. Recently I assembled a new workstation to replace the spare computer that I use at work when I&amp;rsquo;m at my standing desk.&lt;/p&gt;
+&lt;p&gt;My primary computer at work runs Windows 10 so that I can still use a priopritary program that I need for my vocation. I have moved all of my other work tasks to FOSS programs that will run on Linux. My spare computer at my standing desk for the last 3 years was an old Toshiba Satellite C650-ST5N03 with the following specs.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Intel i3-2310M CPU&lt;/li&gt;
+&lt;li&gt;4GB of RAM&lt;/li&gt;
+&lt;li&gt;Built in screen with a resolution of 1366x768&lt;/li&gt;
+&lt;li&gt;Silicon Power 120GB SSD&lt;/li&gt;
+&lt;li&gt;Attached Acer 223W external monitor&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The Toshiba has served well as my spare work computer. When I first set up the laptop, I installed Ubuntu Mate and recently I installed MX Linux using MX Fluxbox as my desktop or window manager environment. Overall, I was happy with the performance. When I recorded virtual instruction videos, I noticed that the sound and video were out of sync. I&amp;rsquo;m not sure if the problem came from performance limitations, the software stack I had chosen, or my poor choices of settings. This workstation proved to me the value of using dual screens, so I knew that I wanted that feature if I ever replaced the Toshiba laptop.&lt;/p&gt;
+&lt;p&gt;My local library provided the opportunity to upgrade my workstation. The library is remodeling the interior and replacing all of their computers. Not too long ago the local high school remodeled and donated their used desktops to the library a mix of Dells and Asus desktops. Since I know one of the librarians they allowed me to go through all of the computers they were going to recycle and pick out ones that I could upcycle with Linux. The best desktop that I found was a Dell Optiplex 5040 with a 6th generation Intel i5 and 8GB of RAM. I set that aside to replace my son&amp;rsquo;s primary desktop that he uses for programming. This would replace his Dell Optiplex with 4GB of RAM and a 2nd generation i3. For myself, I set aside an Asus M11AA desktop with the following specs.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Intel i5-3340S (Quad Core Ivy Bridge)&lt;/li&gt;
+&lt;li&gt;4GB of RAM (upgraded to 8GB of RAM)&lt;/li&gt;
+&lt;li&gt;1TB Western Digital Blue 3.5&amp;quot; Hard Drive (upgraded to 1 Silicon Power 120GB SSD, and 2 1TB Western Digital Blue 3.5&amp;quot; Hard Drives)&lt;/li&gt;
+&lt;li&gt;Two Dell E228WFP at 1680x1050 (mounted on a Mount-It! two monitor stand)&lt;/li&gt;
+&lt;li&gt;One Dell AX510 speaker bar&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Everything was recycled except the new monitor stand to hold the two Dell 22&amp;quot; monitors for $30 from Amazon. The memory upgrade and extra 1TB hard drive came from another Asus M11AA desktop that I stripped for parts. The SSD was in an old laptop that has not been used for more than a year. All the other parts were from the library recycling pile.&lt;/p&gt;
+&lt;p&gt;Even though this new system could handle the extra weight of a Fedora 33 Workstation install which is the Linux distribution I run on my home workstation, I knew that I wanted MX Linux on this computer. I have fallen in love with MX Fluxbox which I had been running on the old Toshiba laptop, and the MX community has been a wonderful support network as I continue to grow in the ways I use FOSS for both home and work tasks. I did try some new things with this workstation. I have never used RAID, and I have never had more than one drive in my Linux machines. So I decided to install MX Linux on the 120GB SSD using the EXT4 file system. I configured the two 1TB Western Digital Blues in a RAID-1 configuration with BTRFS file system. On the RAID array I have put my home folder keeping my data separate from the OS for the first time. 1TB is more than enough space for two decades of office documents, a few ripped CD&amp;rsquo;s, and some beautiful wallpapers. Currently I&amp;rsquo;m only using 33GB of the 1TB RAID array. Everything starts up quickly and runs smoothly. I haven&amp;rsquo;t played much with the BTRFS RAID array, but I would like to learn more about the BTRFS file system and its monitoring and repair tools. For now it is just doing its thing, saving and organizing my data files.&lt;/p&gt;
+&lt;p&gt;In the picture above you might notice that the new workstation has an HP 1018 printer and a Fujitsu ScanSnap 1300s attached to it. For the first time ever, I have the Fujitsu ScanSnap 1300s working on Linux. This new system has opened a new world of possibilities in using hardware with FOSS.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m enjoying this new workstation so much, that I have found myself at my standing desk for a longer period of my work day than in the past. I do a lot of teaching in my profession, and I&amp;rsquo;m enjoying having LibreOffice Writer or Impress open on one screen while gathering information and looking things up on the other screen. I find myself using the rightside dock in LibreOffice Writer and Impress often, especially when I&amp;rsquo;m in Impress, so having a full 1680x1050 just for those programs is nice.&lt;/p&gt;
+&lt;p&gt;The two Dell monitors have also eliminated another pain point that I had before with my former standing desk workstation. I have eliminated the Acer 223W monitor. This monitor does not work well with Linux. Every Linux distribution that I have tried fails to correctly identify the monitor&amp;rsquo;s refresh rate as 60Hz. Instead every distribution believes the refresh rate needs to be 59Hz. Because of this misidentification of the refresh rate, the screen will be off center when Linux boots to the login manager or into a desktop environment. You can fix this by running a few &lt;code&gt;xrandr&lt;/code&gt; commands like the ones below.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;xrandr --newmode &amp;quot;1680x1050_60.00&amp;quot;  146.25  1680 1784 1960 2240  1050 1053 1059 1089 -hsync +vsync
+xrandr --addmode VGA-1 1680x1050_60.00
+xrandr --output  VGA-1 --mode 1680x1050_60.00
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You may need to adjust &lt;code&gt;VGA-1&lt;/code&gt; to &lt;code&gt;HDMI-1&lt;/code&gt; or something else depending on how xrandr identifies your connection to that monitor. Typically, I place those lines above along with additional flags to identify the primary monitor and the physical arrangment of the monitors when I have used the Acer 223W in a dual monitor configuration. Depending on the desktop environment that I&amp;rsquo;m using, I auto run a script with these lines so that when the desktop environment is loaded the screen is no longer off center. Although this fixes the display, I found it to be annoying. Thankfully, my Dell monitors are correctly identified by Linux, and I no longer have that annoying paper cut issue.&lt;/p&gt;
+&lt;p&gt;I recycle hardware to run Linux out of financial necessity. If you can afford the latest hardware to run your favorite Linux distribution, that&amp;rsquo;s great, enjoy the journey. If you struggle to find the funds necessary buy hardware to run Linux, don&amp;rsquo;t be afraid to see what you can do with Linux and a computer that a family member, friend, or local business is going to send to the electronic recycler. You might be able to put together a great system from recycled parts that will serve you well and allow you to dive more deeply into Linux with a dedicated box.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <author>Steve (mowest)</author>
+      <title>Sharpening Your Tools</title>
+      <link>https://discoverfoss.com/posts/sharpentools/</link>
+      <pubDate>Tue, 01 Dec 2020 11:52:47 -0500</pubDate>
+      
+      <guid>https://discoverfoss.com/posts/sharpentools/</guid>
+      <description>&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/sharpentools.png&#34;
+        alt=&#34;Header Picture showing knife cutting through a vim window&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;While taking a break from writing, I&amp;rsquo;ve been sharpening my writing tools. Four weeks ago, my primary markdown editor was &lt;a href=&#34;https://github.com/tsujan/FeatherPad&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Featherpad&lt;/a&gt;
+. I still love Featherpad, and this amazing lightweight GUI text editor deserves its own article on &lt;a href=&#34;discoverfoss.com&#34;&gt;discoverfoss.com&lt;/a&gt;
+. After I physically changed my workspace by adding a keyboard tray and a new keyboard, I don&amp;rsquo;t want to take my fingers off of the keyboard as I write because of the increased comfort. In a desire to keep my fingers on the keyboard, I turned back to vim as my primary writing tool.&lt;/p&gt;
+&lt;p&gt;Although I feel comfortable in vim (I know how to switch modes and exit the program), I often feel as if I stubble around in vim while editing a file. Just about everyday I learn a new feature or trick that makes using vim even more exciting. One of the reasons I had moved away from vim and found a home in Featherpad came from what I thought were the defaults in how both programs handled the syntax highlighting of markdown files. I like the default dark theme of Featherpad, and the default color choices for the syntax highlighting of markdown files. Also, Featherpad doesn&amp;rsquo;t provide a markdown preview but it adds some formatting polish when you use &lt;em&gt;italics&lt;/em&gt;, &lt;strong&gt;bold&lt;/strong&gt;, or &lt;em&gt;&lt;strong&gt;bold and italics&lt;/strong&gt;&lt;/em&gt;, which can be seen in the screenshots below. The visual hints that Featherpad provided pushed me to favor Featherpad over vim as I began to write more and more markdown both at home and at work.&lt;/p&gt;
+&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/featherpad_markdown.png&#34;
+        alt=&#34;Screenshot of Featherpad with a Markdown File Open&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;Now before you start yelling at the screen to tell me that vim does exactly the same things out of the box, I have to confess to you that I didn&amp;rsquo;t realize this because I had accidentally broken markdown formatting in vim on my home workstation. One day I decided to compose a markdown document in vim on my workstation at work. On my work computer, syntax highlighting of a markdown file looked acceptable, and vim also had the same visual hints for &lt;em&gt;italics&lt;/em&gt;, &lt;strong&gt;bold&lt;/strong&gt;, or &lt;em&gt;&lt;strong&gt;bold and italics&lt;/strong&gt;&lt;/em&gt;. I was on a different Linux Distro than on my home machine, so I guessed that the differences might have come from my terminal choice and settings were different. My versions of vim were different. Finally, I knew that I was using a different color scheme in vim on the two computers. Later when I was at home, I realized that on my home system, I had added a plugin for vim that was supposed to enhance the way vim could work with markdown files. I had installed it so long ago, that I had forgotten that it was even installed. Additionally, I added some code so that every time I opened a &lt;code&gt;.md&lt;/code&gt; file this plugin would activate. What I didn&amp;rsquo;t realize was that this plugin and additional code that I had put into my &lt;code&gt;.vimrc&lt;/code&gt; actually broke vim&amp;rsquo;s built in syntax highlighting for markdown files. Once I removed the plugin and the extra code to activate my markdown files looked just about as nice in vim as they did in Featherpad.&lt;/p&gt;
+&lt;p&gt;With syntax highlighting for markdown files fixed, it was time to tweak vim even more for editing markdown files and publishing them either through my Hugo powered blog or using Pandoc to create a PDF. I added the following plugins to further enhance my use of vim.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Plugin &lt;a href=&#34;https://github.com/itchyny/lightline.vim&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;lightline.vim&lt;/a&gt;
+, a lightweight status line&lt;/li&gt;
+&lt;li&gt;A Custom Function that added an updating word count to &lt;strong&gt;lightline&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Plugin &lt;a href=&#34;https://github.com/voldikss/vim-floaterm&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;vim-floaterm&lt;/a&gt;
+, opens a terminal window that &amp;ldquo;floats&amp;rdquo; over top of your vim window&lt;/li&gt;
+&lt;li&gt;Plugin &lt;a href=&#34;https://github.com/junegunn/fzf.vim&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;fzf.vim&lt;/a&gt;
+, enables the use of the CLI tool fzf &amp;ldquo;fuzzy file finder&amp;rdquo; in vim&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;My vim-ninja son, found an example of adding an active word count to the &lt;strong&gt;lightline.vim&lt;/strong&gt; status line. An updating word count adds tremendous value to using vim for most of my writing projects. For years, I have used word counts to help me gauge the length of my writing projects. I often have a target word count in mind before I begin either a work or personal writing project. For me a word count is like having a gas gauge for my writing. As I approach a certain number of words, I know that I need to bring my writing to a conclusion. &lt;strong&gt;fzf.vim&lt;/strong&gt; gives me a fuzzy search window with a preview to open a new file into a vim buffer. &lt;strong&gt;vim-floaterm&lt;/strong&gt; enables me to open a floating terminal window over top of the file I&amp;rsquo;m editing in vim. In this floating terminal window I can run my git and hugo commands to post a new article for &lt;a href=&#34;discoverfoss.com&#34;&gt;discoverfoss.com&lt;/a&gt;
+, or to run the Pandoc command that will convert my new markdown document into a PDF for printing or distribution.&lt;/p&gt;
+&lt;p&gt;Besides adding these tools to enhance my use of vim as a markdown editor, I have also started to learn better some of the tricks that vim has built into the editor by default. I have learned to appreciate the quality of the vim spell checker, and have started to memorize its built in keybindings. I have rediscovered how easy it is to join lines together with the &lt;code&gt;&amp;lt;Shift&amp;gt;+&amp;lt;J&amp;gt;&lt;/code&gt; while in &lt;code&gt;Normal&lt;/code&gt; mode. This built in editor command helps me quickly clean up text that I have copied into vim from websites.&lt;/p&gt;
+&lt;p&gt;What FOSS tools are you using to get your work done? Would you benefit from taking some time to sharpening your understanding of that tool? Take that time. Having sharp tools can make your work even more enjoyable.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The header image for this article was assembled in &lt;a href=&#34;https://krita.org/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Krita&lt;/a&gt;
+ using a knife image provided by &lt;a href=&#34;https://pixabay.com/users/alles-2597842/?utm_source=link-attribution&amp;amp;amp;utm_medium=referral&amp;amp;amp;utm_campaign=image&amp;amp;amp;utm_content=1493593&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Alexander Lesnitsky&lt;/a&gt;
+ over at &lt;a href=&#34;https://pixabay.com/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Pixabay&lt;/a&gt;
+.&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <author>Steve (mowest)</author>
+      <title>Bake Up a Btrfs RAID1 Array</title>
+      <link>https://discoverfoss.com/posts/btrfsandraid1/</link>
+      <pubDate>Sun, 08 Nov 2020 21:45:00 -0400</pubDate>
+      
+      <guid>https://discoverfoss.com/posts/btrfsandraid1/</guid>
+      <description>&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/btrfs-array-header.png&#34;
+        alt=&#34;A Hard Drive on top of a pile of flour and butter&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;I recently gave my spare work computer which runs Linux a serious upgrade. My old Toshiba laptop had served me well at my standing desk. Since I never unplugged the laptop from its perch on the standing desk it seemed natural to upgrade that machine to a &amp;ldquo;new to me&amp;rdquo; desktop computer. Now I had a desktop case that could hold three 3.5&amp;quot; HDD&amp;rsquo;s. I filled those three bays with these spare drives that I had on hand.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Bay #1 = 120GB SSD&lt;/li&gt;
+&lt;li&gt;Bay #2 = 1TB Western Digital Blue HDD&lt;/li&gt;
+&lt;li&gt;Bay #3 = 1TB Western Digital Blue HDD&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This is the first time in recent history that I have run Linux on a desktop computer with multiple drives installed. Since I have never tried the btrfs file system or a RAID storage array, I decided to experiement. I decided to install my Linux distro on the 120GB SSD using the EXT4 file system. I decided to make the two identical 1TB Western Digital Blues my RAID1 array with the Btrfs file system. Here were my steps to get a working Btrfs RAID1 array up and running on the new desktop.&lt;/p&gt;
+&lt;h2 id=&#34;1-creating-the-file-system-and-array&#34;&gt;1. Creating the File System and Array&lt;/h2&gt;
+&lt;p&gt;I read a few tutorials, but none of them seemed to apply to the exact situation I was trying to create. In the end I used &lt;a href=&#34;https://gparted.org/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Gparted&lt;/a&gt;
+ to erase both of the 1TB drives that I was recycling for this project. I did this by creating a new &lt;em&gt;&lt;strong&gt;msdos&lt;/strong&gt;&lt;/em&gt; partition table on each of the drives, and then creating one large unformated partition that took up the whole drive.&lt;/p&gt;
+&lt;p&gt;The following command created the file system and joined the two drives into a RAID1 configuration using the Btrfs file system.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo mkfs.btrfs -m raid1 -d raid1 /dev/sdb1 /dev/sdc1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;2-mounting-your-new-btrfs-raid1-array&#34;&gt;2. Mounting Your New Btrfs RAID1 Array&lt;/h2&gt;
+&lt;p&gt;I struggled with this part, because I wanted to have this RAID1 array accessable by my normal user so it could be used to hold all of my user&amp;rsquo;s data files like documents, pictures, music, and videos. I found plenty of tutorials mentioning the importance of creating a mount point in &lt;code&gt;/mnt&lt;/code&gt; but they all failed to mention that you needed to change the permissions on the folder that you create. The following commands created the folder that I would use for the RAID1 array.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo mkdir /mnt/butter
+sudo chmod -R 777 /mnt/butter
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Next you need to add an entry into your &lt;code&gt;/etc/fstab&lt;/code&gt; file, but you first need to grab the &lt;strong&gt;UUID&lt;/strong&gt; which can be easily found by running the following command.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo btrfs fi show
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now armed with the &lt;strong&gt;UUID&lt;/strong&gt; we can add a line to the &lt;code&gt;/etc/fstab&lt;/code&gt; file by editing the file with the following command.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo nano /etc/fstab
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You will want to add a line to the file that looks something like this.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;UUID=99910bf7-bcdf-429e-a5b2-f36b5d5ebcfc /mnt/butter btrfs defaults 0 0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Finally, to mount your array run the following command which will remount all of the mount points that are specified in your &lt;code&gt;/etc/fstab&lt;/code&gt; file.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo mount -a
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Additional Note:&lt;/strong&gt; In the end, I decided to use this new btrfs RAID1 array as my /HOME folder. After I had copied all of my /HOME files to the btrfs RAID1 array, I changed the &lt;code&gt;/etc/fstab&lt;/code&gt; file to mount the btrfs RAID1 array as /HOME instead of /mnt/butter. At first I hesitated putting all of /HOME on the array, because I thought I would loose some speed in the starting of applications if their configuration files were on the array. This has not been an issue. I&amp;rsquo;m enjoying this setup and the peace of mind of knowing that my root folder gets the whole of the 120GB SSD while my data files in /HOME have plenty of room to multiply on the 1TB RAID1 array.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;3-checking-the-available-space-on-your-btrfs-raid1-array&#34;&gt;3. Checking the Available Space on your Btrfs RAID1 Array&lt;/h2&gt;
+&lt;p&gt;At this point you should have your newly formated btrfs drives mounted as as a RAID1 array which means that your total available drive space will be exactly half of the total amount of diskspace you have available on the physical drives. You can check on how much of that space you are using by running the following command again.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo btrfs fi show
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The original pictures used in the header graphic for this article are the following:&lt;/p&gt;
+&lt;p&gt;The butter squares on flour was from &lt;a href=&#34;https://pixabay.com&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Pixabay&lt;/a&gt;
+ taken by &lt;a href=&#34;https://pixabay.com/users/hans-2/?utm_source=link-attribution&amp;amp;amp;utm_medium=referral&amp;amp;amp;utm_campaign=image&amp;amp;amp;utm_content=4753498&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Hans Braxmeier&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;The picture of the Western Digital hard drive also came from &lt;a href=&#34;https://pixabay.com&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Pixabay&lt;/a&gt;
+ provided by &lt;a href=&#34;https://pixabay.com/users/byrev-23277/?utm_source=link-attribution&amp;amp;amp;utm_medium=referral&amp;amp;amp;utm_campaign=image&amp;amp;amp;utm_content=88004&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Emilian Robert Vicol&lt;/a&gt;
+&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <author>Steve (mowest)</author>
+      <title>Pandoc and Markdown for the Win</title>
+      <link>https://discoverfoss.com/posts/pandoc-markdown-win/</link>
+      <pubDate>Wed, 23 Sep 2020 23:18:25 -0400</pubDate>
+      
+      <guid>https://discoverfoss.com/posts/pandoc-markdown-win/</guid>
+      <description>&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/pandocandmarkdown.png&#34;
+        alt=&#34;Runner Near Finish Line&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;When real life intersects my love of FOSS, I get excited. I&amp;rsquo;ve been working with a physical therapist to learn exercises to prevent future lower back injures. My physical therapist opens our session by asking how frequently I did the exercises that he assigned, and how they went. I decided that instead of trying to recall 3-7 days of exercises, I would keep a log. Since I&amp;rsquo;m a geek, I kept my log in plain text. Since I did my editing in Linux with &lt;a href=&#34;https://GitHub.com/tsujan/Featherpad&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Featherpad&lt;/a&gt;
+, I ran into an unexpected problem. I had a copy of the text file on my phone, but my physical therapist asked me to email him the log so he could print it out. After I emailed the text file to him, he disappeared into a back office for a while. When he returned he told me that he had to reformat the file so he could read it. When he showed me his computer screen with my text file open in a Windows editor, I immediately realized what happened.&lt;/p&gt;
+&lt;p&gt;Linux text files use different unseen characters to mark the end of a paragraph from a plain text Windows file. The Windows program used by my physical therapist failed to recognize these ending paragraph characters and smashed the whole log into 3 dense lines of text. The exercise log was a good idea, but I needed a better solution that my physical therapist could print and read easily. I&amp;rsquo;m still a geek, and I wanted to keep my log in plain text. I have dabbled with &lt;a href=&#34;https://asciidoctor.org/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;ASCIIDOC&lt;/a&gt;
+ which acts as a plain text markup tool that can be converted into HTML easily. This blog has helped me learn Markdown. If I could find a tool to convert a Markdown text file into a PDF, I would have a solution for my exercise log. A few internet searches pointed me to &lt;a href=&#34;https://pandoc.org/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Pandoc&lt;/a&gt;
+ as my &amp;ldquo;Markdown to PDF&amp;rdquo; solution.&lt;/p&gt;
+&lt;p&gt;Pandoc is a super powered tool in Linux enabling you to convert from one text file format to another. It has extensive support for multiple versions of Markdown including adding types of formatting that the original Markdown syntax never had. In order to convert from Markdown into PDF, Pandoc harnesses the power of LaTeX, an advanced plain text markup language. LaTeX enables authors to include codes in their plain text documents that can be transformed into the complex formatting needed in academic and research papers and books. Besides installing Pandoc, you may need to install additional modules for Pandoc and you may have to a large number of the LaTeX tools that Pandoc will leverage to create the PDF document. I would encourage you to read some documentation in our Linux distribution of choice about Pandoc and LaTeX packages.&lt;/p&gt;
+&lt;p&gt;Once I had all of the necessary packages installed, a simple command in the terminal did all of the magic.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pandoc PTlog.md -o PTlog.pdf --from=markdown -V geometry:margin.5in
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The above command took my physical therapy exercise log and turned it into a printable, easy to read PDF. My physical therapist was thrilled when I sent the first PDF a few minutes before our appointment. He could easily read the log on his computer or print out a copy so that he could make hand written notes on it as he reviewed and taught new exercises.&lt;/p&gt;
+&lt;p&gt;Once I discovered the power of Pandoc, I found another use. Every week I convert a document that I write into a PDF to be emailed to someone. I convert it into a PDF because I don&amp;rsquo;t know what kind of word processor she has installed on her computer so I don&amp;rsquo;t want to risk sending the document in LibreOffice or MSWord. Now instead of authoring that weekly document in LibreOffice, I type it in Markdown and convert it using Pandoc into a well formatted PDF.&lt;/p&gt;
+&lt;p&gt;As I read the documentation for Pandoc I discovered that Pandoc supports its own version of Markdown. Pandoc&amp;rsquo;s version of Markdown adds formatting options that are not available in other versions of Markdown. I discovered that Pandoc&amp;rsquo;s version of Markdown supports several different kinds of tables. I had to try this out for my exercise log. If I could put all of my exercises into a table than it would be even easier to read. The syntax for creating tables in Markdown files includes lots of dashes, pipes, and other symbol characters to lay out the rows and columns. This could quickly become tedious, but the following website makes this process a breeze, &lt;a href=&#34;https://www.tablesgenerator.com/markdown_tables#&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Tables Generator&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;Now with a slight change to my Pandoc command, I can have a PDF with beautiful tables.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pandoc PTlog.md -o PTlog.pdf --from=markdown+pipes_tables -V geometry:margin.5in
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Wait a minute! LibreOffice Calc could easily create a table and covert it into a PDF. Yes, LibreOffice could do this same job. However, I find that plain text documents are the most portable file format on computers. I can easily edit a text file on Linux, Windows, or even on my Android phone. A plain text file is tiny so it makes it easy to sync multiple text files to my phone without the worry of filling up my limited storage space on my phone. Using plain text also means that I don&amp;rsquo;t have to worry about having access to the internet to edit the document, because I have a local copy of the document that I can edit even when I&amp;rsquo;m not connected or when I don&amp;rsquo;t have cell service.&lt;/p&gt;
+&lt;p&gt;If this article has peaked your interest in the possibilities of converting a Markdown file into a PDF, than I would encourage you to head over to the &lt;a href=&#34;https://pandoc.org/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Pandoc&lt;/a&gt;
+ site for more information. Their documentation is great. Now I have another reason to use FOSS on Linux everyday.&lt;/p&gt;
+&lt;p&gt;The original picture featured in the header graphic to this article is found &lt;a href=&#34;https://live.staticflickr.com/5567/14724418849_c2b37f6125_b.jpg&#34;title=&#34;Finish Line Approach - Castlepollard 5KM 2014&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;here&lt;/a&gt;
+ and was taken by &lt;a href=&#34;https://www.flickr.com/photos/25874444@N00&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Peter Mooney&lt;/a&gt;
+ and is licensed under &lt;a href=&#34;https://creativecommons.org/licenses/by/2.0/?ref=ccsearch&amp;amp;atype=html&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;CC BY 2.0&lt;/a&gt;
+.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <author>Steve (mowest)</author>
+      <title>Using Hugo to Learn Skills</title>
+      <link>https://discoverfoss.com/posts/using-hugo-learn/</link>
+      <pubDate>Sun, 30 Aug 2020 11:46:22 -0400</pubDate>
+      
+      <guid>https://discoverfoss.com/posts/using-hugo-learn/</guid>
+      <description>&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/using-hugo-learn.png&#34;
+        alt=&#34;Mountain Climber Heading Towards Hugo&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;After spending my free time of the past week enhancing &lt;a href=&#34;discoverfoss.com&#34;&gt;discoverfoss.com&lt;/a&gt;
+, I decided to reflect on why this blog exists, and why I&amp;rsquo;m using Hugo to manage it.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;discoverfoss.com&#34;&gt;Discoverfoss.com&lt;/a&gt;
+ came from a desire to give back to the free and open source community which has given so much to me and my family. I&amp;rsquo;m not a coder. I have no ambitions of being a &amp;ldquo;Youtuber&amp;rdquo;. I enjoy writing, and my profession requires long form writing for teaching and manuscripts for public speaking. Free and open source projects encourage volunteers to write documentation which feels like a natural fit with my skill set. So why did I start a blog if I want to write and edit FOSS documentation? Although I write in my vocation, I don&amp;rsquo;t write manuals for programs or lesson plans focused on technology. I also don&amp;rsquo;t use in my vocation or daily life the tools used by FOSS projects to produce their documentation. Two documentation experiences will help to illustrate this point.&lt;/p&gt;
+&lt;p&gt;My first exposure in helping with documentation came from getting involved with Fedora Docs. In order to contribute to their documentation, you need a Fedora account that is verified through their Fedora Account System or FAS. This gives you access to Fedora&amp;rsquo;s Git repositories that are housed on their instance of Pagure. In your Pagure account you have the ability to fork the Fedora Documentation, edit your fork, and make a pull request to have your edits merged into the main documentation. The Fedora Docs community has focused their documentation tooling around &lt;a href=&#34;https://asciidoctor.org/docs/what-is-asciidoc/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;ASCIIDOC&lt;/a&gt;
+ formatted text files.&lt;/p&gt;
+&lt;p&gt;Recently, I have helped out the MX Linux team with edits of the manual for MX-Fluxbox. Their process also used Git with GitHub housing their repositories for version control. They use LibreOffice to create, edit, and publish their documentation into PDF manuals. To make my edits, I forked their GitHub repository, edited the LibreOffice file, and made a pull request to have my edits merged. I added an additional file to my branch of the GitHub repository. I created a plain text file that detailed all of the edits I had made to the LibreOffice file. Because the LibreOffice file is a file type that is not supported by GitHub&amp;rsquo;s builtin editors or viewers, you can&amp;rsquo;t use the features of the GitHub interface to easily compare them to the original files.&lt;/p&gt;
+&lt;p&gt;Through these experiences, I identified three areas of growth that would enhance future contributions to FOSS projects.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;I want to increase the quality of my technical writing.&lt;/li&gt;
+&lt;li&gt;I want to become comfortable with Git&amp;rsquo;s work flow and commands.&lt;/li&gt;
+&lt;li&gt;I want to become proficient in using all of the syntax in Markdown.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Practicing the craft of technical writing provides the opportunity to become better at it. Blogging provides this practice, but where do I post articles so others can read them and give constructive feedback? Platforms exist that make it easy to get your content in front of an audience. &lt;a href=&#34;https://medium.com/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Medium&lt;/a&gt;
+, &lt;a href=&#34;dev.to&#34;&gt;DEV.to&lt;/a&gt;
+, and &lt;a href=&#34;https://frontpagelinux.com/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Front Page Linux&lt;/a&gt;
+ provide platforms for blog content. These platforms let you focus on creating content, while they handle the website upkeep and formatting. Additionally, these platforms have created communities of people with similar interests including people who are passionate about FOSS. At first I thought this would be the best solution. I wouldn&amp;rsquo;t need a website domain. I wouldn&amp;rsquo;t need to figure out how to host or where to host my blog. I wouldn&amp;rsquo;t need to focus any time on formatting or adjusting the look and features of the site. I would just practice technical writing. If I chose &lt;em&gt;Medium&lt;/em&gt; it seemed like I would be a very small minnow in a huge ocean of content. As I examined the content on &lt;em&gt;DEV&lt;/em&gt; my content didn&amp;rsquo;t seem to fit in with their focus on coding and development. &lt;em&gt;Front Page Linux&lt;/em&gt; appeared at first to be the perfect fit, and it was already a part of an online Linux community that I loved. So I submitted my first post to &lt;em&gt;Front Page Linux&lt;/em&gt;. This new platform was still figuring out their processes in receiving submissions, and my article got lost in a digital dust bunny.&lt;/p&gt;
+&lt;p&gt;Filled with excitement over my submission, I contemplated the next four articles. Because of my recent involvement in the MX Linux community, I realized that I wanted to write a series of articles about their new desktop offering, MX Fluxbox. In a new platform like &lt;em&gt;Front Page Linux&lt;/em&gt; which has posted about 9 articles per month, I felt that my planned articles would put too much focus on one small part of the FOSS world that is covered by the creators of &lt;em&gt;Front Page Linux&lt;/em&gt;. So if the platforms I evaluated weren&amp;rsquo;t the right fit, how would I host my own blog. Years ago, I had started a short lived blog on &lt;a href=&#34;wordpress.com&#34;&gt;Wordpress.com&lt;/a&gt;
+. I could re brand that blog, and add a custom URL, but that would only accomplish my first goal, practicing technical writing. I had heard about static site generators, and I knew the names of a few of them. Every &amp;ldquo;beginner&amp;rdquo; article that I read about static site generators portrayed them as an easy way to create and manage a blog. A static site generator (or SSG) would help me accomplish the other two goals. When you use an SSG with GitHub Pages to deploy your blog, you use git commands with every post or change made to the website. A common SSG feature reads Markdown and transforms a post written in Markdown into a static HTML page. Since FOSS projects have transitioned to using Git repositories to manage their code and documentation contributions, deploying my blog on GitHub Pages just made sense. Although Fedora Docs have settled into using ASCIIDOC as their plain text formatting tool, there seems to be greater support in FOSS documentation projects for the use of Markdown as the preferred formatting tool. So it was settled. I would use a SSG with GitHub Pages, and I would begin working my way to accomplishing all three of my personal goals to become a better FOSS documentation contributor. Besides, it will be easy, so I thought.&lt;/p&gt;
+&lt;p&gt;I recently visited the &lt;a href=&#34;https://discourse.gohugo.io/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Hugo&amp;rsquo;s discourse forum&lt;/a&gt;
+, and I noticed their greeting text for the new user. I wish I had read this honest and true piece of advice earlier.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Some Knowledge Required&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Dare we say that while Hugo is indeed pretty magical, it is not meant to be a “magic wand” to suddenly give you a published website a la Square Space or Wordpress. You are expected to already know how to assemble a static web page, for which you do need some basic knowledge of HTML, CSS, command line and text editors. Or how to prepare a space to host your website. The bottom line is, if you are unwilling to invest the time required to learn these things, then Hugo is not for you.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;That paragraph might have sent me back to resurrect my blog on &lt;a href=&#34;wordpress.com&#34;&gt;Wordpress.com&lt;/a&gt;
+ if I had read it before I got my first static site to build. In my simplicity, I thought that using an SSG would be an easy command line version of Wordpress, &lt;a href=&#34;https://www.wix.com/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;WIX&lt;/a&gt;
+, or &lt;a href=&#34;https://www.squarespace.com/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Squarespace&lt;/a&gt;
+. I feel at home in the Linux terminal and using text editors. SSG&amp;rsquo;s speak the language of front end website developers. They use terms that make my head swim like: HTML templates, CSS properties, TOML, YAML, JSON, front mater, taxonomies, and SEO. If I had experience as a website programmer or designer, I believe that my learning curve in using an SSG would have been smooth instead of a sharp climb up a rock face.&lt;/p&gt;
+&lt;p&gt;I ran into trouble fast when I attempted to choose a theme other than the one suggested in the &amp;ldquo;Quick Start Guide.&amp;rdquo; The theme I picked needed dependencies installed from &lt;a href=&#34;https://www.npmjs.com/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;npm&lt;/a&gt;
+. My first test threw all sorts of errors relating to the theme and how I had configured it. I had no idea where to begin trouble shooting the errors. Thankfully the next theme worked without errors, so I have stuck with that one. The learning curve continued up the rock face this past week. I struggled to get a working RSS feed and favicon. If I had experience as a website developer, I believe that I would have grasped the concepts in the documentation and tutorials with less effort. So often I struggled to know if my issue was caused by my theme, a configuration mistake I had made, or because I had placed the file in the wrong directory in my SSG&amp;rsquo;s hierarchy.&lt;/p&gt;
+&lt;p&gt;Do you want to travel down this road of discovery? Don&amp;rsquo;t waste hours and days debating which SSG would be the best one for you. The FOSS world has given us a plethora of static site generators. Pick three or four that caught your attention, research them briefly, and then pick one and stick with it. Because GitHub Pages point to Jekyll in their documentation, I originally thought that I would just use Jekyll. Mistakenly, I thought that I could avoid a local install of Jekyll because I was using GitHub Pages to deploy my blog. When GitHub&amp;rsquo;s &amp;ldquo;Getting Started Guide&amp;rdquo; gave instructions for a local install of Jekyll, I reconsidered my options. Hugo seemed easier to install and maintain on both my MX Linux and Fedora systems. The Hugo documentation also seemed easier for me to understand as well. You might make a different choice, and that&amp;rsquo;s okay. Make your choice and start learning.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;In&lt;/strong&gt; the end, I have no regrets. Already in the first few weeks of maintaining this blog, I recognize my progress towards the three goals that I set. In keeping with those goals, I&amp;rsquo;m planning to devote this coming week to a deeper dive into learning how Hugo works. I plan to practice my technical writing with a new tutorial as well. I look forward to sharing my next discovery soon.&lt;/p&gt;
+&lt;p&gt;Image credits include the original picture of the climber by &lt;a href=&#34;https://pixabay.com/users/Simon-3/?utm_source=link-attribution&amp;amp;amp;utm_medium=referral&amp;amp;amp;utm_campaign=image&amp;amp;amp;utm_content=1201694&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Simon Steinberger&lt;/a&gt;
+ from &lt;a href=&#34;https://pixabay.com/?utm_source=link-attribution&amp;amp;amp;utm_medium=referral&amp;amp;amp;utm_campaign=image&amp;amp;amp;utm_content=1201694&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Pixabay&lt;/a&gt;
+ and the Hugo logo belongs to the &lt;a href=&#34;https://gohugo.io/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Hugo Project&lt;/a&gt;
+.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <author>Steve (mowest)</author>
+      <title>Wrangle Dotfiles with Yadm</title>
+      <link>https://discoverfoss.com/posts/yadm-01/</link>
+      <pubDate>Sun, 23 Aug 2020 16:50:48 -0400</pubDate>
+      
+      <guid>https://discoverfoss.com/posts/yadm-01/</guid>
+      <description>&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/yadm-wrangle.png&#34;
+        alt=&#34;Wrangling dotfiles header graphic&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;Running a Linux distribution as your computer&amp;rsquo;s operating system opens up a world of tweaks, configurations, and personalizations. FOSS offers choices in desktop environments, window managers, and favorite programs. All these choices enable you to set up a computer environment that serves your unique needs. What happens when you want to recreate that same experience on a 2nd or 3rd computer that is also running a Linux distribution? You can manually copy each of your configuration files from one computer to another using a folder connected to &lt;a href=&#34;https://syncthing.net/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;syncthing&lt;/a&gt;
+ or a USB flash drive transferred with &lt;a href=&#34;https://en.wikipedia.org/wiki/Sneakernet&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;sneakernet&lt;/a&gt;
+. You can also manually edit for a second or third time the configuration files which contain your tweaks. These methods will frustrate you when you accidentally write over one of your configuration files with an earlier version that lacks your latest tweaks or when you go to use your favorite keyboard shortcut and realize that you haven&amp;rsquo;t added that one to the system in front of you. I lived in this self imposed frustration until a few weeks ago.&lt;/p&gt;
+&lt;p&gt;As you can tell from my posts, I have enjoyed fluxbox on MX-Linux. In the past two months, I have edited the files in &lt;code&gt;$HOME/.fluxbox&lt;/code&gt;. When I decided to switch my spare work computer to MX-Fluxbox, I knew that I needed a solution to keep my configuration files synced between my work and home computers. My previous solution used four simple bash scripts that executed simple rsync commands to either move files from a USB flash drive or copy files to the same thumb drive. More than once I ran the wrong rsync script or failed to run the correct script when I booted the computer and started making changes. This ended up deleting my preferred configuration files. Version control systems by design keep your files synced between different computers, and have tools to merge conflicts when they occur. I had failed to look for solutions that would help me wrangle my configuration files or as they are commonly called &amp;ldquo;dotfiles.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;Also by design Linux distributions and the software that run on top of them use simple text files to store their configuration tweaks. Often these files are prefaced with a &lt;code&gt;.&lt;/code&gt; or live in a directory that is a dot-directory like the example I gave above
+&lt;code&gt;$HOME/.fluxbox&lt;/code&gt;. Here are common dotfiles and dot directories found in your $HOME directory.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.bashrc
+.profile
+.vimrc
+$HOME/.config/
+$HOME/.ssh/
+$HOME/.gitconfig/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;FOSS programmers have given us amazing choices to use when wrangling our dotfiles. You can try &lt;a href=&#34;https://github.com/thoughtbot/rcm&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;rcm&lt;/a&gt;
+ from the amazing coders at &lt;a href=&#34;https://thoughtbot.com/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Thoughtbot&lt;/a&gt;
+. &lt;a href=&#34;https://github.com/technicalpickles/homesick&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Homesick&lt;/a&gt;
+ seems to have its fans. Besides being a french word that I probably shouldn&amp;rsquo;t attempt to say out load &lt;a href=&#34;https://www.chezmoi.io/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Chezmoi&lt;/a&gt;
+ can take your dotfile management to a whole new level. This tutorial by Ryan Walter will get you started with this powerful tool &lt;a href=&#34;https://fedoramagazine.org/take-back-your-dotfiles-with-chezmoi/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;&amp;ldquo;Take back your dotfiles with Chezmoi&amp;rdquo;&lt;/a&gt;
+. You can find others that I failed to mention, but I like &lt;a href=&#34;https://yadm.io/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;yadm&lt;/a&gt;
+ as my dotfile wrangler.&lt;/p&gt;
+&lt;p&gt;Each of the above mentioned tools use &lt;em&gt;git&lt;/em&gt; for version control, but wrangle dotfiles differently. I decided to avoid tools that depend on symlinks. This took rcm and homesick out of the running. I recognized the power in Chezmoi, but tapping into that power would require adapting to a new workflow for editing my dotfiles. I like to edit my dotfiles by using whatever text editor I feel like using in the moment. Chezmoi requires you to edit your config files using the chezmoi command or at least use an alias or a shortcut. Yadm doesn&amp;rsquo;t get involved while editing dotfiles. Instead if just keeps track of when you edit a dotfile and if it has been synced to the remote repository. Basically, &lt;em&gt;yadm&lt;/em&gt; is a wrapper for &lt;em&gt;git&lt;/em&gt; that enables you to use your $HOME directory as your git repo, which it manages for you. Yadm won&amp;rsquo;t automatically add all of the files in your $HOME directory, that would be disastrous. You can add specific dotfiles and dot directories that live in your $HOME directory. To get started, go to the &lt;a href=&#34;https://yadm.io/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;yadm site&lt;/a&gt;
+. Read their documentation, and while you are there admire their beautifully executed modern web page. You can run through the &lt;a href=&#34;https://yadm.io/docs/overview#&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;basics&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;Besides the excellent docs above, I would like to highlight a few things that tripped me up after installing yadm. I would also like to note that some of these issues may not occur if you are using the latest version of yadm. Yadm 2.5 was released recently on their GitHub page, but the version I used from the Debian stable repo is yadm 1.12. There have been significant changes to yadm 2.0 and above. Some features mentioned in their documentation may need a more recent version.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Install git and configure git before using yadm to avoid issues. You set up git with the following commands.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;	$ git config --global user.name &amp;quot;John Doe&amp;quot;
+	$ git config --global user.email johndoe@example.com
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Because yadm is a wrapper for git, error messages will contain &lt;em&gt;git&lt;/em&gt; commands and flags.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This confused me when I first started using yadm. I would see those error messages, and I would copy the suggested solution exactly into the terminal and run the command, but often it returned the error &lt;code&gt;fatal: not a git repository (or any of the parent directories): .git&lt;/code&gt;. I would get that error message because I was trying to run a git command inside my &lt;code&gt;$HOME&lt;/code&gt; directory which is not a git repository. However, it is an easy fix to replace &lt;em&gt;git&lt;/em&gt; with &lt;em&gt;yadm&lt;/em&gt; and the command would run as expected.&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Yadm documentation mentions the step of connecting your local yadm managed dotfiles with a remote git repository on &lt;a href=&#34;https://github.com/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Github&lt;/a&gt;
+ or &lt;a href=&#34;https://about.gitlab.com/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Gitlab&lt;/a&gt;
+ or your own self hosted git server solution. After I connected my local git repo created with yadm to my GitHub repo, new issues arose.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I will be the first to admit that my &lt;em&gt;git foo&lt;/em&gt; is not strong. You might find a different solution that avoids this issue completely. My normal workflow with git repositories is to create a new repository on Github, clone the repository to my local machine, and then add files and push those files up to the Github hosted repository. Because you are using yadm to manage dotfiles in your home directory, I had to use a different workflow. Using yadm I initialized the git repository on my local machine. I created a &amp;ldquo;dotfiles&amp;rdquo; repository on Github that I intended to use with yadm. After I added my Github dotfiles repository as the &lt;em&gt;origin master&lt;/em&gt;  I wanted to start pushing my files up to Github, but the following command failed.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ yadm push -u origin master
+To github.com:mowestusa/dotfiles.git
+! [rejected]        master -&amp;gt; master (non-fast-forward)
+error: failed to push some refs to &#39;git@github.com:mowestusa/dotfiles.git&#39;
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: &#39;git pull ...&#39;) before pushing again.
+hint: See the &#39;Note about fast-forwards&#39; in &#39;git push --help&#39; for details.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Okay, no problem, I will just run &lt;code&gt;yadm pull&lt;/code&gt; and everything will be okay, but it wasn&amp;rsquo;t.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ yadm pull origin master
+From github.com:mowestusa/dotfiles
+ * branch            master     -&amp;gt; FETCH_HEAD
+fatal: refusing to merge unrelated histories
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now I&amp;rsquo;m stuck. I can&amp;rsquo;t &lt;em&gt;push&lt;/em&gt; or &lt;em&gt;pull&lt;/em&gt; to or from the Github hosted repository. If you have sharper &lt;em&gt;git foo&lt;/em&gt;, you will recognize the problem immediately. In my normal workflow this never happens, because I start by creating an empty repository on Github, I clone that empty repository to my local computer, and then I begin filling that empty directory with files that I want to manage with git. In my normal workflow I never run into an unrelated histories issue because I&amp;rsquo;m not trying to connect two git repositories that have different initialization times. Because I created the local git repository using yadm and the remote git repository using GitHub&amp;rsquo;s interface, I created two different repos with two different histories. Thankfully, the fix was simple.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ yadm pull origin master --allow-unrelated-histories
+From github.com:mowestusa/dotfiles
+ * branch            master     -&amp;gt; FETCH_HEAD
+Merge made by the &#39;recursive&#39; strategy.
+README.md | 2 ++
+1 file changed, 2 insertions(+)
+create mode 100644 README.md
+
+$ yadm push -u origin master
+Enumerating objects: 741, done.
+Counting objects: 100% (741/741), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (694/694), done.
+Writing objects: 100% (740/740), 9.49 MiB | 216.00 KiB/s, done.
+Total 740 (delta 36), reused 0 (delta 0)
+remote: Resolving deltas: 100% (36/36), done.
+To github.com:mowestusa/dotfiles.git
+master -&amp;gt; master
+Branch &#39;master&#39; set up to track remote branch &#39;master&#39; from &#39;origin&#39;.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The first command allowed those unrelated histories and merged the README.md file into the local repository. My &lt;code&gt;yadm push&lt;/code&gt; command was successful too. If you want to learn more about unrelated histories of git repositories you can start here with &lt;a href=&#34;https://docs.github.com/en/github/using-git/dealing-with-non-fast-forward-errors&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Github Documentation&lt;/a&gt;
+ or this &lt;a href=&#34;https://stackoverflow.com/questions/37937984/git-refusing-to-merge-unrelated-histories-on-rebase&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Stackoverflow Question&lt;/a&gt;
+. Now that I understand what is happening, I recognize the value of this git feature that protects against accidentally overwriting an important file. In this case the &lt;em&gt;README.md&lt;/em&gt; really wasn&amp;rsquo;t very important.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Yadm&lt;/em&gt; has plenty of features that I am not using. The other dotfile managers that I mention above provide similar functionality. Take a look at them, you might find that one of them works better with the way you work or the way your brain works. I believe &lt;em&gt;yadm&lt;/em&gt; works best for situations where you plan to run the same Linux Distribution, the same window manager or desktop environment, and the same FOSS programs on a regular basis between two different systems. Since I have been spending more time in MX-Linux and &lt;em&gt;yadm&lt;/em&gt; is in the Debian stable repos that also helped to sway my decision towards &lt;em&gt;yadm&lt;/em&gt;. What will you discover that works best for wrangling your dotfiles? Trust me. Skip the USB flash drive, cobbled-together rsync scripts, and sneakernet. There are better options.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Original header image by &lt;a href=&#34;https://pixabay.com/users/VViktor-5823236/?utm_source=link-attribution&amp;amp;amp;utm_medium=referral&amp;amp;amp;utm_campaign=image&amp;amp;amp;utm_content=2826195&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;VViktor&lt;/a&gt;
+ from &lt;a href=&#34;https://pixabay.com/?utm_source=link-attribution&amp;amp;amp;utm_medium=referral&amp;amp;amp;utm_campaign=image&amp;amp;amp;utm_content=2826195&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Pixabay&lt;/a&gt;
+. Image effects were created using the FOSS &lt;a href=&#34;https://krita.org/en/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Krita&lt;/a&gt;
+, &lt;a href=&#34;http://www.figlet.org/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;figlet&lt;/a&gt;
+, and &lt;a href=&#34;https://github.com/busyloop/lolcat&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;lolcat&lt;/a&gt;
+.&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <author>Steve (mowest)</author>
+      <title>MX-Fluxbox Pseudo Tiling</title>
+      <link>https://discoverfoss.com/posts/mxfb-pseudo-tiling/</link>
+      <pubDate>Tue, 18 Aug 2020 18:24:44 -0400</pubDate>
+      
+      <guid>https://discoverfoss.com/posts/mxfb-pseudo-tiling/</guid>
+      <description>&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/mxfb-pseudo-header.png&#34;
+        alt=&#34;MX-Fluxbox Pseudo Tiling Header Graphic&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;Eventually the experienced FOSS user will discover tiling window managers. Similar to fluxbox, tiling window managers are light weight on resources, but they might need additional customization to enable features that come turned on automatically in desktop environments like &lt;a href=&#34;https://www.gnome.org/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Gnome&lt;/a&gt;
+, &lt;a href=&#34;https://kde.org/plasma-desktop&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Plasma&lt;/a&gt;
+, &lt;a href=&#34;https://mate-desktop.org/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Mate&lt;/a&gt;
+, and &lt;a href=&#34;https://www.xfce.org/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;XFCE&lt;/a&gt;
+. Tiling window managers include FOSS like &lt;a href=&#34;https://awesomewm.org/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Awesome&lt;/a&gt;
+, &lt;a href=&#34;https://xmonad.org/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Xmonad&lt;/a&gt;
+, &lt;a href=&#34;https://i3wm.org/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;i3&lt;/a&gt;
+, and &lt;a href=&#34;https://herbstluftwm.org/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;herbstluftwm&lt;/a&gt;
+ just to name a few. Tiling window managers use keyboard shortcuts to quickly arrange your program windows into tiled layouts to make the most of your screen real estate. Fluxbox is considered a floating window manager. This means that your program windows will not rearrange as you open new programs to fill up the space on your screen, but instead new program windows layer on top of one another concealing portions of the program window below it.&lt;/p&gt;
+&lt;p&gt;I have used tiling window managers in the past. I can see their appeal especially if you often work with multiple programs open where you would like to see what they are displaying at all times. I can also see their appeal in enabling workflows that help users work quickly and efficiently while keeping their hands on the keyboard and decreasing the need to use a mouse or touch pad. Personally, my brain seems to work better with floating window managers which have a similar behavior when compared to Gnome, Plasma, Mate, and XFCE. &lt;a href=&#34;https://ubuntu-mate.org/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Ubuntu Mate&lt;/a&gt;
+ introduced me to the concept of pseudo tiling in a floating window manager. You will notice this behavior in other operating systems or in some desktop environments. Often with the mouse you can &amp;ldquo;snap&amp;rdquo; your window to the left or right side of the screen so that it takes up 50% of the screen. Ubuntu Mate took this concept a step further. They had window snapping, but through keyboard shortcuts they enabled you to quickly tile your windows to cover either half of the screen or a quarter of the screen. In a matter of seconds you could move four program windows into the four corners of the screen. Sometimes this behavior is mapped to keyboard shortcuts that use the keys in a 10 keypad on the right side of a full keyboard. Ubuntu Mate had this behavior mapped to sensible keyboard shortcuts that work with smaller laptop keyboards that lack a 10 keypad.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s see how you can add pseudo tiling to fluxbox using most of the keyboard shortcuts from Ubuntu Mate. Open the keys file in your .fluxbox folder in your home directory. Then add the lines below. After saving the keys file you will need to restart fluxbox in order to use the new keyboard shortcuts.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;### PSEUDO TILING WINDOWS ###
+
+# Make active window 1/2 of the screen
+Mod4 Left :MacroCmd {ResizeTo 50% 100%} {MoveTo 00 00 Left}
+Mod4 Right :MacroCmd {ResizeTo 50% 100%} {MoveTo 00 00 Right}
+Mod4 Up :MacroCmd {ResizeTo 100% 50%} {MoveTo 00 00 Up}
+Mod4 Down :MacroCmd {ResizeTo 100% 50%} {MoveTo 00 00 Bottom}
+
+# Make active window 1/4 of the screen on the upper left
+Alt Mod4 Left :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 Up}
+Alt Mod4 Right :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 TopRight}
+Control Mod4 Left :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 BottomLeft}
+Control Mod4 Right :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 BottomRight}
+
+# toggle active window: Maximized/ last size
+Mod4 End :ToggleCmd {Maximize} {Restore}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Thanks to the power of MacroCmd in the fluxbox keys file, you can resize the active window and move it anywhere with a keyboard shortcut. The first set resizes the window either to 50% wide and 100% high or 100% wide and 50% high. The command then moves the window either to the left, right, top, or bottom of the screen. The second set resizes the windows to a quarter of the size of the screen and moves them into one of the four corners. I like the final keyboard shortcut which quickly maximizes the window to fill the whole screen.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;For those who have used Ubuntu Mate&amp;rsquo;s pseudo tiling, you will notice that two of the keyboard shortcuts are different. In Ubuntu Mate the keyboard shortcuts that enable you to put a quarter sized window into the lower corners use the key combinations: &amp;ldquo;Shift Alt Mod4 Left&amp;rdquo; and &amp;ldquo;Shift Alt Mod4 Right.&amp;rdquo; Although, fluxbox allows the use of &amp;ldquo;Shift&amp;rdquo; as a modifier key in keyboard shortcuts, there seems to be a bug in fluxbox that prevents &amp;ldquo;Shift&amp;rdquo; from working when it is paired with arrow keys. So an easy fix was to use the &amp;ldquo;Control&amp;rdquo; key as a modifier key instead.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;08252020-correction-to-the-paragraph-above&#34;&gt;08/25/2020 CORRECTION to the paragraph above&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What I thought was a bug in fluxbox, was caused by a default setting found in MX-Linux in the &lt;code&gt;/etc/default/keyboard&lt;/code&gt; file. In that file you will find the following line.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;XKBOPTIONS=&amp;quot;grp:alt_shift_toggle,terminate:ctrl_alt_bksp,grp_led:scroll&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Removing &amp;ldquo;grp:alt_shift_toggle&amp;rdquo; as shown below, will cause &amp;ldquo;Shift&amp;rdquo; to work as expected in your fluxbox keyboard shortcuts.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;XKBOPTIONS=&amp;quot;terminate:ctrl_alt_bksp,grp_led:scroll&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Now I have my fluxbox 1/4 pseudo tiling shortcuts matched to Ubuntu Mate.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;# Make active window 1/4 of the screen on the upper left
+Alt Mod4 Left :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 Up}
+Alt Mod4 Right :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 TopRight}
+Alt Shift Mod4 Left :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 BottomLeft}
+Alt Shift Mod4 Right :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 BottomRight}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Personally, these keyboard shortcuts give me all of the tiling options that I need in my workflow. Of course, you can tweak these shortcuts to set up some of the default layouts used in a true tiling window manager. I wanted to share this fluxbox trick to show you all that fluxbox can do. If you would like other ideas for keyboard shortcuts that you can use to set up pseudo tiling, I would like to encourage you to head over to this &lt;a href=&#34;https://forum.mxlinux.org/viewtopic.php?f=143&amp;amp;t=55779&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;forum post&lt;/a&gt;
+ in the MX-Linux forum where I got the inspiration for my take on pseudo tiling.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Original images used in the article header are by &lt;a href=&#34;https://pixabay.com/users/analogicus-8164369/?utm_source=link-attribution&amp;amp;amp;utm_medium=referral&amp;amp;amp;utm_campaign=image&amp;amp;amp;utm_content=4243189&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;analogicus&lt;/a&gt;
+ from &lt;a href=&#34;https://pixabay.com/?utm_source=link-attribution&amp;amp;amp;utm_medium=referral&amp;amp;amp;utm_campaign=image&amp;amp;amp;utm_content=4243189&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Pixabay&lt;/a&gt;
+ and &lt;a href=&#34;https://www.flickr.com/photos/133825397@N08/39830472585&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;herbstluftwm-tiling-window-manager&lt;/a&gt;
+ by &lt;a href=&#34;https://www.flickr.com/photos/133825397@N08&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;laboratoriolinux&lt;/a&gt;
+ is licensed under &lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/2.0/?ref=ccsearch&amp;amp;atype=html&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;CC BY-NC-SA 2.0&lt;/a&gt;
+ and a screenshot by me of my lovely MX-Fluxbox desktop.&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <author>Steve (mowest)</author>
+      <title>MX-Fluxbox Window Grouping</title>
+      <link>https://discoverfoss.com/posts/mxfb-window-grouping/</link>
+      <pubDate>Sun, 16 Aug 2020 22:59:04 -0400</pubDate>
+      
+      <guid>https://discoverfoss.com/posts/mxfb-window-grouping/</guid>
+      <description>&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/mxfb-window-grouping.png&#34;
+        alt=&#34;MXFB Window Grouping Header&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;When you hang around technology enthusiasts who love to be productive on their computers, you might hear the term &amp;ldquo;workflow.&amp;rdquo; Workflows tend to be as different as the individuals who establish their personal workflow. In FOSS communities individuals will sing their praises of their desktop environment often because they like its default workflow or it fits their preferred workflow. Perhaps, I&amp;rsquo;m an odd duck, but I have found &amp;ldquo;workflows&amp;rdquo; that work for me in all the major desktop environments. So I feel comfortable in Gnome, Mate, XFCE, Plasma, and even LXQT. These desktop environments have sufficent features and options to make working in them a joy. With multiple workspaces or snapping windows to the edges of your desktop, in a few seconds you can have you desktop set up for a productive workflow.&lt;/p&gt;
+&lt;p&gt;Since I started dabbling in Linux and FOSS in the early 2000&amp;rsquo;s, fluxbox quickly found a special place in my Linux installs. As a light weight window manager it made my old systems crackle with renewed speed. Yet, fluxbox has some fun tricks for a lowly window manager that some full desktop environments haven&amp;rsquo;t implimented yet. Today, I will introduce you to window grouping in fluxbox.&lt;/p&gt;
+&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/mxfb-windowgroup-screenshot.png&#34;
+        alt=&#34;Window Group Screenshot&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;Fluxbox enables you to group windows of any program together into a single window. In the screenshot above, I have a window group of all the tools I&amp;rsquo;m using to create this blog post. It has Featherpad (text editor), Thunar (file manager), nomacs (image viewer), and a terminal for running the appropriate hugo and git commands to publish this blog. You might notice from the screenshot above that the fluxbox toolbar shows that Firefox is open. However, Firefox is on a different workspace from the four programs that I have grouped together. On the fluxbox toolbar it shows the grouped windows as just one open program.&lt;/p&gt;
+&lt;p&gt;Window grouping feels familiar because we open multiple tabs in a web browser populated with our web email client, search site, and social media platform. Fluxbox enables you to have the same workflow you are used to using when you use a multiple of web based applications, but now you can have multiple tabs of your favorite FOSS programs and tools. Window grouping helps me make the most of my small screen on my old laptop. The system I&amp;rsquo;m using to create this post has a screen resolution of 1280x800. With window grouping I can full screen all of the apps that I mentioned above and simply switch between them either by clicking on their &amp;ldquo;tab&amp;rdquo; in the window title bar or by using the keyboard shortcut of the Super(Called the Windows or Command Key on most systems and referred to as Mod4 in the fluxbox keys file or documentation)+TAB to go to the next tabbed window in the group. I can use Super+Shift+TAB to go to the previous tabbed window in the group.&lt;/p&gt;
+&lt;p&gt;Could I do something similar with four workspaces and maximizing each of the programs on their own workspace? Could I just have all four programs on the same workspace maximized and switch between them using Alt+TAB or Alt+Shift+TAB or by clicking on their icon in the fluxbox toolbar? Yes, I could. I&amp;rsquo;m not prepared to say that using fluxbox window grouping beats all of those options or other workflows offered in different window managers or desktop environments. FOSS offers a world of choices, and different choices will click with different users. I have presented a neat trick that you might enjoy if you choose to run fluxbox on your computer.&lt;/p&gt;
+&lt;p&gt;If you enjoy fluxbox tips and tricks, then check back because I have more planned for future posts. Enjoy your discoveries in FOSS this week.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The header image of this article started with a base image by &lt;a href=&#34;https://pixabay.com/users/Sponchia-443272/?utm_source=link-attribution&amp;amp;amp;utm_medium=referral&amp;amp;amp;utm_campaign=image&amp;amp;amp;utm_content=627031&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Christine Sponchia&lt;/a&gt;
+ from &lt;a href=&#34;https://pixabay.com/?utm_source=link-attribution&amp;amp;amp;utm_medium=referral&amp;amp;amp;utm_campaign=image&amp;amp;amp;utm_content=627031&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Pixabay&lt;/a&gt;
+&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <author>Steve (mowest)</author>
+      <title>MX Fluxbox Puts a Shine on Old Code</title>
+      <link>https://discoverfoss.com/posts/mxfb-shine/</link>
+      <pubDate>Sun, 09 Aug 2020 22:38:24 -0400</pubDate>
+      
+      <guid>https://discoverfoss.com/posts/mxfb-shine/</guid>
+      <description>&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/mxfb-shine-header.png&#34;
+        alt=&#34;MXFB Article Header&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;Shame on me for taking this long to try MX Linux. My teenage son has been a code contributor to MX since before their October 2019 release of MX-19. He loved MX from his first install, but I dismissed it for my use. I have used distros based on Debian Stable and longed for updated packages. Honestly from a distance, MX appeared to be an eclectic mix of applications from different frameworks on top of a stable (dare I say boring) base of Debian and XFCE. Fedora Workstation gave me the new and shinny of Gnome 3 with their 6 month fast paced release cycle. Ubuntu Mate assembled a desktop and app selection that fits together like a beautifully tailored suit. Because I had never taken the time to run MX-Linux on my personal hardware, I just didn’t get it.&lt;/p&gt;
+&lt;p&gt;Our family’s summer vacation, a week away from home, was around the corner. I planned to bring an old laptop with Linux, but its SSD needed a fresh install. When I asked my son for suggestions of distros I should try out for a week, he suggested MX-19.2 which released at the beginning of June. At first I thought of dismissing his suggestion, but then I remembered. MX-Fluxbox had been released as a supported desktop. When I first got into Linux in the early 2000’s fluxbox quickly became my window manger of choice as I often ran older hardware that didn’t handle the heavy desktop environments as well. Longing for nostalgia and knowing that after this one week away I could wipe it and go back to a more familiar distro, I took the plunge.&lt;/p&gt;
+&lt;p&gt;After my first week with MX-19.2 spending the majority of my time in MX-Fluxbox, this unique distro will keep its SSD. MX-Fluxbox put a shine on the fluxbox code which was last updated in February 2015. Because MX-Fluxbox runs on top of the install of MX’s XFCE4 edition, you have access to the MX goodness inside of fluxbox. You can use the MX Tools, community created utilities, for system administration tasks. You have the suite of pre-installed applications to get work done inside of fluxbox.&lt;/p&gt;
+&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/mxfb-shine-mxtools.png&#34;
+        alt=&#34;MX Tools&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;You can’t fully appreciate MX without entering the welcoming and active community that they have nurtured. Spend time in their forum and you will discover that MX-Linux is a true labor of love. The community drives innovation. Community members roll up their sleeves to create the unique solutions that you only find in MX. The development team participates daily in the forum, and those interactions often lead them to implement the ideas of the community or mentor a community member to bring an idea into the next distro release. From my interactions with the community, I soon realized that MX application selection was not an eclectic mix, but the result of curation based upon community feedback. This leads to the inclusion of applications that offer features you may long for in the default installs of other distros. Nomacs, their choice for an image viewer, has simple editing features like cropping that I long to see in Gnome 3’s image viewer. MX wants to help users solve problems. MX Tools provide GUI utilities that fix system issues that normally involve manually editing configuration files with a text editor. MX provides a comprehensive manual to guide its users to solutions of common issues that arise as you run a Linux distro as your main operating system. Community package maintainers and testers ensure newer packages of the software you love on top of a Debian Stable base. Besides all of the goodness that MX bakes into their distro release, their active forum is filled with even more nuggets of tips and tricks.&lt;/p&gt;
+&lt;p&gt;Although I have touched on benefits that you would enjoy whether you log into MX-Fluxbox or their standard XFCE4 desktop, I want to encourage you to give MX-Fluxbox a try when you get to the login screen. Just click on the icon in the middle at the top of the screen and pick “Fluxbox”. You will find a polished introduction to a floating window manager. Applets in the toolbar will help you connect to WiFi, monitor your battery level, adjust your volume, and alert you to updates. MX-Fluxbox also comes with an application dock that you can configure with a community contributed tool. MX-Fluxbox comes preconfigured with just enough defaults so you can be productive or gradually customize fluxbox to your liking. Remember to head to the MX forum for even more tips and tricks. You will find some great ideas in the MX-Fluxbox sub forum to further customize this versatile window manager.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The original image in the article header was by &lt;a href=&#34;https://pixabay.com/users/markusspiske-670330/?utm_source=link-attribution&amp;amp;amp;utm_medium=referral&amp;amp;amp;utm_campaign=image&amp;amp;amp;utm_content=3690244&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Markus Spiske&lt;/a&gt;
+ from &lt;a href=&#34;https://pixabay.com/?utm_source=link-attribution&amp;amp;amp;utm_medium=referral&amp;amp;amp;utm_campaign=image&amp;amp;amp;utm_content=3690244&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Pixabay&lt;/a&gt;
+&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <author>Steve (mowest)</author>
+      <title>Introduction and Terms</title>
+      <link>https://discoverfoss.com/posts/introduction/</link>
+      <pubDate>Sun, 09 Aug 2020 11:01:08 -0400</pubDate>
+      
+      <guid>https://discoverfoss.com/posts/introduction/</guid>
+      <description>&lt;p&gt;Welcome to Discover FOSS or &amp;ldquo;Discover Free and Open Source Software.&amp;rdquo; I have enjoyed FOSS and running a variety of Linux distributions since the early 2000&amp;rsquo;s. I started Discover FOSS to document my own journey of discovery and to share that journey with the wider community of enthusiastic users. I hope to provide content that tells my story of discovery while at the same time introduces you to perhaps new corners of the free and open source world that you have not discovered on your own. Enjoy this journey of discovery with me.&lt;/p&gt;
+&lt;p&gt;Here are a few terms that I don&amp;rsquo;t plan to explain in every post. You can find FOSS that will run on Windows 10, Mac OS, Android, IOS, and of course on top of a Linux distribution. I will primarily write posts about using FOSS in a Linux distribution. Currently I run the following distributions with their links below. If you want to know more about those individual distributions I would head over to their websites.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://mxlinux.org/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;MX-Linux&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://getfedora.org/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Fedora&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ubuntu-mate.org/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Ubuntu Mate&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;When you see a reference to MX, I&amp;rsquo;m referring to the MX-Linux distribution. When I make references to the Mate desktop environment, I&amp;rsquo;m usually referring to my experience with it when using Ubuntu Mate. When I make references to Gnome that comes from my experience using it on Fedora.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

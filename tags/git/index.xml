@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <lastBuildDate>Sun, 30 Aug 2020 11:46:22 -0400</lastBuildDate><atom:link href="https://discoverfoss.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 22 Dec 2020 16:50:48 -0400</lastBuildDate><atom:link href="https://discoverfoss.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <author>Steve (mowest)</author>
       <title>ROXterm a Full Featured Terminal</title>
@@ -52,9 +52,9 @@
 . I do have one original in that collection that I created myself called &lt;strong&gt;Mountain&lt;/strong&gt; which is inspired by the &lt;strong&gt;mountain.vim&lt;/strong&gt; theme which you can find &lt;a href=&#34;https://github.com/TheNiteCoder/mountaineer.vim&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;here&lt;/a&gt;
 . It is a dark theme that I find pleasant to work with in vim and in ROXterm. To add colour schemes to ROXterm drop those configuration files in &lt;code&gt;~/.config/roxterm.sourceforge.net/Colours&lt;/code&gt;, and they will show up the next time you open ROXterm as optional colour schemes.&lt;/p&gt;
 &lt;p&gt;I have been enjoying my last month in ROXterm. No crashes, no weird glitches, and easy to customize, what&amp;rsquo;s not to love! Give it a try, or just explore your terminal emulator of choice. Most of them in Linux are rock solid and offer plenty of configuration to make you feel at home. My extra time in the CLI that you will hear about in my next blog article has been pleasant thanks to ROXterm in my daily workflow on Fedora 35 and in MX-21.&lt;/p&gt;
-&lt;p&gt;Original photo used in the article header comes from &lt;a href=&#34;https://unsplash.com/@benwhitephotography?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText%22&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Ben White&lt;/a&gt;
+&lt;p&gt;&lt;em&gt;Original photo used in the article header comes from &lt;a href=&#34;https://unsplash.com/@benwhitephotography?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText%22&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Ben White&lt;/a&gt;
  on &lt;a href=&#34;https://unsplash.com/s/photos/christmas-gift?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Unsplash&lt;/a&gt;
-. All other graphics were screenshots taken by me.&lt;/p&gt;
+. All other graphics were screenshots taken by me.&lt;/em&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -110,7 +110,7 @@ sudo chmod -R 777 /mnt/butter
 &lt;p&gt;&lt;em&gt;Could I have used the MX installer and assigned &lt;code&gt;/home&lt;/code&gt; to sdb1 without issues?&lt;/em&gt; Maybe, but I didn&amp;rsquo;t want to take the risk. This is more of a production machine that I use regularly at work to get things done. Although it would have been good to test the MX installer so I could offer feedback on its future development, I didn&amp;rsquo;t want to be without this computer for too long at work.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Are there easier ways to achieve what I accomplished?&lt;/em&gt; Possibly, but I was surprised how little I found in my Internet searches. I found information about creating a btrfs RAID1 array in different distros either during the install or post install, but I didn&amp;rsquo;t find a single article that talked about reattaching to a btrfs RAID1 array that already existed. Because of this I was convinced that when I did a clean install of the system, that I might destroy the bits that told the OS that the two drivers were in a RAID1 array. Clearly, I have much to learn about file systems, RAID arrays, and what happens during the creation of a file system on a disk and how those details are stored.&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;m hoping that the search engines will find this article and provide it as a resource to others who would like to do a clean install of their system, but would also like to preserve their &lt;code&gt;/home&lt;/code&gt; folder that rests on top of a btrfs RAID1 array.&lt;/p&gt;
-&lt;p&gt;The original pictures used in the header graphic for this article are the following:&lt;/p&gt;
+&lt;p&gt;*The original pictures used in the header graphic for this article are the following:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&amp;ldquo;Butter and sugar melt together&amp;rdquo; by jessicafm on &lt;a href=&#34;https://flickr.com/photos/jessicafm&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Flickr&lt;/a&gt;
  is licensed with CC BY 2.0. &lt;a href=&#34;https://creativecommons.org/licenses/by/2.0/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;A Copy of this License&lt;/a&gt;
@@ -118,7 +118,7 @@ sudo chmod -R 777 /mnt/butter
 &lt;li&gt;&lt;a href=&#34;https://mxlinux.org/art/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;MX Logo&lt;/a&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://btrfs.wiki.kernel.org/index.php/Main_Page&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Btrfs Logo&lt;/a&gt;
-&lt;/li&gt;
+*&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -139,7 +139,7 @@ sudo chmod -R 777 /mnt/butter
 &lt;ol&gt;
 &lt;li&gt;Make sure I have the latest version of Hugo on my local machine. Admittedly, because it is written in Golang and comes as a single binary this is pretty easy. On my Debian workstations, I download the released deb package and install using the simple command replacing the deb package name with the latest released version of Hugo.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;sudo apt install ./hugo_0.82.0_Linux-64bit.deb
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo apt install ./hugo_0.82.0_Linux-64bit.deb
 &lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
 &lt;li&gt;On Fedora, I have installed a COPR repo that has the latest version of Hugo, so every time there is an update, I pull down the latest Hugo version.&lt;/li&gt;
 &lt;/ul&gt;
@@ -192,6 +192,65 @@ sudo chmod -R 777 /mnt/butter
     
     <item>
       <author>Steve (mowest)</author>
+      <title>Wrangle Dotfiles Round 2</title>
+      <link>https://discoverfoss.com/posts/yadm-02/</link>
+      <pubDate>Tue, 22 Dec 2020 16:50:48 -0400</pubDate>
+      
+      <guid>https://discoverfoss.com/posts/yadm-02/</guid>
+      <description>&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/yadm-wrangle.png&#34;
+        alt=&#34;Wrangling dotfiles header graphic&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;What do the following technologies have in common?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1st Generation Raspberry Pi B with 512mb of RAM&lt;/li&gt;
+&lt;li&gt;Wireguard VPN&lt;/li&gt;
+&lt;li&gt;Git&lt;/li&gt;
+&lt;li&gt;Bash &amp;ldquo;if than elif fi&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;yadm&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Well, I kind of gave it away with the title to this article. These technologies have taken my management of configuration files to the next level. I have been able to implement the 2.0 version of managing my dotfiles, and I&amp;rsquo;m thrilled with the results. So, let me tell you about the time I have been spending in the Linux CLI lately.&lt;/p&gt;
+&lt;h2 id=&#34;raspberry-pi-1-b&#34;&gt;Raspberry Pi 1 B&lt;/h2&gt;
+&lt;p&gt;Released in Febuary 2012, it became the first mainstream RPi, and it was the first one that came into my possession. Its CPU runs at 700mhz, has 512mb of RAM, and only had two USB ports next to the ethernet port. Unlike the models that came after it, it didn&amp;rsquo;t even have the familiar 40 pin GPIO pins that have become one of the most familar features of the RPi single board computers. It doesn&amp;rsquo;t have wifi or bluetooth either. Yet, 4 and 1/2 years ago my son learned how to program in C++ on this RPi. Since the GUI was so slow and limited on that machine, he fell in love with the Linux CLI and vim as his text editor. My son has moved onto a Dell refurbished laptop and desktops that we salvaged from schools and a library that no longer of have uses for them. In fact, the vast majority of computer hardware that he and I run Linux on are what most people would consider ewaste, but we have breathed a second life into this older hardware. This old RPi was just sitting in the pile of unused hardware, and I wanted to find a way to give it purpose. First, I practiced setting it up as a server with just ssh running and applying the principles that I had learned from a number of articles that involve securing a Linux server. I applied those principles to a Debian server that I set up at the office running a web based CRM just on our Intranet with no access to the broader Internet. Because it just sips power, I decided to use the RPi as my network device that would wake on lan the Debian server so that it wasn&amp;rsquo;t on all of the time, but only when I needed it running. Okay all of that is working great, but what else could I do with it?&lt;/p&gt;
+&lt;p&gt;As I examined my computer collection I realized that I had the following systems that I was using regularly at work and at home.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Home: Main System (&amp;ldquo;Half Top&amp;rdquo; the bottom half of an HP Envy 17&amp;quot; Laptop that had a broken screen that I removed, and hooked up to a new 32&amp;quot; monitor through the HDMI port. This is my best speced system with an i7-7500U CPU, Nvidia GeForce 940MX, 16GB of RAM, and an upgraded 512GB SSD.) running Fedora 35 Workstation.&lt;/li&gt;
+&lt;li&gt;Home: Home Storage Server (Repurposed tower with the same motherboard, RAM, and power supply as mentioned in this &lt;a href=&#34;https://discoverfoss.com/posts/recycled-workstation/&#34;title=&#34;Recycled Workstation Build&#34;&gt;article&lt;/a&gt;
+ running Fedora 35 Server, but is rarely on.&lt;/li&gt;
+&lt;li&gt;Home: Old HP DV4 &amp;ldquo;Entertainment&amp;rdquo; Laptop running MX Linux 21, Fluxbox Edition. I enjoy taking this laptop when I&amp;rsquo;m on vacation, so it doesn&amp;rsquo;t get a lot of use, but I like it to mirror my recycled workstation that I have at work with my standing desk.&lt;/li&gt;
+&lt;li&gt;Work: 8 Year Old Toshiba Laptop running Windows 10 and Ubuntu LTS in WSL 2. I have a new system on order for work, but it hasn&amp;rsquo;t arrived yet.&lt;/li&gt;
+&lt;li&gt;Work: 11-12 Year Old Toshiba Laptop running Ubuntu Mate LTS and is hooked up to a projector for presentations.&lt;/li&gt;
+&lt;li&gt;Work: 11-12 Year Old Toshiba Laptop (twin of one above) running Debian and acting as my server that runs the web based CRM that I mentioned earlier.&lt;/li&gt;
+&lt;li&gt;Work: The Recycled Workstation that was mentioned above in the blog article that was referenced. I love this system which is what I use when I&amp;rsquo;m at my standing desk. This system is running MX Linux 21, the Fluxbox Edition.&lt;/li&gt;
+&lt;li&gt;Work: The Raspberry Pi 1 B&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Besides the Ubuntu Mate laptop that is attached to the projector, I like to have similar configurations on those systems. I like to have the same &lt;code&gt;.vimrc&lt;/code&gt; and &lt;code&gt;.bashrc&lt;/code&gt;. I also have been using ROXterm (see this &lt;a href=&#34;https://discoverfoss.com/posts/roxterm/&#34;title=&#34;ROXterm a Full Featured Terminal&#34;&gt;article&lt;/a&gt;
+ for more details), and I appreciate having the same configurations available on all of my systems for my terminal emulator. The last time I wrangled my dotfiles it was mostly so I could keep my two computers that were running MX Linux Fluxbox in sync with each other. I wanted the same keyboard shortcuts in both of my Fluxbox environments. I had planned to add my Fedora system into the mix, but it runs Gnome, and Fedora does things a bit differently than Debian, so I never figured out how I could bring those two worlds together until recently.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m trying to learn bash scripting, but I&amp;rsquo;m moving at a snail&amp;rsquo;s pace. Now with the 2.0 version of managing my dotfiles, I had some motivation to dive back into learning bash scripting. Little did I realize that I wouldn&amp;rsquo;t even need to leave the kiddie pool of bash scripting to accomplish what I wanted to do with my 2.0 version of dotfiles. I had the following goals with the 2.0 version of dotfile management.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Unify my configuration files so that I could have one system that would work on Fedora, MX, Debian, and Raspberry Pi OS. Since three out of those four are almost pure Debian that should make things easier.&lt;/li&gt;
+&lt;li&gt;Move my dotfiles off of Github. Yes, it is fun to show off your dotfiles on Github, but I always feared that I would accidently send a file with my secrets up to the Github repo and then my &amp;ldquo;git fu&amp;rdquo; would fail me when I tried to remove them. So to be on the safe side, I wanted my git repo to stay on one of my Intranets, either at home or work without access to the Internet.&lt;/li&gt;
+&lt;li&gt;Securely connect my home and work networks together without opening up Port 22 for ssh. I knew that this would involve setting up a VPN, but I wasn&amp;rsquo;t sure how to accomplish this piece. I&amp;rsquo;m doing some major network upgrades at work, so I contemplated waiting till I had that new equipment in place, but with the current climate of back orders and part shortages, I would try to use tools that I already had. This is when I remembered my RPi 1 B.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;wireguard-vpn-on-bullseye-raspberry-pi-os-with-pivpn&#34;&gt;Wireguard VPN on Bullseye Raspberry Pi OS with PiVPN&lt;/h2&gt;
+&lt;p&gt;I had heard great things about &lt;em&gt;Wireguard&lt;/em&gt; and &lt;em&gt;VPN&amp;rsquo;s&lt;/em&gt;, but I had never set one up, and I had no idea if the RPi 1 B could handle being my VPN connection point on my work network. It was time to install a fresh version of Raspberry Pi OS since the Bullseye version had come out at the end of October 2021. I wiped the SD card, installed the latest version of Raspberry Pi OS Lite, Bullseye Edition. I did my RPi hardening that I have done in the past to make the RPi more secure. Then I ran the PiVPN install script which further hardens the Raspberry Pi OS against possible attacks. I created my Wireguard client configuration files for my home systems, but this is where I got stuck for a little bit.&lt;/p&gt;
+&lt;p&gt;Although, Network Manager (the Linux utility that most distros use to access and control the system&amp;rsquo;s network interfaces) supports Wireguard, their are not GUI&amp;rsquo;s on Linux yet. As an example, it is easy to import an OpenVPN configuration file in Gnome on Fedora 35, but the GUI in Gnome 41 doesn&amp;rsquo;t recognize Wireguard configuration files yet.&lt;/p&gt;
+&lt;p&gt;FOSS programmers have given us amazing choices to use when wrangling our dotfiles. You can try &lt;a href=&#34;https://github.com/thoughtbot/rcm&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;rcm&lt;/a&gt;
+ from the amazing coders at &lt;a href=&#34;https://thoughtbot.com/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Thoughtbot&lt;/a&gt;
+. &lt;a href=&#34;https://github.com/technicalpickles/homesick&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Homesick&lt;/a&gt;
+ seems to have its fans. Besides being a french word that I probably shouldn&amp;rsquo;t attempt to say out load &lt;a href=&#34;https://www.chezmoi.io/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Chezmoi&lt;/a&gt;
+ can take your dotfile management to a whole new level. This tutorial by Ryan Walter will get you started with this powerful tool &lt;a href=&#34;https://fedoramagazine.org/take-back-your-dotfiles-with-chezmoi/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;&amp;ldquo;Take back your dotfiles with Chezmoi&amp;rdquo;&lt;/a&gt;
+. You can find others that I failed to mention, but I like &lt;a href=&#34;https://yadm.io/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;yadm&lt;/a&gt;
+ as my dotfile wrangler.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Original header image by &lt;a href=&#34;https://pixabay.com/users/VViktor-5823236/?utm_source=link-attribution&amp;amp;amp;utm_medium=referral&amp;amp;amp;utm_campaign=image&amp;amp;amp;utm_content=2826195&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;VViktor&lt;/a&gt;
+ from &lt;a href=&#34;https://pixabay.com/?utm_source=link-attribution&amp;amp;amp;utm_medium=referral&amp;amp;amp;utm_campaign=image&amp;amp;amp;utm_content=2826195&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Pixabay&lt;/a&gt;
+. Image effects were created using the FOSS &lt;a href=&#34;https://krita.org/en/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Krita&lt;/a&gt;
+, &lt;a href=&#34;http://www.figlet.org/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;figlet&lt;/a&gt;
+, and &lt;a href=&#34;https://github.com/busyloop/lolcat&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;lolcat&lt;/a&gt;
+.&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <author>Steve (mowest)</author>
       <title>Recycled Workstation Build</title>
       <link>https://discoverfoss.com/posts/recycled-workstation/</link>
       <pubDate>Sun, 06 Dec 2020 22:18:27 -0500</pubDate>
@@ -222,7 +281,7 @@ sudo chmod -R 777 /mnt/butter
 &lt;p&gt;In the picture above you might notice that the new workstation has an HP 1018 printer and a Fujitsu ScanSnap 1300s attached to it. For the first time ever, I have the Fujitsu ScanSnap 1300s working on Linux. This new system has opened a new world of possibilities in using hardware with FOSS.&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;m enjoying this new workstation so much, that I have found myself at my standing desk for a longer period of my work day than in the past. I do a lot of teaching in my profession, and I&amp;rsquo;m enjoying having LibreOffice Writer or Impress open on one screen while gathering information and looking things up on the other screen. I find myself using the rightside dock in LibreOffice Writer and Impress often, especially when I&amp;rsquo;m in Impress, so having a full 1680x1050 just for those programs is nice.&lt;/p&gt;
 &lt;p&gt;The two Dell monitors have also eliminated another pain point that I had before with my former standing desk workstation. I have eliminated the Acer 223W monitor. This monitor does not work well with Linux. Every Linux distribution that I have tried fails to correctly identify the monitor&amp;rsquo;s refresh rate as 60Hz. Instead every distribution believes the refresh rate needs to be 59Hz. Because of this misidentification of the refresh rate, the screen will be off center when Linux boots to the login manager or into a desktop environment. You can fix this by running a few &lt;code&gt;xrandr&lt;/code&gt; commands like the ones below.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;xrandr --newmode &amp;quot;1680x1050_60.00&amp;quot;  146.25  1680 1784 1960 2240  1050 1053 1059 1089 -hsync +vsync
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;xrandr --newmode &amp;quot;1680x1050_60.00&amp;quot;  146.25  1680 1784 1960 2240  1050 1053 1059 1089 -hsync +vsync
 xrandr --addmode VGA-1 1680x1050_60.00
 xrandr --output  VGA-1 --mode 1680x1050_60.00
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You may need to adjust &lt;code&gt;VGA-1&lt;/code&gt; to &lt;code&gt;HDMI-1&lt;/code&gt; or something else depending on how xrandr identifies your connection to that monitor. Typically, I place those lines above along with additional flags to identify the primary monitor and the physical arrangment of the monitors when I have used the Acer 223W in a dual monitor configuration. Depending on the desktop environment that I&amp;rsquo;m using, I auto run a script with these lines so that when the desktop environment is loaded the screen is no longer off center. Although this fixes the display, I found it to be annoying. Thankfully, my Dell monitors are correctly identified by Linux, and I no longer have that annoying paper cut issue.&lt;/p&gt;
@@ -445,7 +504,7 @@ $HOME/.gitconfig/
 &lt;ol&gt;
 &lt;li&gt;Install git and configure git before using yadm to avoid issues. You set up git with the following commands.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;	$ git config --global user.name &amp;quot;John Doe&amp;quot;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;	$ git config --global user.name &amp;quot;John Doe&amp;quot;
 	$ git config --global user.email johndoe@example.com
 &lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;2&#34;&gt;
 &lt;li&gt;Because yadm is a wrapper for git, error messages will contain &lt;em&gt;git&lt;/em&gt; commands and flags.&lt;/li&gt;

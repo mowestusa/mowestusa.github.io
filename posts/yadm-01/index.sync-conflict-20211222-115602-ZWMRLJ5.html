@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>Wrangle Dotfiles with Yadm&nbsp;&ndash;&nbsp;Discover FOSS</title><link rel="stylesheet" href="/css/core.min.b4a726dedca10dc1494687d837d0229a0aff4f990f8ef46b2f6c552a45af470a4ec20828002b85aa4ad7fb44ed927db9.css" integrity="sha384-tKcm3tyhDcFJRofYN9Aimgr/T5kPjvRrL2xVKkWvRwpOwggoACuFqkrX&#43;0Ttkn25"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Wrangle Dotfiles with Yadm" /><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#00a300">
+<meta name="theme-color" content="#ffffff">
+<body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><img class="site logo" src="/img/discover-100px.png" alt /><span class="site name">Discover FOSS</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">Categories</a><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/index%2exml">RSS</a></nav></div></span></div><div class="site slogan"><span class="title">Discover Free and Open Source Software</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">Wrangle Dotfiles with Yadm</h1><p class="article date">2020-08-23</p></section><article class="article markdown-body"><p><img  src="/img/yadm-wrangle.png"
+        alt="Wrangling dotfiles header graphic"/></p>
+<p>Running a Linux distribution as your computer&rsquo;s operating system opens up a world of tweaks, configurations, and personalizations. FOSS offers choices in desktop environments, window managers, and favorite programs. All these choices enable you to set up a computer environment that serves your unique needs. What happens when you want to recreate that same experience on a 2nd or 3rd computer that is also running a Linux distribution? You can manually copy each of your configuration files from one computer to another using a folder connected to <a href="https://syncthing.net/"target="_blank" rel="noopener noreferrer">syncthing</a>
+ or a USB flash drive transferred with <a href="https://en.wikipedia.org/wiki/Sneakernet"target="_blank" rel="noopener noreferrer">sneakernet</a>
+. You can also manually edit for a second or third time the configuration files which contain your tweaks. These methods will frustrate you when you accidentally write over one of your configuration files with an earlier version that lacks your latest tweaks or when you go to use your favorite keyboard shortcut and realize that you haven&rsquo;t added that one to the system in front of you. I lived in this self imposed frustration until a few weeks ago.</p>
+<p>As you can tell from my posts, I have enjoyed fluxbox on MX-Linux. In the past two months, I have edited the files in <code>$HOME/.fluxbox</code>. When I decided to switch my spare work computer to MX-Fluxbox, I knew that I needed a solution to keep my configuration files synced between my work and home computers. My previous solution used four simple bash scripts that executed simple rsync commands to either move files from a USB flash drive or copy files to the same thumb drive. More than once I ran the wrong rsync script or failed to run the correct script when I booted the computer and started making changes. This ended up deleting my preferred configuration files. Version control systems by design keep your files synced between different computers, and have tools to merge conflicts when they occur. I had failed to look for solutions that would help me wrangle my configuration files or as they are commonly called &ldquo;dotfiles.&rdquo;</p>
+<p>Also by design Linux distributions and the software that run on top of them use simple text files to store their configuration tweaks. Often these files are prefaced with a <code>.</code> or live in a directory that is a dot-directory like the example I gave above
+<code>$HOME/.fluxbox</code>. Here are common dotfiles and dot directories found in your $HOME directory.</p>
+<pre><code>.bashrc
+.profile
+.vimrc
+$HOME/.config/
+$HOME/.ssh/
+$HOME/.gitconfig/
+</code></pre>
+<p>FOSS programmers have given us amazing choices to use when wrangling our dotfiles. You can try <a href="https://github.com/thoughtbot/rcm"target="_blank" rel="noopener noreferrer">rcm</a>
+ from the amazing coders at <a href="https://thoughtbot.com/"target="_blank" rel="noopener noreferrer">Thoughtbot</a>
+. <a href="https://github.com/technicalpickles/homesick"target="_blank" rel="noopener noreferrer">Homesick</a>
+ seems to have its fans. Besides being a french word that I probably shouldn&rsquo;t attempt to say out load <a href="https://www.chezmoi.io/"target="_blank" rel="noopener noreferrer">Chezmoi</a>
+ can take your dotfile management to a whole new level. This tutorial by Ryan Walter will get you started with this powerful tool <a href="https://fedoramagazine.org/take-back-your-dotfiles-with-chezmoi/"target="_blank" rel="noopener noreferrer">&ldquo;Take back your dotfiles with Chezmoi&rdquo;</a>
+. You can find others that I failed to mention, but I like <a href="https://yadm.io/"target="_blank" rel="noopener noreferrer">yadm</a>
+ as my dotfile wrangler.</p>
+<p>Each of the above mentioned tools use <em>git</em> for version control, but wrangle dotfiles differently. I decided to avoid tools that depend on symlinks. This took rcm and homesick out of the running. I recognized the power in Chezmoi, but tapping into that power would require adapting to a new workflow for editing my dotfiles. I like to edit my dotfiles by using whatever text editor I feel like using in the moment. Chezmoi requires you to edit your config files using the chezmoi command or at least use an alias or a shortcut. Yadm doesn&rsquo;t get involved while editing dotfiles. Instead if just keeps track of when you edit a dotfile and if it has been synced to the remote repository. Basically, <em>yadm</em> is a wrapper for <em>git</em> that enables you to use your $HOME directory as your git repo, which it manages for you. Yadm won&rsquo;t automatically add all of the files in your $HOME directory, that would be disastrous. You can add specific dotfiles and dot directories that live in your $HOME directory. To get started, go to the <a href="https://yadm.io/"target="_blank" rel="noopener noreferrer">yadm site</a>
+. Read their documentation, and while you are there admire their beautifully executed modern web page. You can run through the <a href="https://yadm.io/docs/overview#"target="_blank" rel="noopener noreferrer">basics</a>
+.</p>
+<p>Besides the excellent docs above, I would like to highlight a few things that tripped me up after installing yadm. I would also like to note that some of these issues may not occur if you are using the latest version of yadm. Yadm 2.5 was released recently on their GitHub page, but the version I used from the Debian stable repo is yadm 1.12. There have been significant changes to yadm 2.0 and above. Some features mentioned in their documentation may need a more recent version.</p>
+<ol>
+<li>Install git and configure git before using yadm to avoid issues. You set up git with the following commands.</li>
+</ol>
+<pre><code>	$ git config --global user.name &quot;John Doe&quot;
+	$ git config --global user.email johndoe@example.com
+</code></pre><ol start="2">
+<li>Because yadm is a wrapper for git, error messages will contain <em>git</em> commands and flags.</li>
+</ol>
+<p>This confused me when I first started using yadm. I would see those error messages, and I would copy the suggested solution exactly into the terminal and run the command, but often it returned the error <code>fatal: not a git repository (or any of the parent directories): .git</code>. I would get that error message because I was trying to run a git command inside my <code>$HOME</code> directory which is not a git repository. However, it is an easy fix to replace <em>git</em> with <em>yadm</em> and the command would run as expected.</p>
+<ol start="3">
+<li>Yadm documentation mentions the step of connecting your local yadm managed dotfiles with a remote git repository on <a href="https://github.com/"target="_blank" rel="noopener noreferrer">Github</a>
+ or <a href="https://about.gitlab.com/"target="_blank" rel="noopener noreferrer">Gitlab</a>
+ or your own self hosted git server solution. After I connected my local git repo created with yadm to my GitHub repo, new issues arose.</li>
+</ol>
+<p>I will be the first to admit that my <em>git foo</em> is not strong. You might find a different solution that avoids this issue completely. My normal workflow with git repositories is to create a new repository on Github, clone the repository to my local machine, and then add files and push those files up to the Github hosted repository. Because you are using yadm to manage dotfiles in your home directory, I had to use a different workflow. Using yadm I initialized the git repository on my local machine. I created a &ldquo;dotfiles&rdquo; repository on Github that I intended to use with yadm. After I added my Github dotfiles repository as the <em>origin master</em>  I wanted to start pushing my files up to Github, but the following command failed.</p>
+<pre><code>$ yadm push -u origin master
+To github.com:mowestusa/dotfiles.git
+! [rejected]        master -&gt; master (non-fast-forward)
+error: failed to push some refs to 'git@github.com:mowestusa/dotfiles.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+</code></pre>
+<p>Okay, no problem, I will just run <code>yadm pull</code> and everything will be okay, but it wasn&rsquo;t.</p>
+<pre><code>$ yadm pull origin master
+From github.com:mowestusa/dotfiles
+ * branch            master     -&gt; FETCH_HEAD
+fatal: refusing to merge unrelated histories
+</code></pre>
+<p>Now I&rsquo;m stuck. I can&rsquo;t <em>push</em> or <em>pull</em> to or from the Github hosted repository. If you have sharper <em>git foo</em>, you will recognize the problem immediately. In my normal workflow this never happens, because I start by creating an empty repository on Github, I clone that empty repository to my local computer, and then I begin filling that empty directory with files that I want to manage with git. In my normal workflow I never run into an unrelated histories issue because I&rsquo;m not trying to connect two git repositories that have different initialization times. Because I created the local git repository using yadm and the remote git repository using GitHub&rsquo;s interface, I created two different repos with two different histories. Thankfully, the fix was simple.</p>
+<pre><code>$ yadm pull origin master --allow-unrelated-histories
+From github.com:mowestusa/dotfiles
+ * branch            master     -&gt; FETCH_HEAD
+Merge made by the 'recursive' strategy.
+README.md | 2 ++
+1 file changed, 2 insertions(+)
+create mode 100644 README.md
+
+$ yadm push -u origin master
+Enumerating objects: 741, done.
+Counting objects: 100% (741/741), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (694/694), done.
+Writing objects: 100% (740/740), 9.49 MiB | 216.00 KiB/s, done.
+Total 740 (delta 36), reused 0 (delta 0)
+remote: Resolving deltas: 100% (36/36), done.
+To github.com:mowestusa/dotfiles.git
+master -&gt; master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+</code></pre>
+<p>The first command allowed those unrelated histories and merged the README.md file into the local repository. My <code>yadm push</code> command was successful too. If you want to learn more about unrelated histories of git repositories you can start here with <a href="https://docs.github.com/en/github/using-git/dealing-with-non-fast-forward-errors"target="_blank" rel="noopener noreferrer">Github Documentation</a>
+ or this <a href="https://stackoverflow.com/questions/37937984/git-refusing-to-merge-unrelated-histories-on-rebase"target="_blank" rel="noopener noreferrer">Stackoverflow Question</a>
+. Now that I understand what is happening, I recognize the value of this git feature that protects against accidentally overwriting an important file. In this case the <em>README.md</em> really wasn&rsquo;t very important.</p>
+<p><em>Yadm</em> has plenty of features that I am not using. The other dotfile managers that I mention above provide similar functionality. Take a look at them, you might find that one of them works better with the way you work or the way your brain works. I believe <em>yadm</em> works best for situations where you plan to run the same Linux Distribution, the same window manager or desktop environment, and the same FOSS programs on a regular basis between two different systems. Since I have been spending more time in MX-Linux and <em>yadm</em> is in the Debian stable repos that also helped to sway my decision towards <em>yadm</em>. What will you discover that works best for wrangling your dotfiles? Trust me. Skip the USB flash drive, cobbled-together rsync scripts, and sneakernet. There are better options.</p>
+<p><em>Original header image by <a href="https://pixabay.com/users/VViktor-5823236/?utm_source=link-attribution&amp;amp;utm_medium=referral&amp;amp;utm_campaign=image&amp;amp;utm_content=2826195"target="_blank" rel="noopener noreferrer">VViktor</a>
+ from <a href="https://pixabay.com/?utm_source=link-attribution&amp;amp;utm_medium=referral&amp;amp;utm_campaign=image&amp;amp;utm_content=2826195"target="_blank" rel="noopener noreferrer">Pixabay</a>
+. Image effects were created using the FOSS <a href="https://krita.org/en/"target="_blank" rel="noopener noreferrer">Krita</a>
+, <a href="http://www.figlet.org/"target="_blank" rel="noopener noreferrer">figlet</a>
+, and <a href="https://github.com/busyloop/lolcat"target="_blank" rel="noopener noreferrer">lolcat</a>
+.</em></p>
+</article><section class="article labels"><a class="category" href=/categories/tutorials/>Tutorials</a><a class="tag" href=/tags/mx-linux/>MX-Linux</a><a class="tag" href=/tags/fluxbox/>fluxbox</a><a class="tag" href=/tags/dotfiles/>dotfiles</a><a class="tag" href=/tags/yadm/>yadm</a></section><section class="article author"><img class="avatar" src="/img/myAvatar.png" alt><p class="name">Steve (mowest)</p><div class="bio">A free and open source enthusiast using these tools for work and fun.</div><div class="details"><a class="item" href="https://github.com/mowestusa" target="_blank" rel="noopener noreferrer"><span class="iconfont icon-github"></span>&nbsp;mowestusa</a><a class="item" href="mailto:mowestusa@pm.me" target="_blank" rel="noopener noreferrer"><span class="iconfont icon-email"></span>&nbsp;mowestusa@pm.me</a></div>
+</section>
+</div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/posts/using-hugo-learn/"><span class="iconfont icon-article"></span>Using Hugo to Learn Skills</a></p><p><a class="link" href="/posts/mxfb-pseudo-tiling/"><span class="iconfont icon-article"></span>MX-Fluxbox Pseudo Tiling</a></p></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</p>
+    <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
+        target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank" rel="noopener noreferrer">Notepadium</a></p></div>
+</section></body>
+
+</html>

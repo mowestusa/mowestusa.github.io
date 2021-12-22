@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.89.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>Wrangle Dotfiles Round 2&nbsp;&ndash;&nbsp;Discover FOSS</title><link rel="stylesheet" href="/css/core.min.b4a726dedca10dc1494687d837d0229a0aff4f990f8ef46b2f6c552a45af470a4ec20828002b85aa4ad7fb44ed927db9.css" integrity="sha384-tKcm3tyhDcFJRofYN9Aimgr/T5kPjvRrL2xVKkWvRwpOwggoACuFqkrX&#43;0Ttkn25"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Wrangle Dotfiles Round 2" /><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#00a300">
+<meta name="theme-color" content="#ffffff">
+<body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><img class="site logo" src="/img/discover-100px.png" alt /><span class="site name">Discover FOSS</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">Categories</a><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/index%2exml">RSS</a></nav></div></span></div><div class="site slogan"><span class="title">Discover Free and Open Source Software</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">Wrangle Dotfiles Round 2</h1><p class="article date">2020-12-22</p></section><article class="article markdown-body"><p><img  src="/img/yadm-wrangle.png"
+        alt="Wrangling dotfiles header graphic"/></p>
+<p>What do the following technologies have in common?</p>
+<ul>
+<li>1st Generation Raspberry Pi B with 512mb of RAM</li>
+<li>Wireguard VPN</li>
+<li>Git</li>
+<li>Bash &ldquo;if than elif fi&rdquo;</li>
+<li>yadm</li>
+</ul>
+<p>Well, I kind of gave it away with the title to this article. These technologies have taken my management of configuration files to the next level. I have been able to implement the 2.0 version of managing my dotfiles, and I&rsquo;m thrilled with the results. So, let me tell you about the time I have been spending in the Linux CLI lately.</p>
+<h2 id="raspberry-pi-1-b">Raspberry Pi 1 B</h2>
+<p>Released in Febuary 2012, it became the first mainstream RPi, and it was the first one that came into my possession. Its CPU runs at 700mhz, has 512mb of RAM, and only had two USB ports next to the ethernet port. Unlike the models that came after it, it didn&rsquo;t even have the familiar 40 pin GPIO pins that have become one of the most familar features of the RPi single board computers. It doesn&rsquo;t have wifi or bluetooth either. Yet, 4 and 1/2 years ago my son learned how to program in C++ on this RPi. Since the GUI was so slow and limited on that machine, he fell in love with the Linux CLI and vim as his text editor. My son has moved onto a Dell refurbished laptop and desktops that we salvaged from schools and a library that no longer of have uses for them. In fact, the vast majority of computer hardware that he and I run Linux on are what most people would consider ewaste, but we have breathed a second life into this older hardware. This old RPi was just sitting in the pile of unused hardware, and I wanted to find a way to give it purpose. First, I practiced setting it up as a server with just ssh running and applying the principles that I had learned from a number of articles that involve securing a Linux server. I applied those principles to a Debian server that I set up at the office running a web based CRM just on our Intranet with no access to the broader Internet. Because it just sips power, I decided to use the RPi as my network device that would wake on lan the Debian server so that it wasn&rsquo;t on all of the time, but only when I needed it running. Okay all of that is working great, but what else could I do with it?</p>
+<p>As I examined my computer collection I realized that I had the following systems that I was using regularly at work and at home.</p>
+<ul>
+<li>Home: Main System (&ldquo;Half Top&rdquo; the bottom half of an HP Envy 17&quot; Laptop that had a broken screen that I removed, and hooked up to a new 32&quot; monitor through the HDMI port. This is my best speced system with an i7-7500U CPU, Nvidia GeForce 940MX, 16GB of RAM, and an upgraded 512GB SSD.) running Fedora 35 Workstation.</li>
+<li>Home: Home Storage Server (Repurposed tower with the same motherboard, RAM, and power supply as mentioned in this <a href="https://discoverfoss.com/posts/recycled-workstation/"title="Recycled Workstation Build">article</a>
+ running Fedora 35 Server, but is rarely on.</li>
+<li>Home: Old HP DV4 &ldquo;Entertainment&rdquo; Laptop running MX Linux 21, Fluxbox Edition. I enjoy taking this laptop when I&rsquo;m on vacation, so it doesn&rsquo;t get a lot of use, but I like it to mirror my recycled workstation that I have at work with my standing desk.</li>
+<li>Work: 8 Year Old Toshiba Laptop running Windows 10 and Ubuntu LTS in WSL 2. I have a new system on order for work, but it hasn&rsquo;t arrived yet.</li>
+<li>Work: 11-12 Year Old Toshiba Laptop running Ubuntu Mate LTS and is hooked up to a projector for presentations.</li>
+<li>Work: 11-12 Year Old Toshiba Laptop (twin of one above) running Debian and acting as my server that runs the web based CRM that I mentioned earlier.</li>
+<li>Work: The Recycled Workstation that was mentioned above in the blog article that was referenced. I love this system which is what I use when I&rsquo;m at my standing desk. This system is running MX Linux 21, the Fluxbox Edition.</li>
+<li>Work: The Raspberry Pi 1 B</li>
+</ul>
+<p>Besides the Ubuntu Mate laptop that is attached to the projector, I like to have similar configurations on those systems. I like to have the same <code>.vimrc</code> and <code>.bashrc</code>. I also have been using ROXterm (see this <a href="https://discoverfoss.com/posts/roxterm/"title="ROXterm a Full Featured Terminal">article</a>
+ for more details), and I appreciate having the same configurations available on all of my systems for my terminal emulator. The last time I wrangled my dotfiles it was mostly so I could keep my two computers that were running MX Linux Fluxbox in sync with each other. I wanted the same keyboard shortcuts in both of my Fluxbox environments. I had planned to add my Fedora system into the mix, but it runs Gnome, and Fedora does things a bit differently than Debian, so I never figured out how I could bring those two worlds together until recently.</p>
+<p>I&rsquo;m trying to learn bash scripting, but I&rsquo;m moving at a snail&rsquo;s pace. Now with the 2.0 version of managing my dotfiles, I had some motivation to dive back into learning bash scripting. Little did I realize that I wouldn&rsquo;t even need to leave the kiddie pool of bash scripting to accomplish what I wanted to do with my 2.0 version of dotfiles. I had the following goals with the 2.0 version of dotfile management.</p>
+<ol>
+<li>Unify my configuration files so that I could have one system that would work on Fedora, MX, Debian, and Raspberry Pi OS. Since three out of those four are almost pure Debian that should make things easier.</li>
+<li>Move my dotfiles off of Github. Yes, it is fun to show off your dotfiles on Github, but I always feared that I would accidently send a file with my secrets up to the Github repo and then my &ldquo;git fu&rdquo; would fail me when I tried to remove them. So to be on the safe side, I wanted my git repo to stay on one of my Intranets, either at home or work without access to the Internet.</li>
+<li>Securely connect my home and work networks together without opening up Port 22 for ssh. I knew that this would involve setting up a VPN, but I wasn&rsquo;t sure how to accomplish this piece. I&rsquo;m doing some major network upgrades at work, so I contemplated waiting till I had that new equipment in place, but with the current climate of back orders and part shortages, I would try to use tools that I already had. This is when I remembered my RPi 1 B.</li>
+</ol>
+<h2 id="wireguard-vpn-on-bullseye-raspberry-pi-os-with-pivpn">Wireguard VPN on Bullseye Raspberry Pi OS with PiVPN</h2>
+<p>I had heard great things about <em>Wireguard</em> and <em>VPN&rsquo;s</em>, but I had never set one up, and I had no idea if the RPi 1 B could handle being my VPN connection point on my work network. It was time to install a fresh version of Raspberry Pi OS since the Bullseye version had come out at the end of October 2021. I wiped the SD card, installed the latest version of Raspberry Pi OS Lite, Bullseye Edition. I did my RPi hardening that I have done in the past to make the RPi more secure. Then I ran the PiVPN install script which further hardens the Raspberry Pi OS against possible attacks. I created my Wireguard client configuration files for my home systems, but this is where I got stuck for a little bit.</p>
+<p>Although, Network Manager (the Linux utility that most distros use to access and control the system&rsquo;s network interfaces) supports Wireguard, their are not GUI&rsquo;s on Linux yet. As an example, it is easy to import an OpenVPN configuration file in Gnome on Fedora 35, but the GUI in Gnome 41 doesn&rsquo;t recognize Wireguard configuration files yet.</p>
+<p>FOSS programmers have given us amazing choices to use when wrangling our dotfiles. You can try <a href="https://github.com/thoughtbot/rcm"target="_blank" rel="noopener noreferrer">rcm</a>
+ from the amazing coders at <a href="https://thoughtbot.com/"target="_blank" rel="noopener noreferrer">Thoughtbot</a>
+. <a href="https://github.com/technicalpickles/homesick"target="_blank" rel="noopener noreferrer">Homesick</a>
+ seems to have its fans. Besides being a french word that I probably shouldn&rsquo;t attempt to say out load <a href="https://www.chezmoi.io/"target="_blank" rel="noopener noreferrer">Chezmoi</a>
+ can take your dotfile management to a whole new level. This tutorial by Ryan Walter will get you started with this powerful tool <a href="https://fedoramagazine.org/take-back-your-dotfiles-with-chezmoi/"target="_blank" rel="noopener noreferrer">&ldquo;Take back your dotfiles with Chezmoi&rdquo;</a>
+. You can find others that I failed to mention, but I like <a href="https://yadm.io/"target="_blank" rel="noopener noreferrer">yadm</a>
+ as my dotfile wrangler.</p>
+<p><em>Original header image by <a href="https://pixabay.com/users/VViktor-5823236/?utm_source=link-attribution&amp;amp;utm_medium=referral&amp;amp;utm_campaign=image&amp;amp;utm_content=2826195"target="_blank" rel="noopener noreferrer">VViktor</a>
+ from <a href="https://pixabay.com/?utm_source=link-attribution&amp;amp;utm_medium=referral&amp;amp;utm_campaign=image&amp;amp;utm_content=2826195"target="_blank" rel="noopener noreferrer">Pixabay</a>
+. Image effects were created using the FOSS <a href="https://krita.org/en/"target="_blank" rel="noopener noreferrer">Krita</a>
+, <a href="http://www.figlet.org/"target="_blank" rel="noopener noreferrer">figlet</a>
+, and <a href="https://github.com/busyloop/lolcat"target="_blank" rel="noopener noreferrer">lolcat</a>
+.</em></p>
+</article><section class="article labels"><a class="category" href=/categories/article/>Article</a><a class="tag" href=/tags/dotfiles/>dotfiles</a><a class="tag" href=/tags/yadm/>yadm</a><a class="tag" href=/tags/vpn/>vpn</a><a class="tag" href=/tags/terminal/>terminal</a><a class="tag" href=/tags/git/>git</a></section><section class="article author"><img class="avatar" src="/img/myAvatar.png" alt><p class="name">Steve (mowest)</p><div class="bio">A free and open source enthusiast using these tools for work and fun.</div><div class="details"><a class="item" href="https://github.com/mowestusa" target="_blank" rel="noopener noreferrer"><span class="iconfont icon-github"></span>&nbsp;mowestusa</a><a class="item" href="mailto:mowestusa@pm.me" target="_blank" rel="noopener noreferrer"><span class="iconfont icon-email"></span>&nbsp;mowestusa@pm.me</a></div>
+</section>
+</div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/posts/docsify-animal/"><span class="iconfont icon-article"></span>Docsify a Different Animal</a></p><p><a class="link" href="/posts/recycled-workstation/"><span class="iconfont icon-article"></span>Recycled Workstation Build</a></p></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</p>
+    <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
+        target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank" rel="noopener noreferrer">Notepadium</a></p></div>
+</section></body>
+
+</html>
