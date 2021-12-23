@@ -10,6 +10,190 @@
     <lastBuildDate>Fri, 09 Apr 2021 20:10:00 -0500</lastBuildDate><atom:link href="https://discoverfoss.com/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <author>Steve (mowest)</author>
+      <title>Wrangle Dotfiles Round 2.0</title>
+      <link>https://discoverfoss.com/posts/yadm-02/</link>
+      <pubDate>Thu, 23 Dec 2021 14:50:48 -0400</pubDate>
+      
+      <guid>https://discoverfoss.com/posts/yadm-02/</guid>
+      <description>&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/yadm-wrangle.png&#34;
+        alt=&#34;Wrangling dotfiles header graphic&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;How do these technologies fit together?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1st Generation Raspberry Pi B with 512mb of RAM&lt;/li&gt;
+&lt;li&gt;Wireguard VPN&lt;/li&gt;
+&lt;li&gt;Git&lt;/li&gt;
+&lt;li&gt;Bash &amp;ldquo;if then elif fi&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;yadm&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I gave away the answer with this article&amp;rsquo;s title. Using these technologies, I have taken dotfile management to the next level. This technology stack is how I implemented the 2.0 version of dotfile management. If you want to read about my version 1.0 adventure, you can read &lt;a href=&#34;https://discoverfoss.com/posts/yadm-01/&#34;title=&#34;Wrangle Dotfiles with Yadm&#34;&gt;Wrangle Dotfiles with Yadm&lt;/a&gt;
+. I&amp;rsquo;m excited to share the 2.0 version with you. Come and discover how I have been spending my time in the Linux CLI.&lt;/p&gt;
+&lt;h2 id=&#34;raspberry-pi-1-b&#34;&gt;Raspberry Pi 1 B&lt;/h2&gt;
+&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/rpi1b.jpg&#34;
+        alt=&#34;Picture of Raspberry Pi 1 B&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;Released in February 2012, it became the first mainstream RPi, and it was the first RPi in my home. Its CPU runs at 700mhz with 512mb of RAM. This model only had two USB ports next to the ethernet port and a 26 pin GPIO. Later models added two additional USB ports and a 40 pin GPIO among other improvements. It doesn&amp;rsquo;t have wifi or bluetooth. Yet, 4 and 1/2 years ago my son learned how to program in C++ on this RPi. Since the GUI was slow and limited on those specs, he fell in love with the Linux CLI and vim as his text editor. My son has moved onto a Dell refurbished laptop and desktops that we salvaged from schools and a library that no longer of had uses for them. In fact, the vast majority of computer hardware that he and I run Linux on are what most people would consider e-waste. We have been able to give this hardware a second life in our homelab. This old RPi sat in a pile of unused hardware, and I wanted to find a way to give it purpose. First, I practiced setting it up as a secured headless server by applying the principles that I had learned from my Linux server research. I applied those lessons to a Debian server that I set up at work that runs a web based CRM on the work Intranet with no access on the public Internet. Because the RPi sips power, I decided to use the RPi as my network device that would wake on lan the Debian server so that it wasn&amp;rsquo;t on all of the time, but only when I needed it running. This worked great, but what else could I do with a RPi that was on all the time on my work network?&lt;/p&gt;
+&lt;p&gt;As I examined my computer collection I realized that I had the following Linux systems that I used regularly at work and home.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Home:&lt;/strong&gt; Main System (&amp;ldquo;Half Top&amp;rdquo; the bottom half of an HP Envy 17&amp;quot; Laptop that had a broken screen that I removed, and hooked up to a new 32&amp;quot; monitor through the HDMI port. This system has the best specs with an i7-7500U CPU, Nvidia GeForce 940MX, 16GB of RAM, and an upgraded 512GB SSD.) running Fedora 35 Workstation.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Home:&lt;/strong&gt; Home Storage Server (Repurposed tower with the same motherboard, RAM, and power supply as mentioned in this &lt;a href=&#34;https://discoverfoss.com/posts/recycled-workstation/&#34;title=&#34;Recycled Workstation Build&#34;&gt;article about a recycled workstation build&lt;/a&gt;
+) running Fedora 35 Server which is on just for backups.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Home:&lt;/strong&gt; Old HP DV4 &amp;ldquo;Entertainment&amp;rdquo; Laptop running MX Linux 21, Fluxbox Edition. This is my vacation laptop. It doesn&amp;rsquo;t get a lot of use, but I like to have it mirror my recycled workstation at work with my standing desk.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Work:&lt;/strong&gt; 8 Year Old Toshiba Laptop running Windows 10 and Ubuntu LTS in WSL 2. I have a new system on order for work, but it hasn&amp;rsquo;t arrived yet.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Work:&lt;/strong&gt; 11-12 Year Old Toshiba Laptop running Ubuntu Mate LTS and is hooked up to a projector for presentations.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Work:&lt;/strong&gt; 11-12 Year Old Toshiba Laptop (twin of one above) running Debian and acting as my server that runs the web based CRM that I mentioned earlier.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Work:&lt;/strong&gt; &lt;a href=&#34;https://discoverfoss.com/posts/recycled-workstation/&#34;title=&#34;Recycled Workstation Build&#34;&gt;The Recycled Workstation&lt;/a&gt;
+ at my standing desk running MX Linux 21, the Fluxbox Edition.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Work:&lt;/strong&gt; Raspberry Pi 1 B&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Besides the Ubuntu Mate laptop that is attached to the projector, I like to have similar configurations on my systems. I like to have the same &lt;code&gt;.vimrc&lt;/code&gt; and &lt;code&gt;.bashrc&lt;/code&gt;. I also have been using ROXterm (see &lt;a href=&#34;https://discoverfoss.com/posts/roxterm/&#34;title=&#34;ROXterm a Full Featured Terminal&#34;&gt;ROXterm a Full Featured Terminal&lt;/a&gt;
+ for more details), and I appreciate having the same configurations available on all of my systems for my terminal emulator. The last time I wrangled my dotfiles it was mostly so I could keep my two computers that were running MX Linux Fluxbox in sync with each other. I wanted the same keyboard shortcuts in both of my Fluxbox environments. I had planned to add my Fedora system into the mix, but it runs Gnome, and Fedora does things a bit differently than Debian, so I never figured out how I could bring those two worlds together until recently.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m trying to learn bash scripting, but I&amp;rsquo;m moving at a snail&amp;rsquo;s pace. Now with the 2.0 version of managing my dotfiles, I had some motivation to dive back into learning bash scripting. Little did I realize that I wouldn&amp;rsquo;t even need to leave the kiddie pool of bash scripting to accomplish what I wanted to do with my 2.0 version of dotfiles. I had the following goals with the 2.0 version of dotfile management.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Unify my configuration files so that I could have one system that would work on Fedora, MX, Debian, Raspberry Pi OS, and even Ubuntu running on WSL. Since four out of those five are Debian based that should make things easier.&lt;/li&gt;
+&lt;li&gt;Move my dotfiles off of GitHub. Yes, it is fun to show off your dotfiles on GitHub, but I always feared that I would accidentally send a file with secrets (keys or passwords) up to the GitHub repo. I was not confident in my &amp;ldquo;git fu&amp;rdquo; that I would be able to reverse the damage that was done. So to be on the safe side, I wanted my git repo to stay on one of my local networks at home or work.&lt;/li&gt;
+&lt;li&gt;Securely connect my home and work networks together. A VPN seemed to be the best solution, but I wasn&amp;rsquo;t sure how I would accomplish this part of the puzzle. I&amp;rsquo;m doing some major network upgrades at work, so I contemplated waiting till I had the new equipment in place, but with the current climate of back orders and part shortages, I decided to try to use tools that I already had. As I thought about this, I remembered my RPi 1 B.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;wireguard-vpn-on-bullseye-raspberry-pi-os-with-pivpn&#34;&gt;Wireguard VPN on Bullseye Raspberry Pi OS with PiVPN&lt;/h2&gt;
+&lt;p&gt;I had heard great things about &lt;em&gt;Wireguard&lt;/em&gt; and &lt;em&gt;VPN&amp;rsquo;s&lt;/em&gt;, but I had never set one up, and I had no idea if the RPi 1 B could handle being my VPN connection point on my work network. It was time to install a fresh version of Raspberry Pi OS since the Bullseye version had come out at the end of October 2021. I wiped the SD card, installed the latest version of Raspberry Pi OS Lite, Bullseye Edition. I did my RPi hardening that I have done in the past to make the RPi more secure. Then I followed this &lt;a href=&#34;https://pimylifeup.com/raspberry-pi-wireguard/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;tutorial on PiMyLifeUp&lt;/a&gt;
+ to install PiVPN and Wireguard. Following this tutorial, I created my Wireguard client configuration files for my home systems, but then I got stuck when I tried to use these configuration files on my home systems.&lt;/p&gt;
+&lt;p&gt;Although, Network Manager (the Linux utility that most distros use to access and control the system&amp;rsquo;s network interfaces) supports Wireguard, graphical user interfaces to control and configure Wireguard connections are lagging behind on Linux. As an example, it is easy to import an OpenVPN configuration file in Gnome on Fedora 35, but the GUI in Gnome 41 doesn&amp;rsquo;t recognize Wireguard configuration files. The Wireguard community has developed robust CLI&amp;rsquo;s to control and configure Wireguard tunnels. This makes it possible to create scripts that can bring up and take down your Wireguard VPN easily. I wanted to take advantage of Network Manager&amp;rsquo;s support of Wireguard. Network Manager sees a Wireguard connection as if it is just a physical network interface, and it creates a profile for the Wireguard VPN that enables it to easily reconnect to the Wireguard VPN tunnel after reboots of the system. &lt;a href=&#34;https://blogs.gnome.org/thaller/2019/03/15/wireguard-in-networkmanager/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Thomas Haller&amp;rsquo;s blog&lt;/a&gt;
+ helped me use the Wireguard configuration files that I created using PiVPN to connect my Fedora 35 system to the Wireguard VPN tunnel. Thomas explains how you can use the Network Manager CLI utility, &lt;code&gt;nmcli&lt;/code&gt;, to set up the Wireguard interface and create the encrypted tunnel with the computer on the other network that is running Wireguard.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Run the following command to use the Wireguard &amp;ldquo;.conf&amp;rdquo; file to set up the Wireguard interface in Network Manager.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;nmcli connection import type wireguard file &amp;quot;$CONF_FILE&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;After running the above command, I discovered that Network Manger not only created the Wireguard interface and profile, but it had also connected me to the Wireguard VPN tunnel.&lt;/li&gt;
+&lt;li&gt;I soon discovered that my Wireguard configuration was not exactly what I wanted, so I found that the easiest way to make changes to the configuration, was to first delete the Wireguard interface and profile created by Network Manager with this command.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;nmcli connection delete &amp;quot;$NAMEOFCONNECTION&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Then I would make my configuration changes to the Wireguard &amp;ldquo;.conf&amp;rdquo; file, and simply rerun the &lt;code&gt;nmcli connection import&lt;/code&gt; command again and test the new connection.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Below is an example of what the Wireguard &amp;ldquo;.conf&amp;rdquo; file might look like that PiVPN creates for you depending on the options you choose during the setup of PiVPN.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[Interface]
+PrivateKey = $UNIQUE_PrivateKey
+Address = 10.10.10.4/24
+DNS = 9.9.9.9, 149.112.112.112
+
+[Peer]
+PublicKey = $UNIQUE_PublicKey
+PresharedKey = $UNIQUE_PresharedKey
+Endpoint = your.publicipORpersonaldomainpointingtopublicip.me:$PORTNUMBER_PickedduringPiVPNSetup
+AllowedIPs = 0.0.0.0/0, ::0/0
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This redacted Wireguard.conf file gives us the opportunity to talk about some configuration considerations. All of the redacted &amp;ldquo;keys&amp;rdquo; in the above file will be created by PiVPN when you go through the &amp;ldquo;.conf&amp;rdquo; file creation.&lt;/p&gt;
+&lt;p&gt;In order to make a VPN connection between two different networks that have different public IP addresses provided by the Internet providers, you will need to either have a static public IP from your Internet provider or you will need to tie a personal domain to your public IP using a Dynamic DNS service. I decided to use [freedns.afraid.org] (&lt;a href=&#34;https://freedns.afraid.org&#34;&gt;https://freedns.afraid.org&lt;/a&gt;). Through this service you can get a free domain name that you can link to your public IP. Since my Internet service provider does not provide me with a static public IP, freedns provides a super simple crontab script that you can copy and paste into your crontab that will ping their service throughout the day to ensure that your public IP if changed is still linked to the free domain name that you set up through their service. In the file above, I have my free domain name on the line that says, &amp;ldquo;Endpoint.&amp;rdquo; Notice that after your domain name you will need to put after the &amp;ldquo;:&amp;rdquo; the port number that you set Wireguard to run on when you ran the setup script for PiVPN. This also means that you will have to go into your router or firewall and forward that port to the computer that is running Wireguard, which in my case is my Raspberry Pi 1 B. I also decided to run the cron script that updates my link between my domain name and my public IP on the Raspberry Pi as well.&lt;/p&gt;
+&lt;p&gt;When my &amp;ldquo;client&amp;rdquo; computer connects to the Wireguard tunnel it is given an IP that is in the range specified on the &amp;ldquo;Address&amp;rdquo; line. When you look at the &amp;ldquo;clients&amp;rdquo; that have connected to the PiVPN you will notice that they have IP addresses from that range which is not the actual IP address that your computer has from your DHCP server on your network, and that&amp;rsquo;s okay.&lt;/p&gt;
+&lt;p&gt;When I used the above Wireguard &amp;ldquo;.conf&amp;rdquo; file, I noticed something that I didn&amp;rsquo;t want. Since I was connecting from my home network, and not from some public coffee shop, I didn&amp;rsquo;t want all of my Internet traffic to go through the VPN tunnel. Yet this is what will happen when you have the &amp;ldquo;AllowedIP&amp;rsquo;s&amp;rdquo; configured as you see above with all &amp;ldquo;0&amp;rdquo;. That configuration is telling Network Manager to send all of my Internet traffic through the VPN tunnel. You may want this option if you are frequently on untrusted networks like those in hotels and coffee shops. I&amp;rsquo;m using this VPN tunnel to connect my home systems to my work systems. So that only the network traffic between home and work systems traveled over the VPN tunnel, I need to make some changes to the Wireguard configuration.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;First, make sure that the DHCP server that you are using at home and at work are giving out IP addresses to your systems that are in different ranges. Typically, your DHCP server will be running either on your router or a system that is acting as your DNS server. If your home DHCP is handing out addresses in the 192.168.100.0/24 range then make sure that your work DHCP is handing out addresses in a different 192.168.400.0/24 range or a 10.100.1.0/24 or something different from your home network.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;In my case since I was connecting my home systems to my Raspberry Pi 1 B on my work network, so I needed to put the address range used by my work DHCP server in the &amp;ldquo;AllowedIPs&amp;rdquo; line.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;After making that configuration change, and reimporting it into Network Manager as explained above I discovered a new problem. On my home computer I could SSH into the Raspberry Pi at work using its DHCP reserved IP that it gets from the work DHCP server, but I couldn&amp;rsquo;t surf to any other place on the Internet. I deleted that profile and wondered what I had done wrong in my configuration. After a number of Internet searches I discovered that if I wanted a &amp;ldquo;Split VPN Tunnel&amp;rdquo; where I only wanted my communication to my systems at work to go through the VPN tunnel and all other Internet traffic to go through my home network&amp;rsquo;s Internet provider, then I needed to delete the line under &amp;ldquo;[Interface]&amp;rdquo; that gives &amp;ldquo;DNS&amp;rdquo; server information. After deleting that line, and reimporting the &amp;ldquo;.conf&amp;rdquo; file, everything worked as expected. I could SSH into my systems at work. I could view a web based CRM in my web browser by going to the IP address of my Debian server, but the rest of my Internet traffic when out through my home&amp;rsquo;s connection to the Internet.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Honestly, I don&amp;rsquo;t know enough about how Wireguard works to understand why the DNS reference caused that unexpected behavior in my Internet access. I couldn&amp;rsquo;t find a clear explanation of what is happening in my Internet research on this behavior. My guess, and I hope that I learn whether this guess is correct is the following. I believe that when Network Manager makes the creates the Wireguard &amp;ldquo;interface&amp;rdquo; and makes the connection to the VPN tunnel that it will try to route all traffic through that tunnel as the default behavior. As soon as I entered a limited range of IP addresses on the &amp;ldquo;AllowedIPs&amp;rdquo; line, all Internet traffic to IP&amp;rsquo;s outside of that range were blocked. When I deleted the &amp;ldquo;DNS&amp;rdquo; information under interface, I think Network Manager saw that it no longer had a way to resolve DNS requests through the VPN tunnel so it looked for a DNS server that was connected to one of my other system&amp;rsquo;s interfaces, which it found through my wifi connection on my home network. So, Network Manager than changed to forward all network traffic that needed DNS through my home wifi connection, and only the network traffic that was going to the specified &amp;ldquo;AllowedIPs&amp;rdquo; went through the VPN tunnel. If my guess is incorrect, I welcome the correction and the opportunity to learn more about networking and VPNs.&lt;/p&gt;
+&lt;h2 id=&#34;rpi-1-b-as-git-server&#34;&gt;RPi 1 B As Git Server&lt;/h2&gt;
+&lt;p&gt;My old Raspberry Pi has opened up some amazing possibilities. Thanks to PiVPN running on the RPi 1B I have an encrypted connection between my home network and my work network. Now I can easily and securely share my dotfiles between all of my Linux systems, but I need a Git server to store the versioning of these dotfiles that will be created by &lt;a href=&#34;https://yadm.io/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;yadm&lt;/a&gt;
+. As I mentioned, I want to self host my Git server so that I can be more cautious with any secrets that might end up accidentally in my Git repository. I have played with &lt;a href=&#34;https://gitea.io&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Gitea&lt;/a&gt;
+ in the past, but I really didn&amp;rsquo;t need a entire self-hosted GitHub for my dotfiles. I found this tutorial on &lt;a href=&#34;https://pimylifeup.com/raspberry-pi-git-server/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;PiMyLifeUp&lt;/a&gt;
+ which just uses the power of Git as a distributed versioning system. The only requirement is to have Git installed on the RPi and SSH access from the computers that will be using it as their remote Git repository server. The steps to create a remote repository on the RPi were super simple.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Create a new directory in the $HOME folder or the user that you will use to connect to the RPi with SSH.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cd&lt;/code&gt; into that newly created directory.&lt;/li&gt;
+&lt;li&gt;Initialize the Git repo with the following &lt;em&gt;bare&lt;/em&gt; command: &lt;code&gt;git init --bare&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Create a Git repo on your &amp;ldquo;client&amp;rdquo; system in a directory with the same name as the directory created above on the RPi using &lt;code&gt;git init&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Connect the &amp;ldquo;client&amp;rdquo; git repo with the remote git bare repo on the RPi using the following command: &lt;code&gt;git remote add $NAMEOFGITREPO $RPi-user@$RPiIP:/home/$RPi-user/git/$NAMEOFGITREPO&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;If there are already files in the git repo on the RPi than you can simply connect to it using the command: &lt;code&gt;git clone $RPi-user@$RPiIP:/home/$RPi-user/git/$NAMEOFGITREPO&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Ok, so now my old RPi 1B from 2012 is running PiVPN, acting as my remote git server, and runs a cron script to keep its public IP updated. Have I reached the limits of this old single board computer? Well, I just checked in on the RPi and ran &lt;code&gt;htop&lt;/code&gt; which by far is the most resource intensive program running on it. I&amp;rsquo;m using between 4%-16% of the CPU, and about 32MB of the 512MB of RAM. To wrangle my dotfiles, I don&amp;rsquo;t need to run anything else except the &lt;a href=&#34;https://yadm.io/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;yadm&lt;/a&gt;
+ bash script that I will talk about in a little bit. This leaves me with significant system resources that I could use for other purposes. What other cool things can I run on this old RPi to continue to extend its usefulness?&lt;/p&gt;
+&lt;h2 id=&#34;unifying-my-bashrc&#34;&gt;Unifying My .bashrc&lt;/h2&gt;
+&lt;p&gt;In version 1.0 of this project, I never ended up using &lt;strong&gt;yadm&lt;/strong&gt; to manage my dotfiles on my other Linux systems that were not running MX Linux Fluxbox. It ended up being super useful to keep my Fluxbox settings in sync between my two MX systems. In version 2.0 I wanted all of my dotfiles to be managed by this system regardless of what Linux distro they might be running. As I thought about what I needed to do to accomplish this my biggest hurdle was my .bashrc. Let me explain by highlighting what was different about the other dotfiles that I would be wrangling with this system.&lt;/p&gt;
+&lt;h3 id=&#34;vimrc&#34;&gt;vimrc&lt;/h3&gt;
+&lt;p&gt;I like vim to look and act the same way on all of my systems. So, I only needed one vimrc that had all of the same configuration options and plugins. When I discovered recently that I could keep my vimrc in &lt;code&gt;~/.vim/&lt;/code&gt; along with my favorite color scheme and lightline configurations, this made things simple to organize for vim.&lt;/p&gt;
+&lt;h3 id=&#34;configroxtermsourceforgenet&#34;&gt;~/.config/roxterm.sourceforge.net&lt;/h3&gt;
+&lt;p&gt;I use ROXterm on both Fedora 35 and MX-21. The rest of my Linux systems are CLI only. I can have the same configurations on both distributions by simply managing the files in that sub directory under &lt;code&gt;.config&lt;/code&gt; in my home folder.&lt;/p&gt;
+&lt;h3 id=&#34;fluxbox&#34;&gt;~/.fluxbox&lt;/h3&gt;
+&lt;p&gt;Only two of my systems use fluxbox, the two that run MX-21. Since there are just a couple of small files in the &lt;code&gt;~/.fluxbox/&lt;/code&gt; directory that I need to keep synced up, I don&amp;rsquo;t feel as if it is a big deal if I have those files also in the home directories of my systems that don&amp;rsquo;t run fluxbox.&lt;/p&gt;
+&lt;h3 id=&#34;bashrc&#34;&gt;~/.bashrc&lt;/h3&gt;
+&lt;p&gt;My &lt;code&gt;.bashrc&lt;/code&gt; is the only configuration file that has the need for different configuration options depending on which distro I happen to be on. Here are some of the differences that I have discovered.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I need different configuration options on Fedora and Debian systems when I want to use vim as my default editor. I use the &lt;strong&gt;vimx&lt;/strong&gt; package on Fedora and &lt;strong&gt;vim-gtk3&lt;/strong&gt; package on Debian to make it easy to use the system clipboard in &lt;strong&gt;vim&lt;/strong&gt;. Unless I explicitly reference &lt;strong&gt;vimx&lt;/strong&gt; on Fedora my git commits will fail to start vim because it doesn&amp;rsquo;t think vim is installed. I tried to just use an alias to make all references to &lt;em&gt;vim&lt;/em&gt; call &lt;em&gt;vimx&lt;/em&gt; on Fedora, but this doesn&amp;rsquo;t fix the issue with git. I&amp;rsquo;m not sure how Debian does it, but they create symlinks from any vim executable that you have installed to calls for &lt;em&gt;vim&lt;/em&gt;, so these explicit references are not needed on my Debian based systems.&lt;/li&gt;
+&lt;li&gt;Two servers get woken up with &amp;ldquo;wake on lan&amp;rdquo; but I need two different &amp;ldquo;wake on lan&amp;rdquo; commands depending on which system I&amp;rsquo;m configuring and which server is on its network. I haven&amp;rsquo;t tried it, but I&amp;rsquo;m guessing that I can&amp;rsquo;t send the magic packets over the VPN tunnel. So the network location determines which aliased command those systems receive.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Autojump&lt;/strong&gt; is one of my favorite bash utilities, but the installation of this program is slightly different on Fedora verses Debian based systems so those configurations in my .bashrc need to be different.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;yadm&lt;/strong&gt; offers a system to link alternate files that are tied to specific systems, so that I could have a unique .bashrc for MX, Fedora, Debian, Raspberry OS, and Ubuntu on WSL. However, in their documentation, they encourage you to have the same files across all of your systems whenever possible. Since I don&amp;rsquo;t mind a few unused dotfiles being on all of my systems, this left just my &lt;code&gt;.bashrc&lt;/code&gt; needing to be reworked so I could have one file that worked on all of my systems. The solution that I found was rather simple. Since I liked how my prompt looked, I could leave that the same for all systems. I could have all of the aliases that I like applied to all of my systems, and this left just a small section of the &lt;code&gt;.bashrc&lt;/code&gt; that addressed the differences that I noted above. The solution was to add a section governed by the &lt;code&gt;if, then, elif, fi&lt;/code&gt; statement.&lt;/p&gt;
+&lt;p&gt;Basically it looks like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if [ $HOSTNAME = System1 ]
+then
+    $HOME/bin/ufetch-fedora
+    alias upup=&#39;sudo dnf update -y&#39;
+    # Alias will wakeonlan Fedora Server on home network
+    alias wake=&#39;wol $FEDORASERVERMACADDRESS&#39;
+    # Setup Autojump for Bash
+    export PROMPT_COMMAND=&amp;quot;${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a&amp;quot;
+    source /usr/share/autojump/autojump.bash
+    # set default editor to Vim
+    export EDITOR=vimx
+    alias vim=&#39;vimx&#39;
+elif [ $HOSTNAME = System2 ]
+then
+    $HOME/bin/ufetch-mx
+    alias upup=&#39;sudo apt update &amp;amp;&amp;amp; sudo apt full-upgrade -y&#39;
+    # Alias will wakeonlan Debian Server on work network
+    alias wake=&#39;wakeonlan $DEBIANSERVERMACADDRESS&#39;
+    # set default editor to Vim
+    export EDITOR=vim
+    # Installation instructions came from /usr/share/doc/autojump/README.Debian
+    # Added the last line to source the shell script to enable autojump.
+    # Uncomment the next line only if autojump doesn&#39;t seem to work.
+    # export PROMPT_COMMAND=&amp;quot;${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a&amp;quot;
+    . /usr/share/autojump/autojump.sh
+elif [ $HOSTNAME = RPi1 ]
+then
+    $HOME/bin/ufetch-raspbian
+    alias upup=&#39;sudo apt update &amp;amp;&amp;amp; sudo apt full-upgrade -y&#39;
+    # Alias will wakeonlan Debian Server on work network
+    alias wake=&#39;wakeonlan $DEBIANSERVERMACADDRESS&#39;
+    # set default editor to Vim
+    export EDITOR=vim
+    # Installation instructions came from /usr/share/doc/autojump/README.Debian
+    # Added the last line to source the shell script to enable autojump.
+    # Uncomment the next line only if autojump doesn&#39;t seem to work.
+    # export PROMPT_COMMAND=&amp;quot;${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a&amp;quot;
+    . /usr/share/autojump/autojump.sh
+fi
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;That&amp;rsquo;s enough to give you the general idea. If there is a bash configuration that is unique to one of my systems it goes into this block of code. By adding the &lt;strong&gt;ufetch&lt;/strong&gt; scripts into these blocks, I get a visual reminder that these unique configuration options have been loaded into my bash session on that system.&lt;/p&gt;
+&lt;h2 id=&#34;yadm&#34;&gt;yadm&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://yadm.io/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Yadm&lt;/a&gt;
+ was the key to wrangling my dotfiles in my 1.0 version, and it is still a key tool in keeping my dotfiles in sync across all of my systems. This time around I learned a new trick when it came to installing &lt;strong&gt;yadm&lt;/strong&gt;. Originally, I chose &lt;strong&gt;yadm&lt;/strong&gt; because I could install it from the Debian repos. I&amp;rsquo;m not sure how I missed it, but in the installation documentation they also suggest cloning the GitHub repository and adding a symlink to that git repo in the execution path on your local system. Since you have to have git installed for &lt;strong&gt;yadm&lt;/strong&gt; to work, this installation method makes the most sense to ensure that you are always using the latest version, and the same version on all of your systems. In my .bashrc I have my &lt;code&gt;~/bin/&lt;/code&gt; directory added to my $PATH, so I installed &lt;strong&gt;yadm&lt;/strong&gt; with just these commands on all of my systems.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/TheLocehiliosan/yadm.git ~/.yadm-project
+ln -s ~/.yadm-project/yadm ~/bin/yadm
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;With &lt;strong&gt;yadm&lt;/strong&gt; installed, I carried out the next steps on the system that had my previously mentioned &lt;code&gt;.bashrc&lt;/code&gt;.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Ran in my home directory: &lt;code&gt;yadm init&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Added my .bashrc: &lt;code&gt;yadm add .bashrc&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Committed my changes: &lt;code&gt;yadm commit&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Connected this local yadm managed repo with the remote repo on my RPi 1B: &lt;code&gt;yadm remote add origin $RPi-user@$RPiIP:/home/$RPi-user/git/$NAMEOFGITREPO&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Pushed my special .bashrc to the remote repo: &lt;code&gt;yadm push -u origin master (or this could be &amp;quot;main&amp;quot; depending on how you set up your git repo)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;All the rest of my systems I started using &lt;strong&gt;yadm&lt;/strong&gt; by being in my home directory and running the command: &lt;code&gt;yadm clone $RPi-user@$RPiIP:/home/$RPi-user/git/$NAMEOFGITREPO&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;My Wrangling Dotfiles 2.0 version will manage the configuration files of 7 out of the 8 systems mentioned at the beginning of this article, but this system gives me the flexibility and security I had hoped to achieve. I could easily add additional systems to this current structure in the future. Thanks for reading this article, and I hope that my adventure has given you some ideas that you could use to wrangle your own dotfiles.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Original header image by &lt;a href=&#34;https://pixabay.com/users/VViktor-5823236/?utm_source=link-attribution&amp;amp;amp;utm_medium=referral&amp;amp;amp;utm_campaign=image&amp;amp;amp;utm_content=2826195&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;VViktor&lt;/a&gt;
+ from &lt;a href=&#34;https://pixabay.com/?utm_source=link-attribution&amp;amp;amp;utm_medium=referral&amp;amp;amp;utm_campaign=image&amp;amp;amp;utm_content=2826195&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Pixabay&lt;/a&gt;
+. Image effects were created using the FOSS &lt;a href=&#34;https://krita.org/en/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Krita&lt;/a&gt;
+, &lt;a href=&#34;http://www.figlet.org/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;figlet&lt;/a&gt;
+, and &lt;a href=&#34;https://github.com/busyloop/lolcat&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;lolcat&lt;/a&gt;
+.&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <author>Steve (mowest)</author>
       <title>ROXterm a Full Featured Terminal</title>
       <link>https://discoverfoss.com/posts/roxterm/</link>
       <pubDate>Tue, 21 Dec 2021 15:30:48 -0400</pubDate>
