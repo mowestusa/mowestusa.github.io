@@ -10,6 +10,49 @@
     <lastBuildDate>Thu, 23 Dec 2021 14:50:48 -0400</lastBuildDate><atom:link href="https://discoverfoss.com/categories/articles/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <author>Steve (mowest)</author>
+      <title>MX Linux as Wireguard Client</title>
+      <link>https://discoverfoss.com/posts/wireguard-mx/</link>
+      <pubDate>Sun, 02 Jan 2022 18:45:48 -0400</pubDate>
+      
+      <guid>https://discoverfoss.com/posts/wireguard-mx/</guid>
+      <description>&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/mx-wireguard-header.png&#34;
+        alt=&#34;Wireguard Logo on top of MX Logo&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;In my previous post, I shared the excitement of getting a Wireguard VPN set up on a 1st Generation Raspberry Pi. At that point, I had only set up my main Linux system at home, my Fedora 35 system, as a Wireguard client to connect to the RPi Wireguard server. You can read about the configuration methods I went through by reading &lt;a href=&#34;https://discoverfoss.com/posts/yadm-02/&#34;title=&#34;Wrangle Dotfiles Round 2.0&#34;&gt;Wrangle Dotfiles Round 2.0&lt;/a&gt;
+ to get my Fedora 35 system connected to the Wireguard VPN.&lt;/p&gt;
+&lt;p&gt;I assumed that the same configuration methods would work with my secondary home system, an older laptop running MX Linux 21 Fluxbox edition, because it also uses Network Manager to control your network interfaces and connections. However, when I attempted to simply repeat the process that worked with my Fedora 35 system, I ran into the following issues.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;When I first used the command &lt;code&gt;nmcli connection import&lt;/code&gt; I had a connection to the VPN tunnel, and I could ping the RPi, but I had no connection to the outside Internet.&lt;/li&gt;
+&lt;li&gt;When I rebooted, I had no connection to the Internet or to the RPi through the VPN tunnel even though Network Manager reported that I had connection to the home network wifi and that the Wireguard VPN tunnel was on and active.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;first-systemd&#34;&gt;First, SystemD&lt;/h2&gt;
+&lt;p&gt;Since the exact same configuration with Network Manager had worked successfully on Fedora 35, I considered what might be different between my Fedora 35 system and my MX-21 system. The most obvious difference was the fact that I was using the default Init system in MX-21 which uses &lt;strong&gt;SysV&lt;/strong&gt; instead of &lt;strong&gt;SystemD&lt;/strong&gt;. However, this is an easy fix. When I rebooted MX-21 Fluxbox Edition, I chose the latest kernel and SystemD as my boot option. By running &lt;code&gt;systemctl status&lt;/code&gt; in a terminal, you can see that SystemD is running as the active Init system.&lt;/p&gt;
+&lt;p&gt;Okay, now that I&amp;rsquo;m booted with SystemD running, I once again did &lt;code&gt;nmcli connection import&lt;/code&gt; command, and this time everything worked as expected. I could ssh into the RPi hosting the Wireguard VPN tunnel on my work network. I could surf the broader Internet using the local network connection.&lt;/p&gt;
+&lt;p&gt;I rebooted, and checked all of my connections again. Unfortunately, I could not surf the broader Internet, nor could I ssh into my RPi on my work network. So neither the local connection to the Internet nor my VPN tunnel were functioning even though they were both clearly connected according to Network Manager.&lt;/p&gt;
+&lt;p&gt;Changing to SystemD was only part of the solution.&lt;/p&gt;
+&lt;h2 id=&#34;second-configure-network-manager-to-use-openresolv&#34;&gt;Second, Configure Network Manager To Use Openresolv&lt;/h2&gt;
+&lt;p&gt;After a few failed attempts, one Internet search brought me to a post on the Arch forums. The person making the forum post had the same issue that I had after rebooting. The suggested fix was to reconfigure Network Manager to use openresolv by following these steps on MX-Linux.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;apt install openresolv&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Create the following file &lt;code&gt;/etc/NetworkManager/conf.d/rc-manager.conf&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;[main]
+rc-manager=resolvconf
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;After doing those steps to configure Network Manager to use &lt;code&gt;openresolv&lt;/code&gt; I could reboot, and all of my connections in Network Manager would work as expected. The VPN tunnel was active and all the systems that I wanted to access through that tunnel were reachable. I could surf on the broader Internet using my local network connection.&lt;/p&gt;
+&lt;h2 id=&#34;a-few-lingering-questions&#34;&gt;A Few Lingering Questions&lt;/h2&gt;
+&lt;p&gt;I would imagine that after additional research, I will discover the answer to the following questions. Although everything is now working on MX-Linux as I hoped, I still am unsure of a few things.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Does Wireguard require SystemD?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In the documentation that have read so far, I haven&amp;rsquo;t found anything to suggest that SystemD is a requirement for Wireguard, but I do recognize that other technologies in Linux have made SystemD a required dependency, so perhaps Wireguard has done this as well. Snapd from Canonical is an example of a technology that depends on SystemD. I have no horse in the race that is the debate on whether to use SystemD verses another Init system. MX Linux uses SysV to support their unique LiveUSB creation scripts, but offers easy ways to switch to using SystemD as your default Init system in MX, which it looks like I will be doing for the foreseeable future.&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Why does Fedora 35 work with the configuration outlined in my previous article?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I decided to do a little investigation after I found this solution for running MX Linux as a client to my Wireguard server on my RPi. I thought that I would discover that Fedora has configured Network Manager to run &lt;code&gt;openresolv&lt;/code&gt;. However, &lt;code&gt;openresolv&lt;/code&gt; was not even installed on my Fedora 35 system. The &lt;code&gt;resolvconf&lt;/code&gt; command is installed on my Fedora system. There is no &lt;code&gt;/etc/NetworkManager/conf.d/rc-manager.conf&lt;/code&gt; file on my Fedora 35 system. Since &lt;code&gt;resolvconf&lt;/code&gt; was not on my MX-Linux system, it is possible that on Fedora it is using resolvconf to manager the &lt;code&gt;/etc/resolv.conf&lt;/code&gt; file while MX-Linux was allowing Network Manager to control &lt;code&gt;/etc/resolv.conf&lt;/code&gt; using its own default methods.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <author>Steve (mowest)</author>
       <title>Wrangle Dotfiles Round 2.0</title>
       <link>https://discoverfoss.com/posts/yadm-02/</link>
       <pubDate>Thu, 23 Dec 2021 14:50:48 -0400</pubDate>
