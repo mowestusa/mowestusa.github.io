@@ -27,7 +27,8 @@
 <p>I rebooted, and checked all of my connections again. Unfortunately, I could not surf the broader Internet, nor could I ssh into my RPi on my work network. So neither the local connection to the Internet nor my VPN tunnel were functioning even though they were both clearly connected according to Network Manager.</p>
 <p>Changing to SystemD was only part of the solution.</p>
 <h2 id="second-configure-network-manager-to-use-openresolv">Second, Configure Network Manager To Use Openresolv</h2>
-<p>After a few failed attempts, one Internet search brought me to a post on the Arch forums. The person making the forum post had the same issue that I had after rebooting. The suggested fix was to reconfigure Network Manager to use openresolv by following these steps on MX-Linux.</p>
+<p>After a few failed attempts, one Internet search brought me to a <a href="https://bbs.archlinux.org/viewtopic.php?id=240481"target="_blank" rel="noopener noreferrer">post on the Arch forums</a>
+. The person making the forum post had the same issue that I had after rebooting. The suggested fix was to reconfigure Network Manager to use openresolv by following these steps on MX-Linux.</p>
 <ol>
 <li><code>apt install openresolv</code></li>
 <li>Create the following file <code>/etc/NetworkManager/conf.d/rc-manager.conf</code></li>
