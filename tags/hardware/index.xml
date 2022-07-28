@@ -28,52 +28,52 @@
 &lt;p&gt;Besides using Fedora as my main desktop at home, and as my server OS in my home lab, I also have two workstations running MX Linux, Fluxbox Edition, and a Debian stable server at work. From my research these systems which are all built from Debian stable are using the unpatched version of &lt;strong&gt;OpenSSH&lt;/strong&gt;, version 8.4p. Therefore, on those systems it would be advisable to use &lt;code&gt;sftp&lt;/code&gt; directly instead of &lt;code&gt;scp&lt;/code&gt;.&lt;/p&gt;
 &lt;h1 id=&#34;rediscovering-the-magic-of-scp-and-sftp&#34;&gt;Rediscovering the Magic of scp and sftp&lt;/h1&gt;
 &lt;p&gt;If you can &lt;code&gt;ssh&lt;/code&gt; into your remote computer or a computer on your LAN, you can use &lt;code&gt;sftp&lt;/code&gt; and &lt;code&gt;scp&lt;/code&gt;. Here is a handy cheat sheet for &lt;code&gt;sftp&lt;/code&gt;.&lt;/p&gt;
-&lt;h1 id=&#34;cheat-sheet-for-sftp&#34;&gt;Cheat sheet for sftp&lt;/h1&gt;
-&lt;h2 id=&#34;connect-to-a-remote-server-and-enter-an-interactive-command-mode&#34;&gt;Connect to a remote server and enter an interactive command mode:&lt;/h2&gt;
+&lt;h2 id=&#34;cheat-sheet-for-sftp&#34;&gt;Cheat sheet for sftp&lt;/h2&gt;
+&lt;h3 id=&#34;connect-to-a-remote-server-and-enter-an-interactive-command-mode&#34;&gt;Connect to a remote server and enter an interactive command mode:&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;sftp remote_user@remote_host
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;connect-using-an-alternate-port&#34;&gt;Connect using an alternate port:&lt;/h2&gt;
+&lt;h3 id=&#34;connect-using-an-alternate-port&#34;&gt;Connect using an alternate port:&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;sftp -P remote_port remote_user@remote_host
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;connect-using-a-predefined-host-in-sshconfig&#34;&gt;Connect using a predefined host (in &lt;code&gt;~/.ssh/config&lt;/code&gt;):&lt;/h2&gt;
+&lt;h3 id=&#34;connect-using-a-predefined-host-in-sshconfig&#34;&gt;Connect using a predefined host (in &lt;code&gt;~/.ssh/config&lt;/code&gt;):&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;sftp host
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;transfer-remote-file-to-the-local-system&#34;&gt;Transfer remote file to the local system:&lt;/h2&gt;
+&lt;h3 id=&#34;transfer-remote-file-to-the-local-system&#34;&gt;Transfer remote file to the local system:&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;get /path/remote_file
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;transfer-local-file-to-the-remote-system&#34;&gt;Transfer local file to the remote system:&lt;/h2&gt;
+&lt;h3 id=&#34;transfer-local-file-to-the-remote-system&#34;&gt;Transfer local file to the remote system:&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;put /path/local_file
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;transfer-remote-directory-to-the-local-system-recursively-works-with-put-too&#34;&gt;Transfer remote directory to the local system recursively (works with &lt;code&gt;put&lt;/code&gt; too):&lt;/h2&gt;
+&lt;h3 id=&#34;transfer-remote-directory-to-the-local-system-recursively-works-with-put-too&#34;&gt;Transfer remote directory to the local system recursively (works with &lt;code&gt;put&lt;/code&gt; too):&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;get -R /path/remote_directory
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;get-list-of-files-on-local-machine&#34;&gt;Get list of files on local machine:&lt;/h2&gt;
+&lt;h3 id=&#34;get-list-of-files-on-local-machine&#34;&gt;Get list of files on local machine:&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;lls
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;get-list-of-files-on-remote-machine&#34;&gt;Get list of files on remote machine:&lt;/h2&gt;
+&lt;h3 id=&#34;get-list-of-files-on-remote-machine&#34;&gt;Get list of files on remote machine:&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;ls
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;code&gt;sftp&lt;/code&gt; allows you to engage with your local and your remote file system interactively. As you can see above, you can &lt;code&gt;ls&lt;/code&gt; your remote file system or you can change directories too with the common &lt;code&gt;cd&lt;/code&gt; command. To view the files on your local computer while you are connected via &lt;code&gt;sftp&lt;/code&gt; you need to us &lt;code&gt;lls&lt;/code&gt; for &amp;ldquo;local list files&amp;rdquo; and &lt;code&gt;lcd&lt;/code&gt; for &amp;ldquo;local change directory.&amp;rdquo; For most users &lt;code&gt;sftp&lt;/code&gt; provides a more powerful and useful experience. Since I have all of my remote computers that I ssh into configured in my &lt;code&gt;~/.ssh/config&lt;/code&gt; file it feels super easy to either &lt;code&gt;put&lt;/code&gt; files from my local computer to my remote computer, or &lt;code&gt;get&lt;/code&gt; files from my remote computer to my local computer.&lt;/p&gt;
 &lt;p&gt;Unlike &lt;code&gt;sftp&lt;/code&gt;, &lt;code&gt;scp&lt;/code&gt; is a utility that simply lets you copy files from one computer to another, but you can&amp;rsquo;t interact with the file system on other computer. You must simply know that path and file names that you desire to transfer from one computer to another. Once again, having your remote computers configured in your &lt;code&gt;~/.ssh/config&lt;/code&gt; file will save you from some typing mistakes.&lt;/p&gt;
-&lt;h1 id=&#34;cheat-sheet-scp&#34;&gt;Cheat sheet scp&lt;/h1&gt;
-&lt;h2 id=&#34;basic-syntax-to-grab-a-file-from-a-remote-computer-to-the-current-working-directory-on-your-local-computer&#34;&gt;Basic Syntax to Grab a File from a Remote Computer to the current-working-directory on your Local Computer.&lt;/h2&gt;
+&lt;h2 id=&#34;cheat-sheet-scp&#34;&gt;Cheat sheet scp&lt;/h2&gt;
+&lt;h3 id=&#34;basic-syntax-to-grab-a-file-from-a-remote-computer-to-the-current-working-directory-on-your-local-computer&#34;&gt;Basic Syntax to Grab a File from a Remote Computer to the current-working-directory on your Local Computer.&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;By default here, port 22 is used, or whichever port is otherwise configured for SSH.&lt;/p&gt;
 &lt;p&gt;scp remote_user@remote_host:/path/remote_file ./&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;copy-a-file-from-local-computer-to-remote-computer&#34;&gt;Copy a File from Local Computer to Remote Computer&lt;/h2&gt;
+&lt;h3 id=&#34;copy-a-file-from-local-computer-to-remote-computer&#34;&gt;Copy a File from Local Computer to Remote Computer&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;scp local_file remote_user@remote_host:/path/remote_directory
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;like-sftp-you-can-use-ssh-aliases-defined-in-sshconfig-file&#34;&gt;Like &lt;code&gt;sftp&lt;/code&gt; You Can Use SSH Aliases Defined in &lt;code&gt;~/.ssh/config&lt;/code&gt; File.&lt;/h2&gt;
+&lt;h3 id=&#34;like-sftp-you-can-use-ssh-aliases-defined-in-sshconfig-file&#34;&gt;Like &lt;code&gt;sftp&lt;/code&gt; You Can Use SSH Aliases Defined in &lt;code&gt;~/.ssh/config&lt;/code&gt; File.&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Additionally you have to specify in &lt;code&gt;scp&lt;/code&gt; the destination directory, which in the example below is the current-working-directory.&lt;/p&gt;
 &lt;p&gt;scp ssh_alias:/path/remote_file ./&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;unlike-sftp-you-can-use-scp-to-copy-files-between-two-remote-computers&#34;&gt;Unlike &lt;code&gt;sftp&lt;/code&gt; You Can Use &lt;code&gt;scp&lt;/code&gt; to Copy Files Between Two Remote Computers&lt;/h2&gt;
+&lt;h3 id=&#34;unlike-sftp-you-can-use-scp-to-copy-files-between-two-remote-computers&#34;&gt;Unlike &lt;code&gt;sftp&lt;/code&gt; You Can Use &lt;code&gt;scp&lt;/code&gt; to Copy Files Between Two Remote Computers&lt;/h3&gt;
 &lt;p&gt;If you would like a config file that is on one of your remote computers copied to another remote computer, you can use &lt;code&gt;scp&lt;/code&gt; to make that file transfer happen from your local computer without ever using &lt;code&gt;ssh&lt;/code&gt; to log into either of those remote computers. Consider the example below.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;scp ssh_alias1:/path/remote_file ssh_alias2:/path/remote_directory
 &lt;/code&gt;&lt;/pre&gt;
