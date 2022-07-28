@@ -10,6 +10,92 @@
     <lastBuildDate>Thu, 23 Dec 2021 14:50:48 -0400</lastBuildDate><atom:link href="https://discoverfoss.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <author>Steve (mowest)</author>
+      <title>Volley Your Files From One Computer to Another</title>
+      <link>https://discoverfoss.com/posts/scp/</link>
+      <pubDate>Thu, 28 Jul 2022 10:10:00 -0400</pubDate>
+      
+      <guid>https://discoverfoss.com/posts/scp/</guid>
+      <description>&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/scp-volley-header.jpg&#34;
+        alt=&#34;Volleyball with scp and sftp being hit header graphic&#34;/&gt;&lt;/p&gt;
+&lt;h1 id=&#34;its-magical&#34;&gt;It&amp;rsquo;s Magical&lt;/h1&gt;
+&lt;p&gt;The ability to transfer files from one computer to another on my home network using &lt;code&gt;scp&lt;/code&gt; felt magical when I first got into Linux. I had been using &lt;em&gt;&amp;ldquo;sneaker net&amp;rdquo;&lt;/em&gt;. In those days, &lt;em&gt;&amp;ldquo;sneaker net&amp;rdquo;&lt;/em&gt; meant putting the file on a 3.5&amp;quot; floppy and walking the floppy disk across the house into the room where the other computer was located. Before I started running Linux on old computers, I never had a network of computers. Once I had networked two Linux computers that I could &lt;code&gt;ssh&lt;/code&gt; between, this new world of networking fed my computer geek love.&lt;/p&gt;
+&lt;h1 id=&#34;a-flaw&#34;&gt;A Flaw&lt;/h1&gt;
+&lt;p&gt;On August 8th, 2018 Harry Sintonen working for F-Secure Corporation discovered the first vulnerabilities with the transfer protocol used by &lt;code&gt;scp&lt;/code&gt;. Although it creates compatibility bugs and issues to use a different transfer protocol, &lt;code&gt;scp&lt;/code&gt; can be used with the well tested and secure protocol behind &lt;code&gt;sftp&lt;/code&gt;. After these vulnerabilities were discovered, the team behind &lt;strong&gt;OpenSSH&lt;/strong&gt; determined that the original protocol had too much technical debt and too many issues to attempt fixing the original protocol. At first, the encouragement came from the &lt;strong&gt;OpenSSH&lt;/strong&gt; developers to just stop using &lt;code&gt;scp&lt;/code&gt; and instead use &lt;code&gt;sftp&lt;/code&gt;, &lt;code&gt;rsync&lt;/code&gt;, or some other program that securely transfers files from one computer to another.&lt;/p&gt;
+&lt;h1 id=&#34;the-fix&#34;&gt;The Fix&lt;/h1&gt;
+&lt;p&gt;Yes, in the world of free and open source software, we have plenty of secure options for transferring our files from one computer to another, &lt;code&gt;scp&lt;/code&gt; is a useful tool that is probably included in a number of sysadmin scripts and engrained into the muscle memory of a number of Linux users. Red Hat decided to patch their builds of &lt;strong&gt;OpenSSH&lt;/strong&gt;. Their patch included in all their builds of 8.7 and above make the default &lt;code&gt;scp&lt;/code&gt; protocol &lt;code&gt;sftp&lt;/code&gt; instead of its original and now discovered insecure protocol.&lt;/p&gt;
+&lt;p&gt;If you are using a Red Hat, CentOS, or Fedora distribution that is using &lt;strong&gt;OpenSSH 8.7&lt;/strong&gt; or above, than you can use &lt;code&gt;scp&lt;/code&gt; without concern about it being insecure. On Fedora 36, I am running &lt;strong&gt;OpenSSH 8.8p&lt;/strong&gt; which has the Red Hat patch installed.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;OpenSSH&lt;/strong&gt; decided to adopt the Red Hat patch into their mainline stable edition as of version 9.0 which was released in April of 2022. As this version makes its way into the repos of your preferred distribution, your version of &lt;code&gt;scp&lt;/code&gt; will also use the &lt;code&gt;sftp&lt;/code&gt; protocol as its default as well. If you run into one of the compatibility bugs, you will be able to use the flag &lt;code&gt;scp -O&lt;/code&gt; to use the &lt;em&gt;&amp;ldquo;original&amp;rdquo;&lt;/em&gt; protocol which is know to have vulnerabilities that are not fixed.&lt;/p&gt;
+&lt;p&gt;Besides using Fedora as my main desktop at home, and as my server OS in my home lab, I also have two workstations running MX Linux, Fluxbox Edition, and a Debian stable server at work. From my research these systems which are all built from Debian stable are using the unpatched version of &lt;strong&gt;OpenSSH&lt;/strong&gt;, version 8.4p. Therefore, on those systems it would be advisable to use &lt;code&gt;sftp&lt;/code&gt; directly instead of &lt;code&gt;scp&lt;/code&gt;.&lt;/p&gt;
+&lt;h1 id=&#34;rediscovering-the-magic-of-scp-and-sftp&#34;&gt;Rediscovering the Magic of scp and sftp&lt;/h1&gt;
+&lt;p&gt;If you can &lt;code&gt;ssh&lt;/code&gt; into your remote computer or a computer on your LAN, you can use &lt;code&gt;sftp&lt;/code&gt; and &lt;code&gt;scp&lt;/code&gt;. Here is a handy cheat sheet for &lt;code&gt;sftp&lt;/code&gt;.&lt;/p&gt;
+&lt;h1 id=&#34;cheat-sheet-for-sftp&#34;&gt;Cheat sheet for sftp&lt;/h1&gt;
+&lt;h2 id=&#34;connect-to-a-remote-server-and-enter-an-interactive-command-mode&#34;&gt;Connect to a remote server and enter an interactive command mode:&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;sftp remote_user@remote_host
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;connect-using-an-alternate-port&#34;&gt;Connect using an alternate port:&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;sftp -P remote_port remote_user@remote_host
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;connect-using-a-predefined-host-in-sshconfig&#34;&gt;Connect using a predefined host (in &lt;code&gt;~/.ssh/config&lt;/code&gt;):&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;sftp host
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;transfer-remote-file-to-the-local-system&#34;&gt;Transfer remote file to the local system:&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;get /path/remote_file
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;transfer-local-file-to-the-remote-system&#34;&gt;Transfer local file to the remote system:&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;put /path/local_file
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;transfer-remote-directory-to-the-local-system-recursively-works-with-put-too&#34;&gt;Transfer remote directory to the local system recursively (works with &lt;code&gt;put&lt;/code&gt; too):&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;get -R /path/remote_directory
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;get-list-of-files-on-local-machine&#34;&gt;Get list of files on local machine:&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;lls
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;get-list-of-files-on-remote-machine&#34;&gt;Get list of files on remote machine:&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;ls
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;sftp&lt;/code&gt; allows you to engage with your local and your remote file system interactively. As you can see above, you can &lt;code&gt;ls&lt;/code&gt; your remote file system or you can change directories too with the common &lt;code&gt;cd&lt;/code&gt; command. To view the files on your local computer while you are connected via &lt;code&gt;sftp&lt;/code&gt; you need to us &lt;code&gt;lls&lt;/code&gt; for &amp;ldquo;local list files&amp;rdquo; and &lt;code&gt;lcd&lt;/code&gt; for &amp;ldquo;local change directory.&amp;rdquo; For most users &lt;code&gt;sftp&lt;/code&gt; provides a more powerful and useful experience. Since I have all of my remote computers that I ssh into configured in my &lt;code&gt;~/.ssh/config&lt;/code&gt; file it feels super easy to either &lt;code&gt;put&lt;/code&gt; files from my local computer to my remote computer, or &lt;code&gt;get&lt;/code&gt; files from my remote computer to my local computer.&lt;/p&gt;
+&lt;p&gt;Unlike &lt;code&gt;sftp&lt;/code&gt;, &lt;code&gt;scp&lt;/code&gt; is a utility that simply lets you copy files from one computer to another, but you can&amp;rsquo;t interact with the file system on other computer. You must simply know that path and file names that you desire to transfer from one computer to another. Once again, having your remote computers configured in your &lt;code&gt;~/.ssh/config&lt;/code&gt; file will save you from some typing mistakes.&lt;/p&gt;
+&lt;h1 id=&#34;cheat-sheet-scp&#34;&gt;Cheat sheet scp&lt;/h1&gt;
+&lt;h2 id=&#34;basic-syntax-to-grab-a-file-from-a-remote-computer-to-the-current-working-directory-on-your-local-computer&#34;&gt;Basic Syntax to Grab a File from a Remote Computer to the current-working-directory on your Local Computer.&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;By default here, port 22 is used, or whichever port is otherwise configured for SSH.&lt;/p&gt;
+&lt;p&gt;scp remote_user@remote_host:/path/remote_file ./&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;copy-a-file-from-local-computer-to-remote-computer&#34;&gt;Copy a File from Local Computer to Remote Computer&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;scp local_file remote_user@remote_host:/path/remote_directory
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;like-sftp-you-can-use-ssh-aliases-defined-in-sshconfig-file&#34;&gt;Like &lt;code&gt;sftp&lt;/code&gt; You Can Use SSH Aliases Defined in &lt;code&gt;~/.ssh/config&lt;/code&gt; File.&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Additionally you have to specify in &lt;code&gt;scp&lt;/code&gt; the destination directory, which in the example below is the current-working-directory.&lt;/p&gt;
+&lt;p&gt;scp ssh_alias:/path/remote_file ./&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;unlike-sftp-you-can-use-scp-to-copy-files-between-two-remote-computers&#34;&gt;Unlike &lt;code&gt;sftp&lt;/code&gt; You Can Use &lt;code&gt;scp&lt;/code&gt; to Copy Files Between Two Remote Computers&lt;/h2&gt;
+&lt;p&gt;If you would like a config file that is on one of your remote computers copied to another remote computer, you can use &lt;code&gt;scp&lt;/code&gt; to make that file transfer happen from your local computer without ever using &lt;code&gt;ssh&lt;/code&gt; to log into either of those remote computers. Consider the example below.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;scp ssh_alias1:/path/remote_file ssh_alias2:/path/remote_directory
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The above only works if you have exchanged ssh keys between the two remote machines, since &lt;code&gt;scp&lt;/code&gt; can&amp;rsquo;t ask for passwords or passphrases between the two remote machines.&lt;/p&gt;
+&lt;p&gt;scp -3 ssh_alias1:/path/remote_file ssh_alias2:/path/remote_directory&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Adding the &amp;ldquo;-3&amp;rdquo; flag enables you to pass a file between the two remote computers through your local computer.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;just-another-tool-in-the-toolbox&#34;&gt;Just Another Tool in the Toolbox&lt;/h1&gt;
+&lt;p&gt;If you read other articles in this blog you know that I don&amp;rsquo;t depend on &lt;code&gt;scp&lt;/code&gt; and &lt;code&gt;sftp&lt;/code&gt; to do all of my file transfers. I definitely need to do an article about &lt;code&gt;rsync&lt;/code&gt; which gets used everyday in my home lab. I also use &lt;code&gt;git&lt;/code&gt; or &lt;code&gt;git&lt;/code&gt; in combination with the bash script &lt;code&gt;yadm&lt;/code&gt; to sync all of my configuration files between the computers on my home and work networks. Sometimes, it is great to remember that you have &lt;code&gt;scp&lt;/code&gt; and &lt;code&gt;sftp&lt;/code&gt; at your finger tips because you more than likely have &lt;code&gt;ssh&lt;/code&gt; installed on your computers. Also, users of Fedora and the Red Hat family of distros can feel safe using &lt;code&gt;scp&lt;/code&gt; because of their patched version of &lt;strong&gt;OpenSSH&lt;/strong&gt;, and soon everyone will be using &lt;strong&gt;OpenSSH 9.0&lt;/strong&gt; or above as well. Since my file transfers happen between my home and work networks that are connected by a VPN, I&amp;rsquo;m not concerned with using &lt;code&gt;scp&lt;/code&gt; on my Debian systems either since the traffic is going through my encrypted Wireguard tunnel. The beauty of Free and Open Source Software is often the number of solutions that are available to use, but that can also be challenging to determine which solution is the best as well.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Photos used to create the header graphic came from &lt;a href=&#34;https://unsplash.com/@angelopantazis?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText%22&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Unsplash photographer Angelo Pantazis&lt;/a&gt;
+ for the Volleyball player photo, and &lt;a href=&#34;https://unsplash.com/@chaurasia?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText%22&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Unsplash photographer Chandan Chaurasia&lt;/a&gt;
+ for the volleyball photo.&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <author>Steve (mowest)</author>
       <title>MX Linux as Wireguard Client</title>
       <link>https://discoverfoss.com/posts/wireguard-mx/</link>
       <pubDate>Sun, 02 Jan 2022 18:45:48 -0400</pubDate>
@@ -36,7 +122,7 @@
 &lt;li&gt;&lt;code&gt;apt install openresolv&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Create the following file &lt;code&gt;/etc/NetworkManager/conf.d/rc-manager.conf&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;[main]
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[main]
 rc-manager=resolvconf
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;After doing those steps to configure Network Manager to use &lt;code&gt;openresolv&lt;/code&gt; I could reboot, and all of my connections in Network Manager would work as expected. The VPN tunnel was active and all the systems that I wanted to access through that tunnel were reachable. I could surf on the broader Internet using my local network connection.&lt;/p&gt;
 &lt;h2 id=&#34;a-few-lingering-questions&#34;&gt;A Few Lingering Questions&lt;/h2&gt;
@@ -104,17 +190,17 @@ rc-manager=resolvconf
 &lt;ol&gt;
 &lt;li&gt;Run the following command to use the Wireguard &amp;ldquo;.conf&amp;rdquo; file to set up the Wireguard interface in Network Manager.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;nmcli connection import type wireguard file &amp;quot;$CONF_FILE&amp;quot;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;nmcli connection import type wireguard file &amp;#34;$CONF_FILE&amp;#34;
 &lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;2&#34;&gt;
 &lt;li&gt;After running the above command, I discovered that Network Manger not only created the Wireguard interface and profile, but it had also connected me to the Wireguard VPN tunnel.&lt;/li&gt;
 &lt;li&gt;I soon discovered that my Wireguard configuration was not exactly what I wanted, so I found that the easiest way to make changes to the configuration, was to first delete the Wireguard interface and profile created by Network Manager with this command.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;nmcli connection delete &amp;quot;$NAMEOFCONNECTION&amp;quot;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;nmcli connection delete &amp;#34;$NAMEOFCONNECTION&amp;#34;
 &lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;4&#34;&gt;
 &lt;li&gt;Then I would make my configuration changes to the Wireguard &amp;ldquo;.conf&amp;rdquo; file, and simply rerun the &lt;code&gt;nmcli connection import&lt;/code&gt; command again and test the new connection.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Below is an example of what the Wireguard &amp;ldquo;.conf&amp;rdquo; file might look like that PiVPN creates for you depending on the options you choose during the setup of PiVPN.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;[Interface]
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[Interface]
 PrivateKey = $UNIQUE_PrivateKey
 Address = 10.10.10.4/24
 DNS = 9.9.9.9, 149.112.112.112
@@ -125,7 +211,8 @@ PresharedKey = $UNIQUE_PresharedKey
 Endpoint = your.publicipORpersonaldomainpointingtopublicip.me:$PORTNUMBER_PickedduringPiVPNSetup
 AllowedIPs = 0.0.0.0/0, ::0/0
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This redacted Wireguard.conf file gives us the opportunity to talk about some configuration considerations. All of the redacted &amp;ldquo;keys&amp;rdquo; in the above file will be created by PiVPN when you go through the &amp;ldquo;.conf&amp;rdquo; file creation.&lt;/p&gt;
-&lt;p&gt;In order to make a VPN connection between two different networks that have different public IP addresses provided by the Internet providers, you will need to either have a static public IP from your Internet provider or you will need to tie a personal domain to your public IP using a Dynamic DNS service. I decided to use [freedns.afraid.org] (&lt;a href=&#34;https://freedns.afraid.org&#34;&gt;https://freedns.afraid.org&lt;/a&gt;). Through this service you can get a free domain name that you can link to your public IP. Since my Internet service provider does not provide me with a static public IP, freedns provides a super simple crontab script that you can copy and paste into your crontab that will ping their service throughout the day to ensure that your public IP if changed is still linked to the free domain name that you set up through their service. In the file above, I have my free domain name on the line that says, &amp;ldquo;Endpoint.&amp;rdquo; Notice that after your domain name you will need to put after the &amp;ldquo;:&amp;rdquo; the port number that you set Wireguard to run on when you ran the setup script for PiVPN. This also means that you will have to go into your router or firewall and forward that port to the computer that is running Wireguard, which in my case is my Raspberry Pi 1 B. I also decided to run the cron script that updates my link between my domain name and my public IP on the Raspberry Pi as well.&lt;/p&gt;
+&lt;p&gt;In order to make a VPN connection between two different networks that have different public IP addresses provided by the Internet providers, you will need to either have a static public IP from your Internet provider or you will need to tie a personal domain to your public IP using a Dynamic DNS service. I decided to use [freedns.afraid.org] (&lt;a href=&#34;https://freedns.afraid.org&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;https://freedns.afraid.org&lt;/a&gt;
+). Through this service you can get a free domain name that you can link to your public IP. Since my Internet service provider does not provide me with a static public IP, freedns provides a super simple crontab script that you can copy and paste into your crontab that will ping their service throughout the day to ensure that your public IP if changed is still linked to the free domain name that you set up through their service. In the file above, I have my free domain name on the line that says, &amp;ldquo;Endpoint.&amp;rdquo; Notice that after your domain name you will need to put after the &amp;ldquo;:&amp;rdquo; the port number that you set Wireguard to run on when you ran the setup script for PiVPN. This also means that you will have to go into your router or firewall and forward that port to the computer that is running Wireguard, which in my case is my Raspberry Pi 1 B. I also decided to run the cron script that updates my link between my domain name and my public IP on the Raspberry Pi as well.&lt;/p&gt;
 &lt;p&gt;When my &amp;ldquo;client&amp;rdquo; computer connects to the Wireguard tunnel it is given an IP that is in the range specified on the &amp;ldquo;Address&amp;rdquo; line. When you look at the &amp;ldquo;clients&amp;rdquo; that have connected to the PiVPN you will notice that they have IP addresses from that range which is not the actual IP address that your computer has from your DHCP server on your network, and that&amp;rsquo;s okay.&lt;/p&gt;
 &lt;p&gt;When I used the above Wireguard &amp;ldquo;.conf&amp;rdquo; file, I noticed something that I didn&amp;rsquo;t want. Since I was connecting from my home network, and not from some public coffee shop, I didn&amp;rsquo;t want all of my Internet traffic to go through the VPN tunnel. Yet this is what will happen when you have the &amp;ldquo;AllowedIP&amp;rsquo;s&amp;rdquo; configured as you see above with all &amp;ldquo;0&amp;rdquo;. That configuration is telling Network Manager to send all of my Internet traffic through the VPN tunnel. You may want this option if you are frequently on untrusted networks like those in hotels and coffee shops. I&amp;rsquo;m using this VPN tunnel to connect my home systems to my work systems. So that only the network traffic between home and work systems traveled over the VPN tunnel, I need to make some changes to the Wireguard configuration.&lt;/p&gt;
 &lt;ol&gt;
@@ -172,50 +259,50 @@ AllowedIPs = 0.0.0.0/0, ::0/0
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;yadm&lt;/strong&gt; offers a system to link alternate files that are tied to specific systems, so that I could have a unique .bashrc for MX, Fedora, Debian, Raspberry OS, and Ubuntu on WSL. However, in their documentation, they encourage you to have the same files across all of your systems whenever possible. Since I don&amp;rsquo;t mind a few unused dotfiles being on all of my systems, this left just my &lt;code&gt;.bashrc&lt;/code&gt; needing to be reworked so I could have one file that worked on all of my systems. The solution that I found was rather simple. Since I liked how my prompt looked, I could leave that the same for all systems. I could have all of the aliases that I like applied to all of my systems, and this left just a small section of the &lt;code&gt;.bashrc&lt;/code&gt; that addressed the differences that I noted above. The solution was to add a section governed by the &lt;code&gt;if, then, elif, fi&lt;/code&gt; statement.&lt;/p&gt;
 &lt;p&gt;Basically it looks like this:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;if [ $HOSTNAME = System1 ]
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;if [ $HOSTNAME = System1 ]
 then
     $HOME/bin/ufetch-fedora
-    alias upup=&#39;sudo dnf update -y&#39;
+    alias upup=&amp;#39;sudo dnf update -y&amp;#39;
     # Alias will wakeonlan Fedora Server on home network
-    alias wake=&#39;wol $FEDORASERVERMACADDRESS&#39;
+    alias wake=&amp;#39;wol $FEDORASERVERMACADDRESS&amp;#39;
     # Setup Autojump for Bash
-    export PROMPT_COMMAND=&amp;quot;${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a&amp;quot;
+    export PROMPT_COMMAND=&amp;#34;${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a&amp;#34;
     source /usr/share/autojump/autojump.bash
     # set default editor to Vim
     export EDITOR=vimx
-    alias vim=&#39;vimx&#39;
+    alias vim=&amp;#39;vimx&amp;#39;
 elif [ $HOSTNAME = System2 ]
 then
     $HOME/bin/ufetch-mx
-    alias upup=&#39;sudo apt update &amp;amp;&amp;amp; sudo apt full-upgrade -y&#39;
+    alias upup=&amp;#39;sudo apt update &amp;amp;&amp;amp; sudo apt full-upgrade -y&amp;#39;
     # Alias will wakeonlan Debian Server on work network
-    alias wake=&#39;wakeonlan $DEBIANSERVERMACADDRESS&#39;
+    alias wake=&amp;#39;wakeonlan $DEBIANSERVERMACADDRESS&amp;#39;
     # set default editor to Vim
     export EDITOR=vim
     # Installation instructions came from /usr/share/doc/autojump/README.Debian
     # Added the last line to source the shell script to enable autojump.
-    # Uncomment the next line only if autojump doesn&#39;t seem to work.
-    # export PROMPT_COMMAND=&amp;quot;${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a&amp;quot;
+    # Uncomment the next line only if autojump doesn&amp;#39;t seem to work.
+    # export PROMPT_COMMAND=&amp;#34;${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a&amp;#34;
     . /usr/share/autojump/autojump.sh
 elif [ $HOSTNAME = RPi1 ]
 then
     $HOME/bin/ufetch-raspbian
-    alias upup=&#39;sudo apt update &amp;amp;&amp;amp; sudo apt full-upgrade -y&#39;
+    alias upup=&amp;#39;sudo apt update &amp;amp;&amp;amp; sudo apt full-upgrade -y&amp;#39;
     # Alias will wakeonlan Debian Server on work network
-    alias wake=&#39;wakeonlan $DEBIANSERVERMACADDRESS&#39;
+    alias wake=&amp;#39;wakeonlan $DEBIANSERVERMACADDRESS&amp;#39;
     # set default editor to Vim
     export EDITOR=vim
     # Installation instructions came from /usr/share/doc/autojump/README.Debian
     # Added the last line to source the shell script to enable autojump.
-    # Uncomment the next line only if autojump doesn&#39;t seem to work.
-    # export PROMPT_COMMAND=&amp;quot;${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a&amp;quot;
+    # Uncomment the next line only if autojump doesn&amp;#39;t seem to work.
+    # export PROMPT_COMMAND=&amp;#34;${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a&amp;#34;
     . /usr/share/autojump/autojump.sh
 fi
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;That&amp;rsquo;s enough to give you the general idea. If there is a bash configuration that is unique to one of my systems it goes into this block of code. By adding the &lt;strong&gt;ufetch&lt;/strong&gt; scripts into these blocks, I get a visual reminder that these unique configuration options have been loaded into my bash session on that system.&lt;/p&gt;
 &lt;h2 id=&#34;yadm&#34;&gt;yadm&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://yadm.io/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Yadm&lt;/a&gt;
  was the key to wrangling my dotfiles in my 1.0 version, and it is still a key tool in keeping my dotfiles in sync across all of my systems. This time around I learned a new trick when it came to installing &lt;strong&gt;yadm&lt;/strong&gt;. Originally, I chose &lt;strong&gt;yadm&lt;/strong&gt; because I could install it from the Debian repos. I&amp;rsquo;m not sure how I missed it, but in the installation documentation they also suggest cloning the GitHub repository and adding a symlink to that git repo in the execution path on your local system. Since you have to have git installed for &lt;strong&gt;yadm&lt;/strong&gt; to work, this installation method makes the most sense to ensure that you are always using the latest version, and the same version on all of your systems. In my .bashrc I have my &lt;code&gt;~/bin/&lt;/code&gt; directory added to my $PATH, so I installed &lt;strong&gt;yadm&lt;/strong&gt; with just these commands on all of my systems.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;git clone https://github.com/TheLocehiliosan/yadm.git ~/.yadm-project
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git clone https://github.com/TheLocehiliosan/yadm.git ~/.yadm-project
 ln -s ~/.yadm-project/yadm ~/bin/yadm
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;With &lt;strong&gt;yadm&lt;/strong&gt; installed, I carried out the next steps on the system that had my previously mentioned &lt;code&gt;.bashrc&lt;/code&gt;.&lt;/p&gt;
 &lt;ol&gt;
@@ -367,7 +454,7 @@ sudo chmod -R 777 /mnt/butter
 &lt;ol&gt;
 &lt;li&gt;Make sure I have the latest version of Hugo on my local machine. Admittedly, because it is written in Golang and comes as a single binary this is pretty easy. On my Debian workstations, I download the released deb package and install using the simple command replacing the deb package name with the latest released version of Hugo.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;sudo apt install ./hugo_0.82.0_Linux-64bit.deb
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo apt install ./hugo_0.82.0_Linux-64bit.deb
 &lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
 &lt;li&gt;On Fedora, I have installed a COPR repo that has the latest version of Hugo, so every time there is an update, I pull down the latest Hugo version.&lt;/li&gt;
 &lt;/ul&gt;
@@ -450,7 +537,7 @@ sudo chmod -R 777 /mnt/butter
 &lt;p&gt;In the picture above you might notice that the new workstation has an HP 1018 printer and a Fujitsu ScanSnap 1300s attached to it. For the first time ever, I have the Fujitsu ScanSnap 1300s working on Linux. This new system has opened a new world of possibilities in using hardware with FOSS.&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;m enjoying this new workstation so much, that I have found myself at my standing desk for a longer period of my work day than in the past. I do a lot of teaching in my profession, and I&amp;rsquo;m enjoying having LibreOffice Writer or Impress open on one screen while gathering information and looking things up on the other screen. I find myself using the rightside dock in LibreOffice Writer and Impress often, especially when I&amp;rsquo;m in Impress, so having a full 1680x1050 just for those programs is nice.&lt;/p&gt;
 &lt;p&gt;The two Dell monitors have also eliminated another pain point that I had before with my former standing desk workstation. I have eliminated the Acer 223W monitor. This monitor does not work well with Linux. Every Linux distribution that I have tried fails to correctly identify the monitor&amp;rsquo;s refresh rate as 60Hz. Instead every distribution believes the refresh rate needs to be 59Hz. Because of this misidentification of the refresh rate, the screen will be off center when Linux boots to the login manager or into a desktop environment. You can fix this by running a few &lt;code&gt;xrandr&lt;/code&gt; commands like the ones below.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;xrandr --newmode &amp;quot;1680x1050_60.00&amp;quot;  146.25  1680 1784 1960 2240  1050 1053 1059 1089 -hsync +vsync
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;xrandr --newmode &amp;#34;1680x1050_60.00&amp;#34;  146.25  1680 1784 1960 2240  1050 1053 1059 1089 -hsync +vsync
 xrandr --addmode VGA-1 1680x1050_60.00
 xrandr --output  VGA-1 --mode 1680x1050_60.00
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You may need to adjust &lt;code&gt;VGA-1&lt;/code&gt; to &lt;code&gt;HDMI-1&lt;/code&gt; or something else depending on how xrandr identifies your connection to that monitor. Typically, I place those lines above along with additional flags to identify the primary monitor and the physical arrangment of the monitors when I have used the Acer 223W in a dual monitor configuration. Depending on the desktop environment that I&amp;rsquo;m using, I auto run a script with these lines so that when the desktop environment is loaded the screen is no longer off center. Although this fixes the display, I found it to be annoying. Thankfully, my Dell monitors are correctly identified by Linux, and I no longer have that annoying paper cut issue.&lt;/p&gt;
@@ -673,7 +760,7 @@ $HOME/.gitconfig/
 &lt;ol&gt;
 &lt;li&gt;Install git and configure git before using yadm to avoid issues. You set up git with the following commands.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;	$ git config --global user.name &amp;quot;John Doe&amp;quot;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;	$ git config --global user.name &amp;#34;John Doe&amp;#34;
 	$ git config --global user.email johndoe@example.com
 &lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;2&#34;&gt;
 &lt;li&gt;Because yadm is a wrapper for git, error messages will contain &lt;em&gt;git&lt;/em&gt; commands and flags.&lt;/li&gt;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.101.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <meta name="supported-color-schemes" content="light dark"><title>Wrangle Dotfiles Round 2.0&nbsp;&ndash;&nbsp;Discover FOSS</title><link rel="stylesheet" href="/css/core.min.b4a726dedca10dc1494687d837d0229a0aff4f990f8ef46b2f6c552a45af470a4ec20828002b85aa4ad7fb44ed927db9.css" integrity="sha384-tKcm3tyhDcFJRofYN9Aimgr/T5kPjvRrL2xVKkWvRwpOwggoACuFqkrX&#43;0Ttkn25"><meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Wrangle Dotfiles Round 2.0" /><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -57,17 +57,17 @@
 <ol>
 <li>Run the following command to use the Wireguard &ldquo;.conf&rdquo; file to set up the Wireguard interface in Network Manager.</li>
 </ol>
-<pre><code>nmcli connection import type wireguard file &quot;$CONF_FILE&quot;
+<pre tabindex="0"><code>nmcli connection import type wireguard file &#34;$CONF_FILE&#34;
 </code></pre><ol start="2">
 <li>After running the above command, I discovered that Network Manger not only created the Wireguard interface and profile, but it had also connected me to the Wireguard VPN tunnel.</li>
 <li>I soon discovered that my Wireguard configuration was not exactly what I wanted, so I found that the easiest way to make changes to the configuration, was to first delete the Wireguard interface and profile created by Network Manager with this command.</li>
 </ol>
-<pre><code>nmcli connection delete &quot;$NAMEOFCONNECTION&quot;
+<pre tabindex="0"><code>nmcli connection delete &#34;$NAMEOFCONNECTION&#34;
 </code></pre><ol start="4">
 <li>Then I would make my configuration changes to the Wireguard &ldquo;.conf&rdquo; file, and simply rerun the <code>nmcli connection import</code> command again and test the new connection.</li>
 </ol>
 <p>Below is an example of what the Wireguard &ldquo;.conf&rdquo; file might look like that PiVPN creates for you depending on the options you choose during the setup of PiVPN.</p>
-<pre><code>[Interface]
+<pre tabindex="0"><code>[Interface]
 PrivateKey = $UNIQUE_PrivateKey
 Address = 10.10.10.4/24
 DNS = 9.9.9.9, 149.112.112.112
@@ -78,7 +78,8 @@ PresharedKey = $UNIQUE_PresharedKey
 Endpoint = your.publicipORpersonaldomainpointingtopublicip.me:$PORTNUMBER_PickedduringPiVPNSetup
 AllowedIPs = 0.0.0.0/0, ::0/0
 </code></pre><p>This redacted Wireguard.conf file gives us the opportunity to talk about some configuration considerations. All of the redacted &ldquo;keys&rdquo; in the above file will be created by PiVPN when you go through the &ldquo;.conf&rdquo; file creation.</p>
-<p>In order to make a VPN connection between two different networks that have different public IP addresses provided by the Internet providers, you will need to either have a static public IP from your Internet provider or you will need to tie a personal domain to your public IP using a Dynamic DNS service. I decided to use [freedns.afraid.org] (<a href="https://freedns.afraid.org">https://freedns.afraid.org</a>). Through this service you can get a free domain name that you can link to your public IP. Since my Internet service provider does not provide me with a static public IP, freedns provides a super simple crontab script that you can copy and paste into your crontab that will ping their service throughout the day to ensure that your public IP if changed is still linked to the free domain name that you set up through their service. In the file above, I have my free domain name on the line that says, &ldquo;Endpoint.&rdquo; Notice that after your domain name you will need to put after the &ldquo;:&rdquo; the port number that you set Wireguard to run on when you ran the setup script for PiVPN. This also means that you will have to go into your router or firewall and forward that port to the computer that is running Wireguard, which in my case is my Raspberry Pi 1 B. I also decided to run the cron script that updates my link between my domain name and my public IP on the Raspberry Pi as well.</p>
+<p>In order to make a VPN connection between two different networks that have different public IP addresses provided by the Internet providers, you will need to either have a static public IP from your Internet provider or you will need to tie a personal domain to your public IP using a Dynamic DNS service. I decided to use [freedns.afraid.org] (<a href="https://freedns.afraid.org"target="_blank" rel="noopener noreferrer">https://freedns.afraid.org</a>
+). Through this service you can get a free domain name that you can link to your public IP. Since my Internet service provider does not provide me with a static public IP, freedns provides a super simple crontab script that you can copy and paste into your crontab that will ping their service throughout the day to ensure that your public IP if changed is still linked to the free domain name that you set up through their service. In the file above, I have my free domain name on the line that says, &ldquo;Endpoint.&rdquo; Notice that after your domain name you will need to put after the &ldquo;:&rdquo; the port number that you set Wireguard to run on when you ran the setup script for PiVPN. This also means that you will have to go into your router or firewall and forward that port to the computer that is running Wireguard, which in my case is my Raspberry Pi 1 B. I also decided to run the cron script that updates my link between my domain name and my public IP on the Raspberry Pi as well.</p>
 <p>When my &ldquo;client&rdquo; computer connects to the Wireguard tunnel it is given an IP that is in the range specified on the &ldquo;Address&rdquo; line. When you look at the &ldquo;clients&rdquo; that have connected to the PiVPN you will notice that they have IP addresses from that range which is not the actual IP address that your computer has from your DHCP server on your network, and that&rsquo;s okay.</p>
 <p>When I used the above Wireguard &ldquo;.conf&rdquo; file, I noticed something that I didn&rsquo;t want. Since I was connecting from my home network, and not from some public coffee shop, I didn&rsquo;t want all of my Internet traffic to go through the VPN tunnel. Yet this is what will happen when you have the &ldquo;AllowedIP&rsquo;s&rdquo; configured as you see above with all &ldquo;0&rdquo;. That configuration is telling Network Manager to send all of my Internet traffic through the VPN tunnel. You may want this option if you are frequently on untrusted networks like those in hotels and coffee shops. I&rsquo;m using this VPN tunnel to connect my home systems to my work systems. So that only the network traffic between home and work systems traveled over the VPN tunnel, I need to make some changes to the Wireguard configuration.</p>
 <ol>
@@ -125,50 +126,50 @@ AllowedIPs = 0.0.0.0/0, ::0/0
 </ul>
 <p><strong>yadm</strong> offers a system to link alternate files that are tied to specific systems, so that I could have a unique .bashrc for MX, Fedora, Debian, Raspberry OS, and Ubuntu on WSL. However, in their documentation, they encourage you to have the same files across all of your systems whenever possible. Since I don&rsquo;t mind a few unused dotfiles being on all of my systems, this left just my <code>.bashrc</code> needing to be reworked so I could have one file that worked on all of my systems. The solution that I found was rather simple. Since I liked how my prompt looked, I could leave that the same for all systems. I could have all of the aliases that I like applied to all of my systems, and this left just a small section of the <code>.bashrc</code> that addressed the differences that I noted above. The solution was to add a section governed by the <code>if, then, elif, fi</code> statement.</p>
 <p>Basically it looks like this:</p>
-<pre><code>if [ $HOSTNAME = System1 ]
+<pre tabindex="0"><code>if [ $HOSTNAME = System1 ]
 then
     $HOME/bin/ufetch-fedora
-    alias upup='sudo dnf update -y'
+    alias upup=&#39;sudo dnf update -y&#39;
     # Alias will wakeonlan Fedora Server on home network
-    alias wake='wol $FEDORASERVERMACADDRESS'
+    alias wake=&#39;wol $FEDORASERVERMACADDRESS&#39;
     # Setup Autojump for Bash
-    export PROMPT_COMMAND=&quot;${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a&quot;
+    export PROMPT_COMMAND=&#34;${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a&#34;
     source /usr/share/autojump/autojump.bash
     # set default editor to Vim
     export EDITOR=vimx
-    alias vim='vimx'
+    alias vim=&#39;vimx&#39;
 elif [ $HOSTNAME = System2 ]
 then
     $HOME/bin/ufetch-mx
-    alias upup='sudo apt update &amp;&amp; sudo apt full-upgrade -y'
+    alias upup=&#39;sudo apt update &amp;&amp; sudo apt full-upgrade -y&#39;
     # Alias will wakeonlan Debian Server on work network
-    alias wake='wakeonlan $DEBIANSERVERMACADDRESS'
+    alias wake=&#39;wakeonlan $DEBIANSERVERMACADDRESS&#39;
     # set default editor to Vim
     export EDITOR=vim
     # Installation instructions came from /usr/share/doc/autojump/README.Debian
     # Added the last line to source the shell script to enable autojump.
-    # Uncomment the next line only if autojump doesn't seem to work.
-    # export PROMPT_COMMAND=&quot;${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a&quot;
+    # Uncomment the next line only if autojump doesn&#39;t seem to work.
+    # export PROMPT_COMMAND=&#34;${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a&#34;
     . /usr/share/autojump/autojump.sh
 elif [ $HOSTNAME = RPi1 ]
 then
     $HOME/bin/ufetch-raspbian
-    alias upup='sudo apt update &amp;&amp; sudo apt full-upgrade -y'
+    alias upup=&#39;sudo apt update &amp;&amp; sudo apt full-upgrade -y&#39;
     # Alias will wakeonlan Debian Server on work network
-    alias wake='wakeonlan $DEBIANSERVERMACADDRESS'
+    alias wake=&#39;wakeonlan $DEBIANSERVERMACADDRESS&#39;
     # set default editor to Vim
     export EDITOR=vim
     # Installation instructions came from /usr/share/doc/autojump/README.Debian
     # Added the last line to source the shell script to enable autojump.
-    # Uncomment the next line only if autojump doesn't seem to work.
-    # export PROMPT_COMMAND=&quot;${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a&quot;
+    # Uncomment the next line only if autojump doesn&#39;t seem to work.
+    # export PROMPT_COMMAND=&#34;${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a&#34;
     . /usr/share/autojump/autojump.sh
 fi
 </code></pre><p>That&rsquo;s enough to give you the general idea. If there is a bash configuration that is unique to one of my systems it goes into this block of code. By adding the <strong>ufetch</strong> scripts into these blocks, I get a visual reminder that these unique configuration options have been loaded into my bash session on that system.</p>
 <h2 id="yadm">yadm</h2>
 <p><a href="https://yadm.io/"target="_blank" rel="noopener noreferrer">Yadm</a>
  was the key to wrangling my dotfiles in my 1.0 version, and it is still a key tool in keeping my dotfiles in sync across all of my systems. This time around I learned a new trick when it came to installing <strong>yadm</strong>. Originally, I chose <strong>yadm</strong> because I could install it from the Debian repos. I&rsquo;m not sure how I missed it, but in the installation documentation they also suggest cloning the GitHub repository and adding a symlink to that git repo in the execution path on your local system. Since you have to have git installed for <strong>yadm</strong> to work, this installation method makes the most sense to ensure that you are always using the latest version, and the same version on all of your systems. In my .bashrc I have my <code>~/bin/</code> directory added to my $PATH, so I installed <strong>yadm</strong> with just these commands on all of my systems.</p>
-<pre><code>git clone https://github.com/TheLocehiliosan/yadm.git ~/.yadm-project
+<pre tabindex="0"><code>git clone https://github.com/TheLocehiliosan/yadm.git ~/.yadm-project
 ln -s ~/.yadm-project/yadm ~/bin/yadm
 </code></pre><p>With <strong>yadm</strong> installed, I carried out the next steps on the system that had my previously mentioned <code>.bashrc</code>.</p>
 <ol>

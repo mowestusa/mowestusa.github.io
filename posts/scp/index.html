@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.101.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>Volley Your Files From One Computer to Another&nbsp;&ndash;&nbsp;Discover FOSS</title><link rel="stylesheet" href="/css/core.min.b4a726dedca10dc1494687d837d0229a0aff4f990f8ef46b2f6c552a45af470a4ec20828002b85aa4ad7fb44ed927db9.css" integrity="sha384-tKcm3tyhDcFJRofYN9Aimgr/T5kPjvRrL2xVKkWvRwpOwggoACuFqkrX&#43;0Ttkn25"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Volley Your Files From One Computer to Another" /><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#00a300">
+<meta name="theme-color" content="#ffffff">
+<body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><img class="site logo" src="/img/discover-100px.png" alt /><span class="site name">Discover FOSS</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">Categories</a><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/index%2exml">RSS</a></nav></div></span></div><div class="site slogan"><span class="title">Discover Free and Open Source Software</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">Volley Your Files From One Computer to Another</h1><p class="article date">2022-07-28</p></section><article class="article markdown-body"><p><img  src="/img/scp-volley-header.jpg"
+        alt="Volleyball with scp and sftp being hit header graphic"/></p>
+<h1 id="its-magical">It&rsquo;s Magical</h1>
+<p>The ability to transfer files from one computer to another on my home network using <code>scp</code> felt magical when I first got into Linux. I had been using <em>&ldquo;sneaker net&rdquo;</em>. In those days, <em>&ldquo;sneaker net&rdquo;</em> meant putting the file on a 3.5&quot; floppy and walking the floppy disk across the house into the room where the other computer was located. Before I started running Linux on old computers, I never had a network of computers. Once I had networked two Linux computers that I could <code>ssh</code> between, this new world of networking fed my computer geek love.</p>
+<h1 id="a-flaw">A Flaw</h1>
+<p>On August 8th, 2018 Harry Sintonen working for F-Secure Corporation discovered the first vulnerabilities with the transfer protocol used by <code>scp</code>. Although it creates compatibility bugs and issues to use a different transfer protocol, <code>scp</code> can be used with the well tested and secure protocol behind <code>sftp</code>. After these vulnerabilities were discovered, the team behind <strong>OpenSSH</strong> determined that the original protocol had too much technical debt and too many issues to attempt fixing the original protocol. At first, the encouragement came from the <strong>OpenSSH</strong> developers to just stop using <code>scp</code> and instead use <code>sftp</code>, <code>rsync</code>, or some other program that securely transfers files from one computer to another.</p>
+<h1 id="the-fix">The Fix</h1>
+<p>Yes, in the world of free and open source software, we have plenty of secure options for transferring our files from one computer to another, <code>scp</code> is a useful tool that is probably included in a number of sysadmin scripts and engrained into the muscle memory of a number of Linux users. Red Hat decided to patch their builds of <strong>OpenSSH</strong>. Their patch included in all their builds of 8.7 and above make the default <code>scp</code> protocol <code>sftp</code> instead of its original and now discovered insecure protocol.</p>
+<p>If you are using a Red Hat, CentOS, or Fedora distribution that is using <strong>OpenSSH 8.7</strong> or above, than you can use <code>scp</code> without concern about it being insecure. On Fedora 36, I am running <strong>OpenSSH 8.8p</strong> which has the Red Hat patch installed.</p>
+<p><strong>OpenSSH</strong> decided to adopt the Red Hat patch into their mainline stable edition as of version 9.0 which was released in April of 2022. As this version makes its way into the repos of your preferred distribution, your version of <code>scp</code> will also use the <code>sftp</code> protocol as its default as well. If you run into one of the compatibility bugs, you will be able to use the flag <code>scp -O</code> to use the <em>&ldquo;original&rdquo;</em> protocol which is know to have vulnerabilities that are not fixed.</p>
+<p>Besides using Fedora as my main desktop at home, and as my server OS in my home lab, I also have two workstations running MX Linux, Fluxbox Edition, and a Debian stable server at work. From my research these systems which are all built from Debian stable are using the unpatched version of <strong>OpenSSH</strong>, version 8.4p. Therefore, on those systems it would be advisable to use <code>sftp</code> directly instead of <code>scp</code>.</p>
+<h1 id="rediscovering-the-magic-of-scp-and-sftp">Rediscovering the Magic of scp and sftp</h1>
+<p>If you can <code>ssh</code> into your remote computer or a computer on your LAN, you can use <code>sftp</code> and <code>scp</code>. Here is a handy cheat sheet for <code>sftp</code>.</p>
+<h1 id="cheat-sheet-for-sftp">Cheat sheet for sftp</h1>
+<h2 id="connect-to-a-remote-server-and-enter-an-interactive-command-mode">Connect to a remote server and enter an interactive command mode:</h2>
+<pre><code>sftp remote_user@remote_host
+</code></pre>
+<h2 id="connect-using-an-alternate-port">Connect using an alternate port:</h2>
+<pre><code>sftp -P remote_port remote_user@remote_host
+</code></pre>
+<h2 id="connect-using-a-predefined-host-in-sshconfig">Connect using a predefined host (in <code>~/.ssh/config</code>):</h2>
+<pre><code>sftp host
+</code></pre>
+<h2 id="transfer-remote-file-to-the-local-system">Transfer remote file to the local system:</h2>
+<pre><code>get /path/remote_file
+</code></pre>
+<h2 id="transfer-local-file-to-the-remote-system">Transfer local file to the remote system:</h2>
+<pre><code>put /path/local_file
+</code></pre>
+<h2 id="transfer-remote-directory-to-the-local-system-recursively-works-with-put-too">Transfer remote directory to the local system recursively (works with <code>put</code> too):</h2>
+<pre><code>get -R /path/remote_directory
+</code></pre>
+<h2 id="get-list-of-files-on-local-machine">Get list of files on local machine:</h2>
+<pre><code>lls
+</code></pre>
+<h2 id="get-list-of-files-on-remote-machine">Get list of files on remote machine:</h2>
+<pre><code>ls
+</code></pre>
+<p><code>sftp</code> allows you to engage with your local and your remote file system interactively. As you can see above, you can <code>ls</code> your remote file system or you can change directories too with the common <code>cd</code> command. To view the files on your local computer while you are connected via <code>sftp</code> you need to us <code>lls</code> for &ldquo;local list files&rdquo; and <code>lcd</code> for &ldquo;local change directory.&rdquo; For most users <code>sftp</code> provides a more powerful and useful experience. Since I have all of my remote computers that I ssh into configured in my <code>~/.ssh/config</code> file it feels super easy to either <code>put</code> files from my local computer to my remote computer, or <code>get</code> files from my remote computer to my local computer.</p>
+<p>Unlike <code>sftp</code>, <code>scp</code> is a utility that simply lets you copy files from one computer to another, but you can&rsquo;t interact with the file system on other computer. You must simply know that path and file names that you desire to transfer from one computer to another. Once again, having your remote computers configured in your <code>~/.ssh/config</code> file will save you from some typing mistakes.</p>
+<h1 id="cheat-sheet-scp">Cheat sheet scp</h1>
+<h2 id="basic-syntax-to-grab-a-file-from-a-remote-computer-to-the-current-working-directory-on-your-local-computer">Basic Syntax to Grab a File from a Remote Computer to the current-working-directory on your Local Computer.</h2>
+<ul>
+<li>
+<p>By default here, port 22 is used, or whichever port is otherwise configured for SSH.</p>
+<p>scp remote_user@remote_host:/path/remote_file ./</p>
+</li>
+</ul>
+<h2 id="copy-a-file-from-local-computer-to-remote-computer">Copy a File from Local Computer to Remote Computer</h2>
+<pre><code>scp local_file remote_user@remote_host:/path/remote_directory
+</code></pre>
+<h2 id="like-sftp-you-can-use-ssh-aliases-defined-in-sshconfig-file">Like <code>sftp</code> You Can Use SSH Aliases Defined in <code>~/.ssh/config</code> File.</h2>
+<ul>
+<li>
+<p>Additionally you have to specify in <code>scp</code> the destination directory, which in the example below is the current-working-directory.</p>
+<p>scp ssh_alias:/path/remote_file ./</p>
+</li>
+</ul>
+<h2 id="unlike-sftp-you-can-use-scp-to-copy-files-between-two-remote-computers">Unlike <code>sftp</code> You Can Use <code>scp</code> to Copy Files Between Two Remote Computers</h2>
+<p>If you would like a config file that is on one of your remote computers copied to another remote computer, you can use <code>scp</code> to make that file transfer happen from your local computer without ever using <code>ssh</code> to log into either of those remote computers. Consider the example below.</p>
+<pre><code>scp ssh_alias1:/path/remote_file ssh_alias2:/path/remote_directory
+</code></pre>
+<ul>
+<li>
+<p>The above only works if you have exchanged ssh keys between the two remote machines, since <code>scp</code> can&rsquo;t ask for passwords or passphrases between the two remote machines.</p>
+<p>scp -3 ssh_alias1:/path/remote_file ssh_alias2:/path/remote_directory</p>
+</li>
+<li>
+<p>Adding the &ldquo;-3&rdquo; flag enables you to pass a file between the two remote computers through your local computer.</p>
+</li>
+</ul>
+<h1 id="just-another-tool-in-the-toolbox">Just Another Tool in the Toolbox</h1>
+<p>If you read other articles in this blog you know that I don&rsquo;t depend on <code>scp</code> and <code>sftp</code> to do all of my file transfers. I definitely need to do an article about <code>rsync</code> which gets used everyday in my home lab. I also use <code>git</code> or <code>git</code> in combination with the bash script <code>yadm</code> to sync all of my configuration files between the computers on my home and work networks. Sometimes, it is great to remember that you have <code>scp</code> and <code>sftp</code> at your finger tips because you more than likely have <code>ssh</code> installed on your computers. Also, users of Fedora and the Red Hat family of distros can feel safe using <code>scp</code> because of their patched version of <strong>OpenSSH</strong>, and soon everyone will be using <strong>OpenSSH 9.0</strong> or above as well. Since my file transfers happen between my home and work networks that are connected by a VPN, I&rsquo;m not concerned with using <code>scp</code> on my Debian systems either since the traffic is going through my encrypted Wireguard tunnel. The beauty of Free and Open Source Software is often the number of solutions that are available to use, but that can also be challenging to determine which solution is the best as well.</p>
+<p><em>Photos used to create the header graphic came from <a href="https://unsplash.com/@angelopantazis?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText%22"target="_blank" rel="noopener noreferrer">Unsplash photographer Angelo Pantazis</a>
+ for the Volleyball player photo, and <a href="https://unsplash.com/@chaurasia?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText%22"target="_blank" rel="noopener noreferrer">Unsplash photographer Chandan Chaurasia</a>
+ for the volleyball photo.</em></p>
+</article><section class="article labels"><a class="category" href=/categories/articles/>Articles</a><a class="tag" href=/tags/mx-linux/>MX-Linux</a><a class="tag" href=/tags/fedora/>Fedora</a><a class="tag" href=/tags/terminal/>terminal</a></section><section class="article author"><img class="avatar" src="/img/myAvatar.png" alt><p class="name">Steve (mowest)</p><div class="bio">A free and open source enthusiast using these tools for work and fun.</div><div class="details"><a class="item" href="https://github.com/mowestusa" target="_blank" rel="noopener noreferrer"><span class="iconfont icon-github"></span>&nbsp;mowestusa</a><a class="item" href="mailto:mowestusa@pm.me" target="_blank" rel="noopener noreferrer"><span class="iconfont icon-email"></span>&nbsp;mowestusa@pm.me</a></div>
+</section>
+</div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/posts/wireguard-mx/"><span class="iconfont icon-article"></span>MX Linux as Wireguard Client</a></p></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</p>
+    <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
+        target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank" rel="noopener noreferrer">Notepadium</a></p></div>
+</section></body>
+
+</html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.101.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <meta name="supported-color-schemes" content="light dark"><title>MX Linux as Wireguard Client&nbsp;&ndash;&nbsp;Discover FOSS</title><link rel="stylesheet" href="/css/core.min.b4a726dedca10dc1494687d837d0229a0aff4f990f8ef46b2f6c552a45af470a4ec20828002b85aa4ad7fb44ed927db9.css" integrity="sha384-tKcm3tyhDcFJRofYN9Aimgr/T5kPjvRrL2xVKkWvRwpOwggoACuFqkrX&#43;0Ttkn25"><meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="MX Linux as Wireguard Client" /><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -33,7 +33,7 @@
 <li><code>apt install openresolv</code></li>
 <li>Create the following file <code>/etc/NetworkManager/conf.d/rc-manager.conf</code></li>
 </ol>
-<pre><code>[main]
+<pre tabindex="0"><code>[main]
 rc-manager=resolvconf
 </code></pre><p>After doing those steps to configure Network Manager to use <code>openresolv</code> I could reboot, and all of my connections in Network Manager would work as expected. The VPN tunnel was active and all the systems that I wanted to access through that tunnel were reachable. I could surf on the broader Internet using my local network connection.</p>
 <h2 id="a-few-lingering-questions">A Few Lingering Questions</h2>
@@ -49,7 +49,7 @@ rc-manager=resolvconf
 </article><section class="article labels"><a class="category" href=/categories/tutorials/>Tutorials</a><a class="tag" href=/tags/vpn/>vpn</a><a class="tag" href=/tags/terminal/>terminal</a><a class="tag" href=/tags/mx-linux/>MX-Linux</a><a class="tag" href=/tags/fedora/>Fedora</a><a class="tag" href=/tags/wireguard/>Wireguard</a></section><section class="article author"><img class="avatar" src="/img/myAvatar.png" alt><p class="name">Steve (mowest)</p><div class="bio">A free and open source enthusiast using these tools for work and fun.</div><div class="details"><a class="item" href="https://github.com/mowestusa" target="_blank" rel="noopener noreferrer"><span class="iconfont icon-github"></span>&nbsp;mowestusa</a><a class="item" href="mailto:mowestusa@pm.me" target="_blank" rel="noopener noreferrer"><span class="iconfont icon-email"></span>&nbsp;mowestusa@pm.me</a></div>
 </section>
 </div>
-<div class="article bottom"><section class="article navigation"><p><a class="link" href="/posts/yadm-02/"><span class="iconfont icon-article"></span>Wrangle Dotfiles Round 2.0</a></p></section></div></section><section id="footer"><div class="footer-wrap">
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/posts/scp/"><span class="iconfont icon-article"></span>Volley Your Files From One Computer to Another</a></p><p><a class="link" href="/posts/yadm-02/"><span class="iconfont icon-article"></span>Wrangle Dotfiles Round 2.0</a></p></section></div></section><section id="footer"><div class="footer-wrap">
     <p class="copyright">This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</p>
     <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
         target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
