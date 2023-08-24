@@ -10,6 +10,126 @@
     <lastBuildDate>Thu, 23 Dec 2021 14:50:48 -0400</lastBuildDate><atom:link href="https://discoverfoss.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <author>Steve (mowest)</author>
+      <title>Sysadmin Corner 001: Wake-On-Lan Sticky Setup</title>
+      <link>https://discoverfoss.com/posts/sysadmin01/</link>
+      <pubDate>Thu, 24 Aug 2023 10:10:00 -0400</pubDate>
+      
+      <guid>https://discoverfoss.com/posts/sysadmin01/</guid>
+      <description>&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/sysadmincorner-header.jpg&#34;
+        alt=&#34;Picture of Street Corner Business with Sysadmin Corner on sign header graphic&#34;/&gt;&lt;/p&gt;
+&lt;h1 id=&#34;upgrade-joys-and-ah-ha-moments&#34;&gt;Upgrade Joys and Ah-ha Moments&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://mxlinux.org/blog/mx-23-libretto-now-available/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;MX 23 Libretto&lt;/a&gt;
+ is awesome! I have been running MX Linux on my &lt;a href=&#34;https://discoverfoss.com/posts/recycled-workstation/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Recycled Workstation&lt;/a&gt;
+ at work since MX 19 so this is the second time I have upgraded to the newest version of MX Linux on this workstation. Although I have enjoyed running the MX Fluxbox edition for the last few years, I decided to switch to their flagship edition which uses XFCE as the desktop environment. So far, I&amp;rsquo;m loving the tweaks that the MX team have brought to their flavor of Debian Stable on top of XFCE. Since I took lots of notes about what I set up on my upgraded system with the move from MX Fluxbox 19 to 21, I had a good idea of what needed to be done after I did the upgrade to MX 23 Libretto.&lt;/p&gt;
+&lt;p&gt;The reason for this new post and a future post in the works comes from the realization that in the two years since I upgraded to MX 21, websites that I used to configure key features of this desktop have fallen off the Internet. So I thought I would document the tasks here in my own blog for others who might be looking for similar information.&lt;/p&gt;
+&lt;h1 id=&#34;the-magic-of-wake-on-lan&#34;&gt;The Magic of Wake-On-Lan&lt;/h1&gt;
+&lt;p&gt;I believe it was Jay at &lt;a href=&#34;learnlinux.tv&#34;&gt;learnlinux.tv&lt;/a&gt;
+ that introduced me to the idea of using wake-on-lan so that all of the computers that I run in the homelab and at work don&amp;rsquo;t have to be one 24/7 but only when they are likely to be accessed. I use wake-on-lan to wake up my server at work every morning, and it shuts down every night so that when I&amp;rsquo;m not work, the server isn&amp;rsquo;t just being a power drain. I do the same with my storage server in the homelab, it wakes every night to backup files from my main homelab server then shuts down immediately after the backup script runs.&lt;/p&gt;
+&lt;p&gt;I like to be able to wake up my recycled workstation if I happen to be at home, and a file did not sync properly to the homelab server or I want to do some other task on my work computer. After upgrading to MX 23 I realized that the workstation would no longer wake up when the &amp;ldquo;magic packet&amp;rdquo; was broadcast over the network from my always on Raspberry Pi.&lt;/p&gt;
+&lt;h1 id=&#34;the-steps-to-restore-wake-on-lan&#34;&gt;The Steps to Restore Wake-On-Lan&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;Change MX to boot with systemd&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This might be the most controversial step if you are in love with MX and appreciate that they by default boot with &lt;strong&gt;SysV&lt;/strong&gt; init scripts. The method that I have found to reliably reset the network interface depends on a systemd service file running at boot. Could this be done with &lt;strong&gt;SysV&lt;/strong&gt;? Yes, I&amp;rsquo;m sure that it can be done, I just don&amp;rsquo;t know how to format the script and where it would go in the system so that it is executed every time the desktop boots.&lt;/p&gt;
+&lt;p&gt;The easiest way to do this is to use the MX Boot Options utility pictured below.&lt;/p&gt;
+&lt;p&gt;&lt;img  src=&#34;https://discoverfoss.com/img/mx-bootoptions.png&#34;
+        alt=&#34;MX Boot Options Utility&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;In the drop down box next to &lt;strong&gt;&amp;ldquo;Boot to&amp;rdquo;&lt;/strong&gt; choose the latest kernel with &amp;ldquo;(systemd)&amp;rdquo;. Click &lt;strong&gt;&amp;ldquo;Apply&amp;rdquo;&lt;/strong&gt; and grub will be updated with your choice, then you can close the utility. My experience in the past is that when MX installs a new kernel it remembers your choice, and automatically chooses to boot the latest kernel with systemd.&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Discover your network card interface name.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Wake-On-Lan only works according to my understanding with wired connections to the network. So you need to have your system connected to your network through a wired Ethernet interface. Once you have done that, you can run the following command to get the name of your network card interface which can be different from one distribution to another.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ip address&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;You should get some output that looks similar to what I have below.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;1: lo: &amp;lt;LOOPBACK,UP,LOWER_UP&amp;gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: eth0: &amp;lt;BROADCAST,MULTICAST,UP,LOWER_UP&amp;gt; mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether bc:ee:7b:dc:5b:ea brd ff:ff:ff:ff:ff:ff
+    inet 10.10.1.100/24 brd 10.10.1.255 scope global dynamic noprefixroute eth0
+       valid_lft 81179sec preferred_lft 81179sec
+    inet6 fe80::9406:4006:fcd6:9778/64 scope link noprefixroute
+       valid_lft forever preferred_lft forever
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The important line is labeled &lt;strong&gt;&amp;ldquo;2:&amp;rdquo;&lt;/strong&gt; where in my output I see the physical network interface is called &lt;strong&gt;&amp;ldquo;eth0&amp;rdquo;&lt;/strong&gt;. You may see multiple &amp;ldquo;addresses&amp;rdquo; or &amp;ldquo;devices&amp;rdquo; if you are running container or have multiple network interfaces in your workstation. Since I don&amp;rsquo;t have a wireless card or other network interfaces I can easily tell which one has given me the ip address to my computer on the local network. Other common interface names could be &lt;strong&gt;&amp;ldquo;enp2s0&amp;rdquo;&lt;/strong&gt; or &lt;strong&gt;&amp;ldquo;eno1&amp;rdquo;&lt;/strong&gt; for wired interfaces or a wireless interface might be called &lt;strong&gt;&amp;ldquo;wlp1s0&amp;rdquo;&lt;/strong&gt;.&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Check whether the network interface is capable of Wake-On-Lan.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Run &lt;code&gt;sudo ethtool eth0&lt;/code&gt; replacing the network card interface name with the one that fits your system. You should get similar output to what I have below.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Settings for eth0:
+	Supported ports: [ TP	 MII ]
+	Supported link modes:   10baseT/Half 10baseT/Full
+	                        100baseT/Half 100baseT/Full
+	                        1000baseT/Half 1000baseT/Full
+	Supported pause frame use: Symmetric Receive-only
+	Supports auto-negotiation: Yes
+	Supported FEC modes: Not reported
+	Advertised link modes:  10baseT/Half 10baseT/Full
+	                        100baseT/Half 100baseT/Full
+	                        1000baseT/Half 1000baseT/Full
+	Advertised pause frame use: Symmetric Receive-only
+	Advertised auto-negotiation: Yes
+	Advertised FEC modes: Not reported
+	Link partner advertised link modes:  10baseT/Half 10baseT/Full
+	                                     100baseT/Half 100baseT/Full
+	                                     1000baseT/Full
+	Link partner advertised pause frame use: Symmetric
+	Link partner advertised auto-negotiation: Yes
+	Link partner advertised FEC modes: Not reported
+	Speed: 1000Mb/s
+	Duplex: Full
+	Auto-negotiation: on
+	master-slave cfg: preferred slave
+	master-slave status: slave
+	Port: Twisted Pair
+	PHYAD: 0
+	Transceiver: external
+	MDI-X: Unknown
+    Supports Wake-on: pumbg
+	Wake-on: d
+	Link detected: yes
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The important lines are at the bottom.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;	Supports Wake-on: pumbg
+	Wake-on: d
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If you see &lt;strong&gt;&amp;ldquo;g&amp;rdquo;&lt;/strong&gt; your network interface supports wake-on-lan when it receives the &amp;ldquo;magic packet&amp;rdquo; it will boot the system.&lt;/p&gt;
+&lt;p&gt;All of the systems that I have implemented to use wake-on-lan had the last line &lt;code&gt;Wake-on: d&lt;/code&gt; which means that currently wake-on-lan is disabled. If this already says &lt;code&gt;Wake-on: g&lt;/code&gt; you are done, and you don&amp;rsquo;t have to do anything more because your system is already set to use wake-on-lan.&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Test wake-on-lan.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;sudo ethtool -s eth0 wol g&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The above command will setup the network interface to use wake-on-lan which you can check by running &lt;code&gt;sudo ethtool eth0&lt;/code&gt; again and looking for &lt;code&gt;Wake-on: g&lt;/code&gt;. But this will only work once, you can shutdown the system now, and then from another system on the same network send the command &lt;code&gt;wakeonlan bc:ee:7b:dc:5b:ea&lt;/code&gt; or on Fedora systems the command is &lt;code&gt;wol bc:ee:7b:dc:5b:ea&lt;/code&gt;. As long as the MAC address matches the network interface MAC address your system should boot up.&lt;/p&gt;
+&lt;p&gt;Unfortunately, the above command will not work after the first reboot unless you would run it every time before shutting down the system which I&amp;rsquo;m sure you could do in any number of ways, but I like to use the following method.&lt;/p&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;Make the wake-on-lan setting sticky by creating a systemd service file.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Using your favorite CLI text editor you would create this new service file.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo vim /etc/systemd/system/wol.service&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Fill it with the following content most of which should be self explanatory.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[Unit]
+Description=Activate WOL on eth0 network card
+After=network-online.target
+[Service]
+Type=oneshot
+ExecStartPre=/bin/sleep 30
+ExecStart=/sbin/ethtool -s eth0 wol g
+[Install]
+WantedBy=basic.target
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;For some systems you might be able to eliminate the line &lt;code&gt;ExecStartPre=/bin/sleep 30&lt;/code&gt;. I found that my recycled workstation network interface needed a little extra time before the network card was read to have its setting changed, so I had to add the &lt;code&gt;sleep 30&lt;/code&gt; command before the &lt;code&gt;ethtool&lt;/code&gt; command.&lt;/p&gt;
+&lt;p&gt;After saving the file you can run the service file once, check the status, and then enable it so it runs every time you reboot your system. If the following command fail, it might be because you have not rebooted your MX install using systemd, do that first then try the commands below again.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo service wol start&lt;/code&gt;
+&lt;code&gt;sudo service wol status&lt;/code&gt;
+&lt;code&gt;sudo systemctl enable wol.service&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The original author who helped me crack this task is Alberto Iriberri Andres. Here is the &lt;a href=&#34;https://web.archive.org/web/20230607220456/https://www.pangodream.es/make-your-wol-configuration-truly-sticky&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;original blog article on the WayBackMachine&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Photo used to create the header graphic came from &lt;a href=&#34;https://unsplash.com/photos/noVVeS4vTRQ?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Unsplash photographer Bryan Papazov&lt;/a&gt;
+&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <author>Steve (mowest)</author>
       <title>Volley Your Files From One Computer to Another</title>
       <link>https://discoverfoss.com/posts/scp/</link>
       <pubDate>Thu, 28 Jul 2022 10:10:00 -0400</pubDate>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.117.0"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>Sysadmin Corner 001: Wake-On-Lan Sticky Setup&nbsp;&ndash;&nbsp;Discover FOSS</title><link rel="stylesheet" href="/css/core.min.e11e19bd42eaead03f45feb630a3ba72fec31d38739b58f766dd7ec605893d0d813ff995a170f26067f621b5c5db4f42.css" integrity="sha384-4R4ZvULq6tA/Rf62MKO6cv7DHThzm1j3Zt1&#43;xgWJPQ2BP/mVoXDyYGf2IbXF209C"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Sysadmin Corner 001: Wake-On-Lan Sticky Setup" /><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#00a300">
+<meta name="theme-color" content="#ffffff">
+<body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><img class="site logo" src="/img/discover-100px.png" alt /><span class="site name">Discover FOSS</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">Categories</a><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/index%2exml">RSS</a></nav></div></span></div><div class="site slogan"><span class="title">Discover Free and Open Source Software</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">Sysadmin Corner 001: Wake-On-Lan Sticky Setup</h1><p class="article date">2023-08-24</p></section><article class="article markdown-body"><p><img  src="/img/sysadmincorner-header.jpg"
+        alt="Picture of Street Corner Business with Sysadmin Corner on sign header graphic"/></p>
+<h1 id="upgrade-joys-and-ah-ha-moments">Upgrade Joys and Ah-ha Moments</h1>
+<p><a href="https://mxlinux.org/blog/mx-23-libretto-now-available/"target="_blank" rel="noopener noreferrer">MX 23 Libretto</a>
+ is awesome! I have been running MX Linux on my <a href="https://discoverfoss.com/posts/recycled-workstation/"target="_blank" rel="noopener noreferrer">Recycled Workstation</a>
+ at work since MX 19 so this is the second time I have upgraded to the newest version of MX Linux on this workstation. Although I have enjoyed running the MX Fluxbox edition for the last few years, I decided to switch to their flagship edition which uses XFCE as the desktop environment. So far, I&rsquo;m loving the tweaks that the MX team have brought to their flavor of Debian Stable on top of XFCE. Since I took lots of notes about what I set up on my upgraded system with the move from MX Fluxbox 19 to 21, I had a good idea of what needed to be done after I did the upgrade to MX 23 Libretto.</p>
+<p>The reason for this new post and a future post in the works comes from the realization that in the two years since I upgraded to MX 21, websites that I used to configure key features of this desktop have fallen off the Internet. So I thought I would document the tasks here in my own blog for others who might be looking for similar information.</p>
+<h1 id="the-magic-of-wake-on-lan">The Magic of Wake-On-Lan</h1>
+<p>I believe it was Jay at <a href="learnlinux.tv">learnlinux.tv</a>
+ that introduced me to the idea of using wake-on-lan so that all of the computers that I run in the homelab and at work don&rsquo;t have to be one 24/7 but only when they are likely to be accessed. I use wake-on-lan to wake up my server at work every morning, and it shuts down every night so that when I&rsquo;m not work, the server isn&rsquo;t just being a power drain. I do the same with my storage server in the homelab, it wakes every night to backup files from my main homelab server then shuts down immediately after the backup script runs.</p>
+<p>I like to be able to wake up my recycled workstation if I happen to be at home, and a file did not sync properly to the homelab server or I want to do some other task on my work computer. After upgrading to MX 23 I realized that the workstation would no longer wake up when the &ldquo;magic packet&rdquo; was broadcast over the network from my always on Raspberry Pi.</p>
+<h1 id="the-steps-to-restore-wake-on-lan">The Steps to Restore Wake-On-Lan</h1>
+<ol>
+<li>Change MX to boot with systemd</li>
+</ol>
+<p>This might be the most controversial step if you are in love with MX and appreciate that they by default boot with <strong>SysV</strong> init scripts. The method that I have found to reliably reset the network interface depends on a systemd service file running at boot. Could this be done with <strong>SysV</strong>? Yes, I&rsquo;m sure that it can be done, I just don&rsquo;t know how to format the script and where it would go in the system so that it is executed every time the desktop boots.</p>
+<p>The easiest way to do this is to use the MX Boot Options utility pictured below.</p>
+<p><img  src="/img/mx-bootoptions.png"
+        alt="MX Boot Options Utility"/></p>
+<p>In the drop down box next to <strong>&ldquo;Boot to&rdquo;</strong> choose the latest kernel with &ldquo;(systemd)&rdquo;. Click <strong>&ldquo;Apply&rdquo;</strong> and grub will be updated with your choice, then you can close the utility. My experience in the past is that when MX installs a new kernel it remembers your choice, and automatically chooses to boot the latest kernel with systemd.</p>
+<ol start="2">
+<li>Discover your network card interface name.</li>
+</ol>
+<p>Wake-On-Lan only works according to my understanding with wired connections to the network. So you need to have your system connected to your network through a wired Ethernet interface. Once you have done that, you can run the following command to get the name of your network card interface which can be different from one distribution to another.</p>
+<p><code>ip address</code></p>
+<p>You should get some output that looks similar to what I have below.</p>
+<pre tabindex="0"><code>1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether bc:ee:7b:dc:5b:ea brd ff:ff:ff:ff:ff:ff
+    inet 10.10.1.100/24 brd 10.10.1.255 scope global dynamic noprefixroute eth0
+       valid_lft 81179sec preferred_lft 81179sec
+    inet6 fe80::9406:4006:fcd6:9778/64 scope link noprefixroute
+       valid_lft forever preferred_lft forever
+</code></pre><p>The important line is labeled <strong>&ldquo;2:&rdquo;</strong> where in my output I see the physical network interface is called <strong>&ldquo;eth0&rdquo;</strong>. You may see multiple &ldquo;addresses&rdquo; or &ldquo;devices&rdquo; if you are running container or have multiple network interfaces in your workstation. Since I don&rsquo;t have a wireless card or other network interfaces I can easily tell which one has given me the ip address to my computer on the local network. Other common interface names could be <strong>&ldquo;enp2s0&rdquo;</strong> or <strong>&ldquo;eno1&rdquo;</strong> for wired interfaces or a wireless interface might be called <strong>&ldquo;wlp1s0&rdquo;</strong>.</p>
+<ol start="3">
+<li>Check whether the network interface is capable of Wake-On-Lan.</li>
+</ol>
+<p>Run <code>sudo ethtool eth0</code> replacing the network card interface name with the one that fits your system. You should get similar output to what I have below.</p>
+<pre tabindex="0"><code>Settings for eth0:
+	Supported ports: [ TP	 MII ]
+	Supported link modes:   10baseT/Half 10baseT/Full
+	                        100baseT/Half 100baseT/Full
+	                        1000baseT/Half 1000baseT/Full
+	Supported pause frame use: Symmetric Receive-only
+	Supports auto-negotiation: Yes
+	Supported FEC modes: Not reported
+	Advertised link modes:  10baseT/Half 10baseT/Full
+	                        100baseT/Half 100baseT/Full
+	                        1000baseT/Half 1000baseT/Full
+	Advertised pause frame use: Symmetric Receive-only
+	Advertised auto-negotiation: Yes
+	Advertised FEC modes: Not reported
+	Link partner advertised link modes:  10baseT/Half 10baseT/Full
+	                                     100baseT/Half 100baseT/Full
+	                                     1000baseT/Full
+	Link partner advertised pause frame use: Symmetric
+	Link partner advertised auto-negotiation: Yes
+	Link partner advertised FEC modes: Not reported
+	Speed: 1000Mb/s
+	Duplex: Full
+	Auto-negotiation: on
+	master-slave cfg: preferred slave
+	master-slave status: slave
+	Port: Twisted Pair
+	PHYAD: 0
+	Transceiver: external
+	MDI-X: Unknown
+    Supports Wake-on: pumbg
+	Wake-on: d
+	Link detected: yes
+</code></pre><p>The important lines are at the bottom.</p>
+<pre tabindex="0"><code>	Supports Wake-on: pumbg
+	Wake-on: d
+</code></pre><p>If you see <strong>&ldquo;g&rdquo;</strong> your network interface supports wake-on-lan when it receives the &ldquo;magic packet&rdquo; it will boot the system.</p>
+<p>All of the systems that I have implemented to use wake-on-lan had the last line <code>Wake-on: d</code> which means that currently wake-on-lan is disabled. If this already says <code>Wake-on: g</code> you are done, and you don&rsquo;t have to do anything more because your system is already set to use wake-on-lan.</p>
+<ol start="4">
+<li>Test wake-on-lan.</li>
+</ol>
+<p><code>sudo ethtool -s eth0 wol g</code></p>
+<p>The above command will setup the network interface to use wake-on-lan which you can check by running <code>sudo ethtool eth0</code> again and looking for <code>Wake-on: g</code>. But this will only work once, you can shutdown the system now, and then from another system on the same network send the command <code>wakeonlan bc:ee:7b:dc:5b:ea</code> or on Fedora systems the command is <code>wol bc:ee:7b:dc:5b:ea</code>. As long as the MAC address matches the network interface MAC address your system should boot up.</p>
+<p>Unfortunately, the above command will not work after the first reboot unless you would run it every time before shutting down the system which I&rsquo;m sure you could do in any number of ways, but I like to use the following method.</p>
+<ol start="5">
+<li>Make the wake-on-lan setting sticky by creating a systemd service file.</li>
+</ol>
+<p>Using your favorite CLI text editor you would create this new service file.</p>
+<p><code>sudo vim /etc/systemd/system/wol.service</code></p>
+<p>Fill it with the following content most of which should be self explanatory.</p>
+<pre tabindex="0"><code>[Unit]
+Description=Activate WOL on eth0 network card
+After=network-online.target
+[Service]
+Type=oneshot
+ExecStartPre=/bin/sleep 30
+ExecStart=/sbin/ethtool -s eth0 wol g
+[Install]
+WantedBy=basic.target
+</code></pre><p>For some systems you might be able to eliminate the line <code>ExecStartPre=/bin/sleep 30</code>. I found that my recycled workstation network interface needed a little extra time before the network card was read to have its setting changed, so I had to add the <code>sleep 30</code> command before the <code>ethtool</code> command.</p>
+<p>After saving the file you can run the service file once, check the status, and then enable it so it runs every time you reboot your system. If the following command fail, it might be because you have not rebooted your MX install using systemd, do that first then try the commands below again.</p>
+<p><code>sudo service wol start</code>
+<code>sudo service wol status</code>
+<code>sudo systemctl enable wol.service</code></p>
+<p>The original author who helped me crack this task is Alberto Iriberri Andres. Here is the <a href="https://web.archive.org/web/20230607220456/https://www.pangodream.es/make-your-wol-configuration-truly-sticky"target="_blank" rel="noopener noreferrer">original blog article on the WayBackMachine</a>
+.</p>
+<p><em>Photo used to create the header graphic came from <a href="https://unsplash.com/photos/noVVeS4vTRQ?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"target="_blank" rel="noopener noreferrer">Unsplash photographer Bryan Papazov</a>
+</em></p>
+</article><section class="article labels"><a class="category" href=/categories/articles/>Articles</a><a class="tag" href=/tags/mx-linux/>MX-Linux</a><a class="tag" href=/tags/terminal/>terminal</a></section><section class="article author"><img class="avatar" src="/img/myAvatar.png" alt><p class="name">Steve (mowest)</p><div class="bio">A free and open source enthusiast using these tools for work and fun.</div><div class="details"><a class="item" href="https://github.com/mowestusa" target="_blank" rel="noopener noreferrer"><span class="iconfont icon-github"></span>&nbsp;mowestusa</a><a class="item" href="mailto:mowestusa@pm.me" target="_blank" rel="noopener noreferrer"><span class="iconfont icon-email"></span>&nbsp;mowestusa@pm.me</a></div>
+</section>
+</div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/posts/scp/"><span class="iconfont icon-article"></span>Volley Your Files From One Computer to Another</a></p></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</p>
+    <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
+        target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank" rel="noopener noreferrer">Notepadium</a></p></div>
+</section></body>
+
+</html>
