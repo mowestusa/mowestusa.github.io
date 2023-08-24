@@ -118,9 +118,9 @@ ExecStart=/sbin/ethtool -s eth0 wol g
 WantedBy=basic.target
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;For some systems you might be able to eliminate the line &lt;code&gt;ExecStartPre=/bin/sleep 30&lt;/code&gt;. I found that my recycled workstation network interface needed a little extra time before the network card was read to have its setting changed, so I had to add the &lt;code&gt;sleep 30&lt;/code&gt; command before the &lt;code&gt;ethtool&lt;/code&gt; command.&lt;/p&gt;
 &lt;p&gt;After saving the file you can run the service file once, check the status, and then enable it so it runs every time you reboot your system. If the following command fail, it might be because you have not rebooted your MX install using systemd, do that first then try the commands below again.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;sudo service wol start&lt;/code&gt;
-&lt;code&gt;sudo service wol status&lt;/code&gt;
-&lt;code&gt;sudo systemctl enable wol.service&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo service wol start&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo service wol status&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo systemctl enable wol.service&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;The original author who helped me crack this task is Alberto Iriberri Andres. Here is the &lt;a href=&#34;https://web.archive.org/web/20230607220456/https://www.pangodream.es/make-your-wol-configuration-truly-sticky&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;original blog article on the WayBackMachine&lt;/a&gt;
 .&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Photo used to create the header graphic came from &lt;a href=&#34;https://unsplash.com/photos/noVVeS4vTRQ?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Unsplash photographer Bryan Papazov&lt;/a&gt;

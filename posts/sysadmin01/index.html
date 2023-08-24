@@ -115,9 +115,9 @@ ExecStart=/sbin/ethtool -s eth0 wol g
 WantedBy=basic.target
 </code></pre><p>For some systems you might be able to eliminate the line <code>ExecStartPre=/bin/sleep 30</code>. I found that my recycled workstation network interface needed a little extra time before the network card was read to have its setting changed, so I had to add the <code>sleep 30</code> command before the <code>ethtool</code> command.</p>
 <p>After saving the file you can run the service file once, check the status, and then enable it so it runs every time you reboot your system. If the following command fail, it might be because you have not rebooted your MX install using systemd, do that first then try the commands below again.</p>
-<p><code>sudo service wol start</code>
-<code>sudo service wol status</code>
-<code>sudo systemctl enable wol.service</code></p>
+<p><code>sudo service wol start</code></p>
+<p><code>sudo service wol status</code></p>
+<p><code>sudo systemctl enable wol.service</code></p>
 <p>The original author who helped me crack this task is Alberto Iriberri Andres. Here is the <a href="https://web.archive.org/web/20230607220456/https://www.pangodream.es/make-your-wol-configuration-truly-sticky"target="_blank" rel="noopener noreferrer">original blog article on the WayBackMachine</a>
 .</p>
 <p><em>Photo used to create the header graphic came from <a href="https://unsplash.com/photos/noVVeS4vTRQ?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"target="_blank" rel="noopener noreferrer">Unsplash photographer Bryan Papazov</a>
